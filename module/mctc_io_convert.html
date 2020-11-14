@@ -1,0 +1,764 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+   
+   <meta name="description" content="Modular computation tool chain library">
+    
+    <meta name="author" content="Grimme group, Bonn" >
+    <link rel="icon" href="../favicon.png">
+
+    <title>mctc_io_convert &ndash; MCTC-library</title>
+
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    <link href="../css/pygments.css" rel="stylesheet">
+    <link href="../css/font-awesome.min.css" rel="stylesheet">
+    <link href="../css/local.css" rel="stylesheet">
+    
+    <link  href="../tipuesearch/tipuesearch.css" rel="stylesheet">
+    
+    
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    
+    <script src="../js/jquery-2.1.3.min.js"></script>
+    <script src="../js/svg-pan-zoom.min.js"></script>
+
+  </head>
+
+  <body>
+
+    <!-- Fixed navbar -->
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="../index.html">MCTC-library </a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+        
+            <li class="dropdown hidden-xs visible-sm visible-md hidden-lg">
+              <a href="#" class="dropdown-toggle"
+              data-toggle="dropdown" role="button"
+              aria-haspopup="true"
+     aria-expanded="false">Contents <span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          
+              
+            <li><a href="../lists/files.html">Source Files</a></li>
+        
+        
+        
+            <li><a href="../lists/modules.html">Modules</a></li>
+        
+            
+                                
+            <li><a href="../lists/procedures.html">Procedures</a></li>
+        
+        
+            <li><a href="../lists/absint.html">Abstract Interfaces</a></li>
+               
+            <li><a href="../lists/types.html">Derived Types</a></li>
+        
+        
+            <li><a href="../program/main.html">Program</a></li>
+      
+            </ul>
+            </li>
+
+
+<li class="visible-xs hidden-sm visible-lg"><a href="../lists/files.html">Source Files</a></li>
+
+
+
+<li class="visible-xs hidden-sm visible-lg"><a href="../lists/modules.html">Modules</a></li>
+
+
+
+<li class="visible-xs hidden-sm visible-lg"><a href="../lists/procedures.html">Procedures</a></li>
+
+
+<li class="visible-xs hidden-sm visible-lg"><a href="../lists/absint.html">Abstract Interfaces</a></li>
+                             
+<li class="visible-xs hidden-sm visible-lg"><a href="../lists/types.html">Derived Types</a></li>
+
+
+<li class="visible-xs hidden-sm visible-lg"><a href="../program/main.html">Program</a></li>
+
+          </ul>
+        
+        <form action="../search.html" class="navbar-form navbar-right" role="search">
+        <div class="form-group">
+          <input type="text" class="form-control" placeholder="Search" name="q" id="tipue_search_input" autocomplete="off" required>
+        </div>
+<!--
+        <button type="submit" class="btn btn-default">Submit</button>
+-->
+        </form>
+        
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
+
+    <div class="container">
+    
+  
+  <div class="row">
+    <h1>mctc_io_convert 
+    <small>Module</small>
+    
+    </h1>
+    
+<div class="row">
+  <div class="col-lg-12">
+<div class="well well-sm">
+  <ul class="list-inline" style="margin-bottom:0px;display:inline">
+     
+     
+     
+     
+    
+    
+     <li><i class="fa fa-list-ol"></i>
+       <a data-toggle="tooltip"
+    data-placement="bottom" data-html="true"
+    title=" 1.2% of total for modules and submodules.">31 statements</a>
+     </li> 
+     
+     
+     
+    <li><i class="fa fa-code"></i><a href="../src/convert.f90"> Source File</a></li>
+     
+     
+  </ul>
+  <ol class="breadcrumb in-well text-right">
+  
+    
+     <li><a href='../sourcefile/convert.f90.html'>convert.f90</a></li>
+    
+  
+     <li class="active">mctc_io_convert</li>
+  </ol>
+</div>
+</div>
+</div>
+<script>
+  $(function () {
+  $('[data-toggle="tooltip"]').tooltip()
+  })
+</script>
+
+  </div>
+  
+  <div class="row">
+    <div class="col-md-3 hidden-xs hidden-sm visible-md visible-lg">
+    
+<div id="sidebar">
+  
+<h3>Contents</h3>
+ 
+
+
+
+<div class="panel panel-primary">
+  <div class="panel-heading text-left"><h3 class="panel-title"><a data-toggle="collapse" href="#vars-0">Variables</a></h3></div>
+  <div id="vars-0" class="panel-collapse collapse">
+    <div class="list-group">
+      
+      <a class="list-group-item" href="../module/mctc_io_convert.html#variable-aatoau">aatoau</a>
+      
+      <a class="list-group-item" href="../module/mctc_io_convert.html#variable-autoaa">autoaa</a>
+      
+      <a class="list-group-item" href="../module/mctc_io_convert.html#variable-autoc">autoc</a>
+      
+      <a class="list-group-item" href="../module/mctc_io_convert.html#variable-autoev">autoeV</a>
+      
+      <a class="list-group-item" href="../module/mctc_io_convert.html#variable-autogmol">autogmol</a>
+      
+      <a class="list-group-item" href="../module/mctc_io_convert.html#variable-autokcal">autokcal</a>
+      
+      <a class="list-group-item" href="../module/mctc_io_convert.html#variable-autokg">autokg</a>
+      
+      <a class="list-group-item" href="../module/mctc_io_convert.html#variable-autokj">autokj</a>
+      
+      <a class="list-group-item" href="../module/mctc_io_convert.html#variable-autonm">autonm</a>
+      
+      <a class="list-group-item" href="../module/mctc_io_convert.html#variable-autorcm">autorcm</a>
+      
+      <a class="list-group-item" href="../module/mctc_io_convert.html#variable-caltoj">caltoj</a>
+      
+      <a class="list-group-item" href="../module/mctc_io_convert.html#variable-ctoau">ctoau</a>
+      
+      <a class="list-group-item" href="../module/mctc_io_convert.html#variable-evtoau">evtoau</a>
+      
+      <a class="list-group-item" href="../module/mctc_io_convert.html#variable-gmoltoau">gmoltoau</a>
+      
+      <a class="list-group-item" href="../module/mctc_io_convert.html#variable-gmoltokg">gmoltokg</a>
+      
+      <a class="list-group-item" href="../module/mctc_io_convert.html#variable-jtocal">jtocal</a>
+      
+      <a class="list-group-item" href="../module/mctc_io_convert.html#variable-kcaltoau">kcaltoau</a>
+      
+      <a class="list-group-item" href="../module/mctc_io_convert.html#variable-kgtoau">kgtoau</a>
+      
+      <a class="list-group-item" href="../module/mctc_io_convert.html#variable-kgtogmol">kgtogmol</a>
+      
+      <a class="list-group-item" href="../module/mctc_io_convert.html#variable-kjtoau">kjtoau</a>
+      
+      <a class="list-group-item" href="../module/mctc_io_convert.html#variable-nmtoau">nmtoau</a>
+      
+      <a class="list-group-item" href="../module/mctc_io_convert.html#variable-rcmtoau">rcmtoau</a>
+      
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+
+    </div>
+    
+    <div class="col-md-9" id='text'>
+    <p>Conversion factors</p>
+      <br>
+    
+  
+    <div class="panel panel-default">
+      <div class="panel-heading">
+  <h3 class="panel-title">Uses</h3>
+      </div>
+      <ul class="list-group">
+      
+      <li class="list-group-item">
+  <ul class="list-inline">
+    
+    <li><a href='../module/mctc_env_accuracy.html'>mctc_env_accuracy</a></li>
+    
+    <li><a href='../module/mctc_io_constants.html'>mctc_io_constants</a></li>
+    
+  </ul>
+      </li>
+      
+      
+      
+      </ul>
+    </div>
+    
+
+    
+    
+
+    <br>
+
+    <section class="visible-xs visible-sm hidden-md">
+      
+<h3>Contents</h3>
+ 
+
+
+
+<div class="panel panel-primary">
+  <div class="panel-heading text-left"><h3 class="panel-title"><a data-toggle="collapse" href="#vars-1">Variables</a></h3></div>
+  <div id="vars-1" class="panel-collapse collapse">
+    <div class="list-group">
+      
+      <a class="list-group-item" href="../module/mctc_io_convert.html#variable-aatoau">aatoau</a>
+      
+      <a class="list-group-item" href="../module/mctc_io_convert.html#variable-autoaa">autoaa</a>
+      
+      <a class="list-group-item" href="../module/mctc_io_convert.html#variable-autoc">autoc</a>
+      
+      <a class="list-group-item" href="../module/mctc_io_convert.html#variable-autoev">autoeV</a>
+      
+      <a class="list-group-item" href="../module/mctc_io_convert.html#variable-autogmol">autogmol</a>
+      
+      <a class="list-group-item" href="../module/mctc_io_convert.html#variable-autokcal">autokcal</a>
+      
+      <a class="list-group-item" href="../module/mctc_io_convert.html#variable-autokg">autokg</a>
+      
+      <a class="list-group-item" href="../module/mctc_io_convert.html#variable-autokj">autokj</a>
+      
+      <a class="list-group-item" href="../module/mctc_io_convert.html#variable-autonm">autonm</a>
+      
+      <a class="list-group-item" href="../module/mctc_io_convert.html#variable-autorcm">autorcm</a>
+      
+      <a class="list-group-item" href="../module/mctc_io_convert.html#variable-caltoj">caltoj</a>
+      
+      <a class="list-group-item" href="../module/mctc_io_convert.html#variable-ctoau">ctoau</a>
+      
+      <a class="list-group-item" href="../module/mctc_io_convert.html#variable-evtoau">evtoau</a>
+      
+      <a class="list-group-item" href="../module/mctc_io_convert.html#variable-gmoltoau">gmoltoau</a>
+      
+      <a class="list-group-item" href="../module/mctc_io_convert.html#variable-gmoltokg">gmoltokg</a>
+      
+      <a class="list-group-item" href="../module/mctc_io_convert.html#variable-jtocal">jtocal</a>
+      
+      <a class="list-group-item" href="../module/mctc_io_convert.html#variable-kcaltoau">kcaltoau</a>
+      
+      <a class="list-group-item" href="../module/mctc_io_convert.html#variable-kgtoau">kgtoau</a>
+      
+      <a class="list-group-item" href="../module/mctc_io_convert.html#variable-kgtogmol">kgtogmol</a>
+      
+      <a class="list-group-item" href="../module/mctc_io_convert.html#variable-kjtoau">kjtoau</a>
+      
+      <a class="list-group-item" href="../module/mctc_io_convert.html#variable-nmtoau">nmtoau</a>
+      
+      <a class="list-group-item" href="../module/mctc_io_convert.html#variable-rcmtoau">rcmtoau</a>
+      
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </section>
+    <br class="visible-xs visible-sm hidden-md">
+
+    
+
+    
+    <section>
+    <h2>Variables</h2>
+    
+<table class="table table-striped varlist">
+<thead><tr><th>Type</th><th>Visibility</th>
+
+<th>Attributes</th><th></th><th>Name</th><th></th><th>Initial</th><th></th></thead>
+
+
+
+<tbody>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-aatoau"></span>real(kind=wp),</td>
+  
+  <td>public,</td>
+  <td>parameter</td><td>::</td>
+  <td><strong>aatoau</strong></td><td> =</td><td>1.0_wp/autoaa</td><td><p>Conversion factor from Ångström to bohr</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-autoaa"></span>real(kind=wp),</td>
+  
+  <td>public,</td>
+  <td>parameter</td><td>::</td>
+  <td><strong>autoaa</strong></td><td> =</td><td>bohr*1e10_wp</td><td><p>Conversion factor from bohr to Ångström</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-autoc"></span>real(kind=wp),</td>
+  
+  <td>public,</td>
+  <td>parameter</td><td>::</td>
+  <td><strong>autoc</strong></td><td> =</td><td>codata%e</td><td><p>Coulomb to atomic charge units</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-autoev"></span>real(kind=wp),</td>
+  
+  <td>public,</td>
+  <td>parameter</td><td>::</td>
+  <td><strong>autoeV</strong></td><td> =</td><td>hartree/codata%e</td><td><p>Conversion factor from hartree to electron volts</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-autogmol"></span>real(kind=wp),</td>
+  
+  <td>public,</td>
+  <td>parameter</td><td>::</td>
+  <td><strong>autogmol</strong></td><td> =</td><td>codata%me*codata%na*1e+3_wp</td><td><p>Molecular mass per mole (g/mol) to electron mass (a.u.)</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-autokcal"></span>real(kind=wp),</td>
+  
+  <td>public,</td>
+  <td>parameter</td><td>::</td>
+  <td><strong>autokcal</strong></td><td> =</td><td>autokJ*Jtocal</td><td><p>Conversion from hartree to kcal/mol</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-autokg"></span>real(kind=wp),</td>
+  
+  <td>public,</td>
+  <td>parameter</td><td>::</td>
+  <td><strong>autokg</strong></td><td> =</td><td>codata%me</td><td><p>Conversion from electron mass (a.u.) to kg</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-autokj"></span>real(kind=wp),</td>
+  
+  <td>public,</td>
+  <td>parameter</td><td>::</td>
+  <td><strong>autokj</strong></td><td> =</td><td>hartree*codata%na*1e-3_wp</td><td><p>Conversion from hartree to kJ/mol</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-autonm"></span>real(kind=wp),</td>
+  
+  <td>public,</td>
+  <td>parameter</td><td>::</td>
+  <td><strong>autonm</strong></td><td> =</td><td>codata%h*codata%c/hartree*1e+9_wp</td><td><p>Conversion from hartree to nanometers (wavelength)</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-autorcm"></span>real(kind=wp),</td>
+  
+  <td>public,</td>
+  <td>parameter</td><td>::</td>
+  <td><strong>autorcm</strong></td><td> =</td><td>hartree/(codata%h*codata%c)*1e-2_wp</td><td><p>Conversion from hartree to reciprocal centimeters</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-caltoj"></span>real(kind=wp),</td>
+  
+  <td>public,</td>
+  <td>parameter</td><td>::</td>
+  <td><strong>caltoj</strong></td><td> =</td><td>4.184_wp</td><td><p>Coversion factor between calorine and joule</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-ctoau"></span>real(kind=wp),</td>
+  
+  <td>public,</td>
+  <td>parameter</td><td>::</td>
+  <td><strong>ctoau</strong></td><td> =</td><td>1.0_wp/autoc</td><td><p>Atomic charge units to Coulomb</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-evtoau"></span>real(kind=wp),</td>
+  
+  <td>public,</td>
+  <td>parameter</td><td>::</td>
+  <td><strong>evtoau</strong></td><td> =</td><td>1.0_wp/autoev</td><td><p>Conversion factor from electron volts to hartree</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-gmoltoau"></span>real(kind=wp),</td>
+  
+  <td>public,</td>
+  <td>parameter</td><td>::</td>
+  <td><strong>gmoltoau</strong></td><td> =</td><td>1.0_wp/autogmol</td><td><p>Electron mass (a.u.) to molecular mass per mole (g/mol)</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-gmoltokg"></span>real(kind=wp),</td>
+  
+  <td>public,</td>
+  <td>parameter</td><td>::</td>
+  <td><strong>gmoltokg</strong></td><td> =</td><td>gmoltoau*autokg</td><td><p>Molecular mass per mole (g/mol) to kg</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-jtocal"></span>real(kind=wp),</td>
+  
+  <td>public,</td>
+  <td>parameter</td><td>::</td>
+  <td><strong>jtocal</strong></td><td> =</td><td>1.0_wp/caltoj</td><td><p>Coversion factor between joule and calorine</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-kcaltoau"></span>real(kind=wp),</td>
+  
+  <td>public,</td>
+  <td>parameter</td><td>::</td>
+  <td><strong>kcaltoau</strong></td><td> =</td><td>1.0_wp/autokcal</td><td><p>Conversion from kcal/mol to hartree</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-kgtoau"></span>real(kind=wp),</td>
+  
+  <td>public,</td>
+  <td>parameter</td><td>::</td>
+  <td><strong>kgtoau</strong></td><td> =</td><td>1.0_wp/autokg</td><td><p>Conversion from kg to electron mass (a.u.)</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-kgtogmol"></span>real(kind=wp),</td>
+  
+  <td>public,</td>
+  <td>parameter</td><td>::</td>
+  <td><strong>kgtogmol</strong></td><td> =</td><td>1.0_wp/gmoltokg</td><td><p>kg to molecular mass per mole (g/mol)</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-kjtoau"></span>real(kind=wp),</td>
+  
+  <td>public,</td>
+  <td>parameter</td><td>::</td>
+  <td><strong>kjtoau</strong></td><td> =</td><td>1.0_wp/autokj</td><td><p>Conversion from kJ/mol to hartree</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-nmtoau"></span>real(kind=wp),</td>
+  
+  <td>public,</td>
+  <td>parameter</td><td>::</td>
+  <td><strong>nmtoau</strong></td><td> =</td><td>1.0_wp/autonm</td><td><p>Conversion from nanometers (wavelength) to hartree</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-rcmtoau"></span>real(kind=wp),</td>
+  
+  <td>public,</td>
+  <td>parameter</td><td>::</td>
+  <td><strong>rcmtoau</strong></td><td> =</td><td>1.0_wp/autorcm</td><td><p>Conversion from reciprocal centimeters to hartree</p></td>
+  
+</tr>
+
+</tbody>
+</table>
+
+    </section>
+    <br>
+    
+    
+    
+    
+    
+
+    
+    
+    
+    
+    
+
+    
+    
+    
+    </div>
+  </div>
+
+  
+    <hr>    
+    </div> <!-- /container -->
+    <footer>
+      <div class="container">
+      <div class="row">
+        <div class="col-xs-6 col-md-4"><p>&copy; 2020 
+                                          </p></div>
+        <div class="col-xs-6 col-md-4 col-md-push-4">
+          <p class="text-right">
+            Documentation generated by 
+            <a href="https://github.com/cmacmackin/ford">FORD</a>
+             on 2020-11-14 16:17  
+          </p>
+        </div>
+        <div class="col-xs-12 col-md-4 col-md-pull-4"><p class="text-center"> MCTC-library was developed by Grimme group, Bonn</p></div>
+      </div>
+      <br>
+      </div> <!-- /container -->    
+    </footer>
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+<!--
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+-->
+    <script src="../js/bootstrap.min.js"></script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="../js/ie10-viewport-bug-workaround.js"></script>
+
+    <!-- MathJax JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } },
+        jax: ['input/TeX','input/MathML','output/HTML-CSS'],
+        extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']
+      });
+    </script>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    
+    <script src="../tipuesearch/tipuesearch_content.js"></script>
+    <script src="../tipuesearch/tipuesearch_set.js"></script>
+    <script src="../tipuesearch/tipuesearch.js"></script>
+    
+    
+  </body>
+</html>
