@@ -342,73 +342,73 @@
 <a name="ln-71"></a>
 <a name="ln-72"></a>   <span class="n">ftype</span> <span class="o">=</span> <span class="n">filetype</span><span class="p">%</span><span class="n">unknown</span>
 <a name="ln-73"></a>   <span class="n">iext</span> <span class="o">=</span> <span class="nb">index</span><span class="p">(</span><span class="k">file</span><span class="p">,</span> <span class="s1">&#39;.&#39;</span><span class="p">,</span> <span class="n">back</span><span class="o">=</span><span class="p">.</span><span class="n">true</span><span class="p">.)</span>
-<a name="ln-74"></a>   <span class="n">isep</span> <span class="o">=</span> <span class="nb">scan</span><span class="p">(</span><span class="k">file</span><span class="p">,</span> <span class="s1">&#39;/\&#39;, back=.true.)</span>
+<a name="ln-74"></a>   <span class="n">isep</span> <span class="o">=</span> <span class="nb">scan</span><span class="p">(</span><span class="k">file</span><span class="p">,</span> <span class="s1">&#39;\/&#39;</span><span class="p">,</span> <span class="n">back</span><span class="o">=</span><span class="p">.</span><span class="n">true</span><span class="p">.)</span>
 <a name="ln-75"></a>
-<a name="ln-76"></a><span class="s1">   if (iext &gt; isep .and. iext &gt; 0) then</span>
-<a name="ln-77"></a><span class="s1">      select case(to_lower(file(iext+1:)))</span>
-<a name="ln-78"></a><span class="s1">      case(&#39;</span><span class="n">coord</span><span class="s1">&#39;, &#39;</span><span class="n">tmol</span><span class="s1">&#39;)</span>
-<a name="ln-79"></a><span class="s1">         ftype = filetype%tmol</span>
-<a name="ln-80"></a><span class="s1">      case(&#39;</span><span class="n">xyz</span><span class="s1">&#39;, &#39;</span><span class="nb">log</span><span class="s1">&#39;)</span>
-<a name="ln-81"></a><span class="s1">         ftype = filetype%xyz</span>
-<a name="ln-82"></a><span class="s1">      case(&#39;</span><span class="n">mol</span><span class="s1">&#39;)</span>
-<a name="ln-83"></a><span class="s1">         ftype = filetype%molfile</span>
-<a name="ln-84"></a><span class="s1">      case(&#39;</span><span class="n">sdf</span><span class="s1">&#39;)</span>
-<a name="ln-85"></a><span class="s1">         ftype = filetype%sdf</span>
-<a name="ln-86"></a><span class="s1">      case(&#39;</span><span class="n">poscar</span><span class="s1">&#39;, &#39;</span><span class="n">contcar</span><span class="s1">&#39;, &#39;</span><span class="n">vasp</span><span class="s1">&#39;)</span>
-<a name="ln-87"></a><span class="s1">         ftype = filetype%vasp</span>
-<a name="ln-88"></a><span class="s1">      case(&#39;</span><span class="n">pdb</span><span class="s1">&#39;)</span>
-<a name="ln-89"></a><span class="s1">         ftype = filetype%pdb</span>
-<a name="ln-90"></a><span class="s1">      case(&#39;</span><span class="n">gen</span><span class="s1">&#39;)</span>
-<a name="ln-91"></a><span class="s1">         ftype = filetype%gen</span>
-<a name="ln-92"></a><span class="s1">      case(&#39;</span><span class="n">ein</span><span class="s1">&#39;)</span>
-<a name="ln-93"></a><span class="s1">         ftype = filetype%gaussian</span>
-<a name="ln-94"></a><span class="s1">      end select</span>
-<a name="ln-95"></a><span class="s1">      if (ftype /= filetype%unknown) return</span>
-<a name="ln-96"></a><span class="s1">   else</span>
-<a name="ln-97"></a><span class="s1">      iext = len(file) + 1</span>
-<a name="ln-98"></a><span class="s1">   end if</span>
+<a name="ln-76"></a>   <span class="k">if</span> <span class="p">(</span><span class="n">iext</span> <span class="o">&gt;</span> <span class="n">isep</span> <span class="p">.</span><span class="nb">and</span><span class="p">.</span> <span class="n">iext</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span> <span class="k">then</span>
+<a name="ln-77"></a><span class="k">      select case</span><span class="p">(</span><span class="n">to_lower</span><span class="p">(</span><span class="k">file</span><span class="p">(</span><span class="n">iext</span><span class="o">+</span><span class="mi">1</span><span class="p">:)))</span>
+<a name="ln-78"></a>      <span class="k">case</span><span class="p">(</span><span class="s1">&#39;coord&#39;</span><span class="p">,</span> <span class="s1">&#39;tmol&#39;</span><span class="p">)</span>
+<a name="ln-79"></a>         <span class="n">ftype</span> <span class="o">=</span> <span class="n">filetype</span><span class="p">%</span><span class="n">tmol</span>
+<a name="ln-80"></a>      <span class="k">case</span><span class="p">(</span><span class="s1">&#39;xyz&#39;</span><span class="p">,</span> <span class="s1">&#39;log&#39;</span><span class="p">)</span>
+<a name="ln-81"></a>         <span class="n">ftype</span> <span class="o">=</span> <span class="n">filetype</span><span class="p">%</span><span class="n">xyz</span>
+<a name="ln-82"></a>      <span class="k">case</span><span class="p">(</span><span class="s1">&#39;mol&#39;</span><span class="p">)</span>
+<a name="ln-83"></a>         <span class="n">ftype</span> <span class="o">=</span> <span class="n">filetype</span><span class="p">%</span><span class="n">molfile</span>
+<a name="ln-84"></a>      <span class="k">case</span><span class="p">(</span><span class="s1">&#39;sdf&#39;</span><span class="p">)</span>
+<a name="ln-85"></a>         <span class="n">ftype</span> <span class="o">=</span> <span class="n">filetype</span><span class="p">%</span><span class="n">sdf</span>
+<a name="ln-86"></a>      <span class="k">case</span><span class="p">(</span><span class="s1">&#39;poscar&#39;</span><span class="p">,</span> <span class="s1">&#39;contcar&#39;</span><span class="p">,</span> <span class="s1">&#39;vasp&#39;</span><span class="p">)</span>
+<a name="ln-87"></a>         <span class="n">ftype</span> <span class="o">=</span> <span class="n">filetype</span><span class="p">%</span><span class="n">vasp</span>
+<a name="ln-88"></a>      <span class="k">case</span><span class="p">(</span><span class="s1">&#39;pdb&#39;</span><span class="p">)</span>
+<a name="ln-89"></a>         <span class="n">ftype</span> <span class="o">=</span> <span class="n">filetype</span><span class="p">%</span><span class="n">pdb</span>
+<a name="ln-90"></a>      <span class="k">case</span><span class="p">(</span><span class="s1">&#39;gen&#39;</span><span class="p">)</span>
+<a name="ln-91"></a>         <span class="n">ftype</span> <span class="o">=</span> <span class="n">filetype</span><span class="p">%</span><span class="n">gen</span>
+<a name="ln-92"></a>      <span class="k">case</span><span class="p">(</span><span class="s1">&#39;ein&#39;</span><span class="p">)</span>
+<a name="ln-93"></a>         <span class="n">ftype</span> <span class="o">=</span> <span class="n">filetype</span><span class="p">%</span><span class="n">gaussian</span>
+<a name="ln-94"></a>      <span class="k">end select</span>
+<a name="ln-95"></a><span class="k">      if</span> <span class="p">(</span><span class="n">ftype</span> <span class="o">/=</span> <span class="n">filetype</span><span class="p">%</span><span class="n">unknown</span><span class="p">)</span> <span class="k">return</span>
+<a name="ln-96"></a><span class="k">   else</span>
+<a name="ln-97"></a><span class="k">      </span><span class="n">iext</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="k">file</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span>
+<a name="ln-98"></a>   <span class="k">end if</span>
 <a name="ln-99"></a>
-<a name="ln-100"></a><span class="s1">   if (iext &gt; isep) then</span>
-<a name="ln-101"></a><span class="s1">      select case(to_lower(file(isep+1:iext-1)))</span>
-<a name="ln-102"></a><span class="s1">      case(&#39;</span><span class="n">coord</span><span class="s1">&#39;)</span>
-<a name="ln-103"></a><span class="s1">         ftype = filetype%tmol</span>
-<a name="ln-104"></a><span class="s1">      case(&#39;</span><span class="n">poscar</span><span class="s1">&#39;, &#39;</span><span class="n">contcar</span><span class="s1">&#39;)</span>
-<a name="ln-105"></a><span class="s1">         ftype = filetype%vasp</span>
-<a name="ln-106"></a><span class="s1">      end select</span>
-<a name="ln-107"></a><span class="s1">   end if</span>
+<a name="ln-100"></a><span class="k">   if</span> <span class="p">(</span><span class="n">iext</span> <span class="o">&gt;</span> <span class="n">isep</span><span class="p">)</span> <span class="k">then</span>
+<a name="ln-101"></a><span class="k">      select case</span><span class="p">(</span><span class="n">to_lower</span><span class="p">(</span><span class="k">file</span><span class="p">(</span><span class="n">isep</span><span class="o">+</span><span class="mi">1</span><span class="p">:</span><span class="n">iext</span><span class="o">-</span><span class="mi">1</span><span class="p">)))</span>
+<a name="ln-102"></a>      <span class="k">case</span><span class="p">(</span><span class="s1">&#39;coord&#39;</span><span class="p">)</span>
+<a name="ln-103"></a>         <span class="n">ftype</span> <span class="o">=</span> <span class="n">filetype</span><span class="p">%</span><span class="n">tmol</span>
+<a name="ln-104"></a>      <span class="k">case</span><span class="p">(</span><span class="s1">&#39;poscar&#39;</span><span class="p">,</span> <span class="s1">&#39;contcar&#39;</span><span class="p">)</span>
+<a name="ln-105"></a>         <span class="n">ftype</span> <span class="o">=</span> <span class="n">filetype</span><span class="p">%</span><span class="n">vasp</span>
+<a name="ln-106"></a>      <span class="k">end select</span>
+<a name="ln-107"></a><span class="k">   end if</span>
 <a name="ln-108"></a>
-<a name="ln-109"></a><span class="s1">end function get_filetype</span>
+<a name="ln-109"></a><span class="k">end function </span><span class="n">get_filetype</span>
 <a name="ln-110"></a>
 <a name="ln-111"></a>
-<a name="ln-112"></a><span class="s1">!&gt; Convert input string to lowercase</span>
-<a name="ln-113"></a><span class="s1">elemental function to_lower(str) result(lcstr)</span>
+<a name="ln-112"></a><span class="c">!&gt; Convert input string to lowercase</span>
+<a name="ln-113"></a><span class="k">elemental function </span><span class="n">to_lower</span><span class="p">(</span><span class="n">str</span><span class="p">)</span> <span class="k">result</span><span class="p">(</span><span class="n">lcstr</span><span class="p">)</span>
 <a name="ln-114"></a>
-<a name="ln-115"></a><span class="s1">   !&gt; Input string</span>
-<a name="ln-116"></a><span class="s1">   character(len=*), intent(in) :: str</span>
+<a name="ln-115"></a>   <span class="c">!&gt; Input string</span>
+<a name="ln-116"></a>   <span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=*</span><span class="p">),</span> <span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span> <span class="kd">::</span> <span class="n">str</span>
 <a name="ln-117"></a>
-<a name="ln-118"></a><span class="s1">   !&gt; Lowercase version of string</span>
-<a name="ln-119"></a><span class="s1">   character(len=len(str)):: lcstr</span>
+<a name="ln-118"></a>   <span class="c">!&gt; Lowercase version of string</span>
+<a name="ln-119"></a>   <span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="n">str</span><span class="p">))</span><span class="kd">::</span> <span class="n">lcstr</span>
 <a name="ln-120"></a>
-<a name="ln-121"></a><span class="s1">   integer :: ilen, iquote, i, iav, iqc</span>
-<a name="ln-122"></a><span class="s1">   integer, parameter :: offset = iachar(&#39;</span><span class="n">A</span><span class="s1">&#39;) - iachar(&#39;</span><span class="n">a</span><span class="s1">&#39;)</span>
+<a name="ln-121"></a>   <span class="kt">integer</span> <span class="kd">::</span> <span class="n">ilen</span><span class="p">,</span> <span class="n">iquote</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="n">iav</span><span class="p">,</span> <span class="n">iqc</span>
+<a name="ln-122"></a>   <span class="kt">integer</span><span class="p">,</span> <span class="k">parameter</span> <span class="kd">::</span> <span class="n">offset</span> <span class="o">=</span> <span class="nb">iachar</span><span class="p">(</span><span class="s1">&#39;A&#39;</span><span class="p">)</span> <span class="o">-</span> <span class="nb">iachar</span><span class="p">(</span><span class="s1">&#39;a&#39;</span><span class="p">)</span>
 <a name="ln-123"></a>
-<a name="ln-124"></a><span class="s1">   ilen = len(str)</span>
-<a name="ln-125"></a><span class="s1">   iquote = 0</span>
-<a name="ln-126"></a><span class="s1">   lcstr = str</span>
+<a name="ln-124"></a>   <span class="n">ilen</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">str</span><span class="p">)</span>
+<a name="ln-125"></a>   <span class="n">iquote</span> <span class="o">=</span> <span class="mi">0</span>
+<a name="ln-126"></a>   <span class="n">lcstr</span> <span class="o">=</span> <span class="n">str</span>
 <a name="ln-127"></a>
-<a name="ln-128"></a><span class="s1">   do i = 1, ilen</span>
-<a name="ln-129"></a><span class="s1">      iav = iachar(str(i:i))</span>
-<a name="ln-130"></a><span class="s1">      if (iquote == 0 .and. (iav == 34 .or.iav == 39)) then</span>
-<a name="ln-131"></a><span class="s1">         iquote = 1</span>
-<a name="ln-132"></a><span class="s1">         iqc = iav</span>
-<a name="ln-133"></a><span class="s1">         cycle</span>
-<a name="ln-134"></a><span class="s1">      end if</span>
-<a name="ln-135"></a><span class="s1">      if (iquote == 1 .and. iav==iqc) then</span>
-<a name="ln-136"></a><span class="s1">         iquote=0</span>
-<a name="ln-137"></a><span class="s1">         cycle</span>
-<a name="ln-138"></a><span class="s1">      end if</span>
-<a name="ln-139"></a><span class="s1">      if (iquote == 1) cycle</span>
-<a name="ln-140"></a><span class="s1">      if (iav &gt;= iachar(&#39;</span><span class="n">A</span><span class="s1">&#39;) .and. iav &lt;= iachar(&#39;</span><span class="n">Z</span><span class="err">&#39;</span><span class="p">))</span> <span class="k">then</span>
+<a name="ln-128"></a>   <span class="k">do </span><span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">ilen</span>
+<a name="ln-129"></a>      <span class="n">iav</span> <span class="o">=</span> <span class="nb">iachar</span><span class="p">(</span><span class="n">str</span><span class="p">(</span><span class="n">i</span><span class="p">:</span><span class="n">i</span><span class="p">))</span>
+<a name="ln-130"></a>      <span class="k">if</span> <span class="p">(</span><span class="n">iquote</span> <span class="o">==</span> <span class="mi">0</span> <span class="p">.</span><span class="nb">and</span><span class="p">.</span> <span class="p">(</span><span class="n">iav</span> <span class="o">==</span> <span class="mi">34</span> <span class="p">.</span><span class="nb">or</span><span class="p">.</span><span class="n">iav</span> <span class="o">==</span> <span class="mi">39</span><span class="p">))</span> <span class="k">then</span>
+<a name="ln-131"></a><span class="k">         </span><span class="n">iquote</span> <span class="o">=</span> <span class="mi">1</span>
+<a name="ln-132"></a>         <span class="n">iqc</span> <span class="o">=</span> <span class="n">iav</span>
+<a name="ln-133"></a>         <span class="k">cycle</span>
+<a name="ln-134"></a><span class="k">      end if</span>
+<a name="ln-135"></a><span class="k">      if</span> <span class="p">(</span><span class="n">iquote</span> <span class="o">==</span> <span class="mi">1</span> <span class="p">.</span><span class="nb">and</span><span class="p">.</span> <span class="n">iav</span><span class="o">==</span><span class="n">iqc</span><span class="p">)</span> <span class="k">then</span>
+<a name="ln-136"></a><span class="k">         </span><span class="n">iquote</span><span class="o">=</span><span class="mi">0</span>
+<a name="ln-137"></a>         <span class="k">cycle</span>
+<a name="ln-138"></a><span class="k">      end if</span>
+<a name="ln-139"></a><span class="k">      if</span> <span class="p">(</span><span class="n">iquote</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span> <span class="k">cycle</span>
+<a name="ln-140"></a><span class="k">      if</span> <span class="p">(</span><span class="n">iav</span> <span class="o">&gt;=</span> <span class="nb">iachar</span><span class="p">(</span><span class="s1">&#39;A&#39;</span><span class="p">)</span> <span class="p">.</span><span class="nb">and</span><span class="p">.</span> <span class="n">iav</span> <span class="o">&lt;=</span> <span class="nb">iachar</span><span class="p">(</span><span class="s1">&#39;Z&#39;</span><span class="p">))</span> <span class="k">then</span>
 <a name="ln-141"></a><span class="k">         </span><span class="n">lcstr</span><span class="p">(</span><span class="n">i</span><span class="p">:</span><span class="n">i</span><span class="p">)</span> <span class="o">=</span> <span class="nb">achar</span><span class="p">(</span><span class="n">iav</span> <span class="o">-</span> <span class="n">offset</span><span class="p">)</span>
 <a name="ln-142"></a>      <span class="k">else</span>
 <a name="ln-143"></a><span class="k">         </span><span class="n">lcstr</span><span class="p">(</span><span class="n">i</span><span class="p">:</span><span class="n">i</span><span class="p">)</span> <span class="o">=</span> <span class="n">str</span><span class="p">(</span><span class="n">i</span><span class="p">:</span><span class="n">i</span><span class="p">)</span>
@@ -437,7 +437,7 @@
           <p class="text-right">
             Documentation generated by 
             <a href="https://github.com/cmacmackin/ford">FORD</a>
-             on 2020-11-16 11:19  
+             on 2020-11-17 09:45  
           </p>
         </div>
         <div class="col-xs-12 col-md-4 col-md-pull-4"><p class="text-center"> MCTC-library was developed by Grimme group, Bonn</p></div>

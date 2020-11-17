@@ -333,37 +333,37 @@ public elemental function get_filetype(file) result(ftype)
 
    <span class="n">ftype</span> <span class="o">=</span> <span class="n">filetype</span><span class="p">%</span><span class="n">unknown</span>
    <span class="n">iext</span> <span class="o">=</span> <span class="nb">index</span><span class="p">(</span><span class="k">file</span><span class="p">,</span> <span class="s1">&#39;.&#39;</span><span class="p">,</span> <span class="n">back</span><span class="o">=</span><span class="p">.</span><span class="n">true</span><span class="p">.)</span>
-   <span class="n">isep</span> <span class="o">=</span> <span class="nb">scan</span><span class="p">(</span><span class="k">file</span><span class="p">,</span> <span class="s1">&#39;/\&#39;, back=.true.)</span>
+   <span class="n">isep</span> <span class="o">=</span> <span class="nb">scan</span><span class="p">(</span><span class="k">file</span><span class="p">,</span> <span class="s1">&#39;\/&#39;</span><span class="p">,</span> <span class="n">back</span><span class="o">=</span><span class="p">.</span><span class="n">true</span><span class="p">.)</span>
 
-<span class="s1">   if (iext &gt; isep .and. iext &gt; 0) then</span>
-<span class="s1">      select case(to_lower(file(iext+1:)))</span>
-<span class="s1">      case(&#39;</span><span class="n">coord</span><span class="s1">&#39;, &#39;</span><span class="n">tmol</span><span class="s1">&#39;)</span>
-<span class="s1">         ftype = filetype%tmol</span>
-<span class="s1">      case(&#39;</span><span class="n">xyz</span><span class="s1">&#39;, &#39;</span><span class="nb">log</span><span class="s1">&#39;)</span>
-<span class="s1">         ftype = filetype%xyz</span>
-<span class="s1">      case(&#39;</span><span class="n">mol</span><span class="s1">&#39;)</span>
-<span class="s1">         ftype = filetype%molfile</span>
-<span class="s1">      case(&#39;</span><span class="n">sdf</span><span class="s1">&#39;)</span>
-<span class="s1">         ftype = filetype%sdf</span>
-<span class="s1">      case(&#39;</span><span class="n">poscar</span><span class="s1">&#39;, &#39;</span><span class="n">contcar</span><span class="s1">&#39;, &#39;</span><span class="n">vasp</span><span class="s1">&#39;)</span>
-<span class="s1">         ftype = filetype%vasp</span>
-<span class="s1">      case(&#39;</span><span class="n">pdb</span><span class="s1">&#39;)</span>
-<span class="s1">         ftype = filetype%pdb</span>
-<span class="s1">      case(&#39;</span><span class="n">gen</span><span class="s1">&#39;)</span>
-<span class="s1">         ftype = filetype%gen</span>
-<span class="s1">      case(&#39;</span><span class="n">ein</span><span class="s1">&#39;)</span>
-<span class="s1">         ftype = filetype%gaussian</span>
-<span class="s1">      end select</span>
-<span class="s1">      if (ftype /= filetype%unknown) return</span>
-<span class="s1">   else</span>
-<span class="s1">      iext = len(file) + 1</span>
-<span class="s1">   end if</span>
+   <span class="k">if</span> <span class="p">(</span><span class="n">iext</span> <span class="o">&gt;</span> <span class="n">isep</span> <span class="p">.</span><span class="nb">and</span><span class="p">.</span> <span class="n">iext</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span> <span class="k">then</span>
+<span class="k">      select case</span><span class="p">(</span><span class="n">to_lower</span><span class="p">(</span><span class="k">file</span><span class="p">(</span><span class="n">iext</span><span class="o">+</span><span class="mi">1</span><span class="p">:)))</span>
+      <span class="k">case</span><span class="p">(</span><span class="s1">&#39;coord&#39;</span><span class="p">,</span> <span class="s1">&#39;tmol&#39;</span><span class="p">)</span>
+         <span class="n">ftype</span> <span class="o">=</span> <span class="n">filetype</span><span class="p">%</span><span class="n">tmol</span>
+      <span class="k">case</span><span class="p">(</span><span class="s1">&#39;xyz&#39;</span><span class="p">,</span> <span class="s1">&#39;log&#39;</span><span class="p">)</span>
+         <span class="n">ftype</span> <span class="o">=</span> <span class="n">filetype</span><span class="p">%</span><span class="n">xyz</span>
+      <span class="k">case</span><span class="p">(</span><span class="s1">&#39;mol&#39;</span><span class="p">)</span>
+         <span class="n">ftype</span> <span class="o">=</span> <span class="n">filetype</span><span class="p">%</span><span class="n">molfile</span>
+      <span class="k">case</span><span class="p">(</span><span class="s1">&#39;sdf&#39;</span><span class="p">)</span>
+         <span class="n">ftype</span> <span class="o">=</span> <span class="n">filetype</span><span class="p">%</span><span class="n">sdf</span>
+      <span class="k">case</span><span class="p">(</span><span class="s1">&#39;poscar&#39;</span><span class="p">,</span> <span class="s1">&#39;contcar&#39;</span><span class="p">,</span> <span class="s1">&#39;vasp&#39;</span><span class="p">)</span>
+         <span class="n">ftype</span> <span class="o">=</span> <span class="n">filetype</span><span class="p">%</span><span class="n">vasp</span>
+      <span class="k">case</span><span class="p">(</span><span class="s1">&#39;pdb&#39;</span><span class="p">)</span>
+         <span class="n">ftype</span> <span class="o">=</span> <span class="n">filetype</span><span class="p">%</span><span class="n">pdb</span>
+      <span class="k">case</span><span class="p">(</span><span class="s1">&#39;gen&#39;</span><span class="p">)</span>
+         <span class="n">ftype</span> <span class="o">=</span> <span class="n">filetype</span><span class="p">%</span><span class="n">gen</span>
+      <span class="k">case</span><span class="p">(</span><span class="s1">&#39;ein&#39;</span><span class="p">)</span>
+         <span class="n">ftype</span> <span class="o">=</span> <span class="n">filetype</span><span class="p">%</span><span class="n">gaussian</span>
+      <span class="k">end select</span>
+<span class="k">      if</span> <span class="p">(</span><span class="n">ftype</span> <span class="o">/=</span> <span class="n">filetype</span><span class="p">%</span><span class="n">unknown</span><span class="p">)</span> <span class="k">return</span>
+<span class="k">   else</span>
+<span class="k">      </span><span class="n">iext</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="k">file</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span>
+   <span class="k">end if</span>
 
-<span class="s1">   if (iext &gt; isep) then</span>
-<span class="s1">      select case(to_lower(file(isep+1:iext-1)))</span>
-<span class="s1">      case(&#39;</span><span class="n">coord</span><span class="s1">&#39;)</span>
-<span class="s1">         ftype = filetype%tmol</span>
-<span class="s1">      case(&#39;</span><span class="n">poscar</span><span class="s1">&#39;, &#39;</span><span class="n">contcar</span><span class="err">&#39;</span><span class="p">)</span>
+<span class="k">   if</span> <span class="p">(</span><span class="n">iext</span> <span class="o">&gt;</span> <span class="n">isep</span><span class="p">)</span> <span class="k">then</span>
+<span class="k">      select case</span><span class="p">(</span><span class="n">to_lower</span><span class="p">(</span><span class="k">file</span><span class="p">(</span><span class="n">isep</span><span class="o">+</span><span class="mi">1</span><span class="p">:</span><span class="n">iext</span><span class="o">-</span><span class="mi">1</span><span class="p">)))</span>
+      <span class="k">case</span><span class="p">(</span><span class="s1">&#39;coord&#39;</span><span class="p">)</span>
+         <span class="n">ftype</span> <span class="o">=</span> <span class="n">filetype</span><span class="p">%</span><span class="n">tmol</span>
+      <span class="k">case</span><span class="p">(</span><span class="s1">&#39;poscar&#39;</span><span class="p">,</span> <span class="s1">&#39;contcar&#39;</span><span class="p">)</span>
          <span class="n">ftype</span> <span class="o">=</span> <span class="n">filetype</span><span class="p">%</span><span class="n">vasp</span>
       <span class="k">end select</span>
 <span class="k">   end if</span>
@@ -390,7 +390,7 @@ public elemental function get_filetype(file) result(ftype)
           <p class="text-right">
             Documentation generated by 
             <a href="https://github.com/cmacmackin/ford">FORD</a>
-             on 2020-11-16 11:19  
+             on 2020-11-17 09:45  
           </p>
         </div>
         <div class="col-xs-12 col-md-4 col-md-pull-4"><p class="text-center"> MCTC-library was developed by Grimme group, Bonn</p></div>

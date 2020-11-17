@@ -134,7 +134,7 @@
      <li><i class="fa fa-list-ol"></i>
        <a data-toggle="tooltip"
     data-placement="bottom" data-html="true"
-    title="12.5% of total for modules and submodules.">317 statements</a>
+    title="12.6% of total for modules and submodules.">318 statements</a>
      </li> 
      
      
@@ -190,6 +190,20 @@
   </div>
 </div>
 
+
+
+<div class="panel panel-primary">
+  <div class="panel-heading text-left"><h3 class="panel-title"><a data-toggle="collapse" href="#absints-0">Abstract Interfaces</a></h3></div>
+  <div id="absints-0" class="panel-collapse collapse">
+    <div class="list-group">
+      
+      <a class="list-group-item" href="../module/mctc_env_testing.html#interface-collect_interface">collect_interface</a>
+      
+      <a class="list-group-item" href="../module/mctc_env_testing.html#interface-test_interface">test_interface</a>
+      
+    </div>
+  </div>
+</div>
 
 
 
@@ -256,7 +270,83 @@
     </div>
     
     <div class="col-md-9" id='text'>
-    
+    <p>Provides a light-weight testing framework for usage in projects depending on
+ the tool chain library.</p>
+<p>Testsuites are defined by a <a href="../interface/collect_interface.html">collect_interface</a> returning a set of
+ <a href="../type/unittest_type.html">unittest_type</a> objects. To create a new test use the <a href="../proc/new_unittest.html">new_unittest</a>
+ constructor, which requires a test identifier and a procedure with a
+ <a href="../interface/test_interface.html">test_interface</a> compatible signature. The error status is communicated
+ by the allocation status of an <a href="../type/error_type.html">error_type</a>.</p>
+<p>The necessary boilerplate code to setup the test entry point is just</p>
+<div class="codehilite"><pre><span></span><code><span class="k">program </span><span class="n">tester</span>
+   <span class="k">use</span><span class="p">,</span> <span class="k">intrinsic</span> <span class="kd">::</span> <span class="n">iso_fortran_env</span><span class="p">,</span> <span class="n">only</span> <span class="p">:</span> <span class="n">error_unit</span>
+   <span class="k">use </span><span class="n">mctc_env_testing</span><span class="p">,</span> <span class="n">only</span> <span class="p">:</span> <span class="n">run_testsuite</span><span class="p">,</span> <span class="n">new_testsuite</span><span class="p">,</span> <span class="n">testsuite_type</span>
+   <span class="k">use </span><span class="n">test_suite1</span><span class="p">,</span> <span class="n">only</span> <span class="p">:</span> <span class="n">collect_suite1</span>
+   <span class="k">use </span><span class="n">test_suite2</span><span class="p">,</span> <span class="n">only</span> <span class="p">:</span> <span class="n">collect_suite2</span>
+   <span class="k">implicit none</span>
+<span class="k">   </span><span class="kt">integer</span> <span class="kd">::</span> <span class="nb">stat</span><span class="p">,</span> <span class="n">ii</span>
+   <span class="k">type</span><span class="p">(</span><span class="n">testsuite_type</span><span class="p">),</span> <span class="k">allocatable</span> <span class="kd">::</span> <span class="n">testsuites</span><span class="p">(:)</span>
+   <span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=*</span><span class="p">),</span> <span class="k">parameter</span> <span class="kd">::</span> <span class="n">fmt</span> <span class="o">=</span> <span class="s1">&#39;(&quot;#&quot;, *(1x, a))&#39;</span>
+
+   <span class="nb">stat</span> <span class="o">=</span> <span class="mi">0</span>
+
+   <span class="n">testsuites</span> <span class="o">=</span> <span class="p">[</span> <span class="p">&amp;</span>
+      <span class="p">&amp;</span> <span class="n">new_testsuite</span><span class="p">(</span><span class="s2">&quot;suite1&quot;</span><span class="p">,</span> <span class="n">collect_suite1</span><span class="p">),</span> <span class="p">&amp;</span>
+      <span class="p">&amp;</span> <span class="n">new_testsuite</span><span class="p">(</span><span class="s2">&quot;suite2&quot;</span><span class="p">,</span> <span class="n">collect_suite2</span><span class="p">)</span> <span class="p">&amp;</span>
+      <span class="p">&amp;</span> <span class="p">]</span>
+
+   <span class="k">do </span><span class="n">ii</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">size</span><span class="p">(</span><span class="n">testsuites</span><span class="p">)</span>
+      <span class="k">write</span><span class="p">(</span><span class="n">error_unit</span><span class="p">,</span> <span class="n">fmt</span><span class="p">)</span> <span class="s2">&quot;Testing:&quot;</span><span class="p">,</span> <span class="n">testsuites</span><span class="p">(</span><span class="n">ii</span><span class="p">)%</span><span class="n">name</span>
+      <span class="k">call </span><span class="n">run_testsuite</span><span class="p">(</span><span class="n">testsuites</span><span class="p">(</span><span class="n">ii</span><span class="p">)%</span><span class="n">collect</span><span class="p">,</span> <span class="n">error_unit</span><span class="p">,</span> <span class="nb">stat</span><span class="p">)</span>
+   <span class="k">end do</span>
+
+<span class="k">   if</span> <span class="p">(</span><span class="nb">stat</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span> <span class="k">then</span>
+<span class="k">      write</span><span class="p">(</span><span class="n">error_unit</span><span class="p">,</span> <span class="s1">&#39;(i0, 1x, a)&#39;</span><span class="p">)</span> <span class="nb">stat</span><span class="p">,</span> <span class="s2">&quot;test(s) failed!&quot;</span>
+      <span class="n">error</span> <span class="k">stop</span>
+<span class="k">   end if</span>
+
+<span class="k">end program </span><span class="n">tester</span>
+</code></pre></div>
+
+<p>Every test is defined in a separate module using a <code>collect</code> function, which
+ is exported and added to the <code>testsuites</code> array in the test runner.
+ All test have a simple interface with just an allocatable <a href="../type/error_type.html">error_type</a> as
+ output to provide the test results.</p>
+<div class="codehilite"><pre><span></span><code><span class="k">module </span><span class="n">test_suite1</span>
+   <span class="k">use </span><span class="n">mctc_env_testing</span><span class="p">,</span> <span class="n">only</span> <span class="p">:</span> <span class="n">new_unittest</span><span class="p">,</span> <span class="n">unittest_type</span><span class="p">,</span> <span class="n">error_type</span><span class="p">,</span> <span class="n">check</span>
+   <span class="k">implicit none</span>
+<span class="k">   private</span>
+
+<span class="k">   public</span> <span class="kd">::</span> <span class="n">collect_suite1</span>
+
+<span class="k">contains</span>
+
+<span class="c">!&gt; Collect all exported unit tests</span>
+<span class="k">subroutine </span><span class="n">collect_suite1</span><span class="p">(</span><span class="n">testsuite</span><span class="p">)</span>
+   <span class="c">!&gt; Collection of tests</span>
+   <span class="k">type</span><span class="p">(</span><span class="n">unittest_type</span><span class="p">),</span> <span class="k">allocatable</span><span class="p">,</span> <span class="k">intent</span><span class="p">(</span><span class="n">out</span><span class="p">)</span> <span class="kd">::</span> <span class="n">testsuite</span><span class="p">(:)</span>
+
+   <span class="n">testsuite</span> <span class="o">=</span> <span class="p">[</span> <span class="p">&amp;</span>
+      <span class="p">&amp;</span> <span class="n">new_unittest</span><span class="p">(</span><span class="s2">&quot;valid&quot;</span><span class="p">,</span> <span class="n">test_valid</span><span class="p">),</span> <span class="p">&amp;</span>
+      <span class="p">&amp;</span> <span class="n">new_unittest</span><span class="p">(</span><span class="s2">&quot;invalid&quot;</span><span class="p">,</span> <span class="n">test_invalid</span><span class="p">,</span> <span class="n">should_fail</span><span class="o">=</span><span class="p">.</span><span class="n">true</span><span class="p">.)</span> <span class="p">&amp;</span>
+      <span class="p">&amp;</span> <span class="p">]</span>
+
+<span class="k">end subroutine </span><span class="n">collect_suite1</span>
+
+<span class="k">subroutine </span><span class="n">test_valid</span><span class="p">(</span><span class="n">error</span><span class="p">)</span>
+   <span class="k">type</span><span class="p">(</span><span class="n">error_type</span><span class="p">),</span> <span class="k">allocatable</span><span class="p">,</span> <span class="k">intent</span><span class="p">(</span><span class="n">out</span><span class="p">)</span> <span class="kd">::</span> <span class="n">error</span>
+   <span class="c">! ...</span>
+<span class="k">end subroutine </span><span class="n">test_valid</span>
+
+<span class="k">subroutine </span><span class="n">test_invalid</span><span class="p">(</span><span class="n">error</span><span class="p">)</span>
+   <span class="k">type</span><span class="p">(</span><span class="n">error_type</span><span class="p">),</span> <span class="k">allocatable</span><span class="p">,</span> <span class="k">intent</span><span class="p">(</span><span class="n">out</span><span class="p">)</span> <span class="kd">::</span> <span class="n">error</span>
+   <span class="c">! ...</span>
+<span class="k">end subroutine </span><span class="n">test_invalid</span>
+
+<span class="k">end module </span><span class="n">test_suite1</span>
+</code></pre></div>
+
+<p>For an example setup checkout the <code>test/</code> directory in this project.</p>
       <br>
     
   
@@ -312,6 +402,20 @@
   </div>
 </div>
 
+
+
+<div class="panel panel-primary">
+  <div class="panel-heading text-left"><h3 class="panel-title"><a data-toggle="collapse" href="#absints-1">Abstract Interfaces</a></h3></div>
+  <div id="absints-1" class="panel-collapse collapse">
+    <div class="list-group">
+      
+      <a class="list-group-item" href="../module/mctc_env_testing.html#interface-collect_interface">collect_interface</a>
+      
+      <a class="list-group-item" href="../module/mctc_env_testing.html#interface-test_interface">test_interface</a>
+      
+    </div>
+  </div>
+</div>
 
 
 
@@ -1423,6 +1527,136 @@ private subroutine check_string(error, actual, expected, message, more)
     
 
     
+    <section>
+     <h2>Abstract Interfaces</h2>
+   
+     
+<div class="panel panel-default">
+  <div class="panel-heading codesum"><span class="anchor" id="interface-collect_interface"></span><h3>abstract interface
+    
+  </h3></div>
+  
+  <ul class="list-group">
+    <li class="list-group-item">
+    
+    
+    <h3>
+public subroutine collect_interface(testsuite)
+    
+    
+   
+</h3>
+    
+
+
+
+<p>Collect all tests</p>
+    
+    <h4>Arguments</h4>
+    
+      
+      
+<table class="table table-striped varlist">
+<thead><tr><th>Type</th>
+<th>Intent</th><th>Optional</th>
+<th>Attributes</th><th></th><th>Name</th><th></th></thead>
+
+
+
+<tbody>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>type(<a href='../type/unittest_type.html'>unittest_type</a>),</td>
+  <td>intent(out),</td>
+  <td></td>
+  
+  <td>allocatable</td><td>::</td>
+  <td><strong>testsuite</strong>(:)</td><td><p>Collection of tests</p></td>
+  
+</tr>
+
+</tbody>
+</table>
+
+      
+    
+    
+
+    </li>
+  </ul>
+</div>
+
+    
+     
+<div class="panel panel-default">
+  <div class="panel-heading codesum"><span class="anchor" id="interface-test_interface"></span><h3>abstract interface
+    
+  </h3></div>
+  
+  <ul class="list-group">
+    <li class="list-group-item">
+    
+    
+    <h3>
+public subroutine test_interface(error)
+    
+    
+   
+</h3>
+    
+
+
+
+<p>Entry point for tests</p>
+    
+    <h4>Arguments</h4>
+    
+      
+      
+<table class="table table-striped varlist">
+<thead><tr><th>Type</th>
+<th>Intent</th><th>Optional</th>
+<th>Attributes</th><th></th><th>Name</th><th></th></thead>
+
+
+
+<tbody>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>type(<a href='../type/error_type.html'>error_type</a>),</td>
+  <td>intent(out),</td>
+  <td></td>
+  
+  <td>allocatable</td><td>::</td>
+  <td><strong>error</strong></td><td><p>Error handling</p></td>
+  
+</tr>
+
+</tbody>
+</table>
+
+      
+    
+    
+
+    </li>
+  </ul>
+</div>
+
+    
+    </section>
+  <br>
+    
     
     
     <section>
@@ -1456,7 +1690,7 @@ private subroutine check_string(error, actual, expected, message, more)
   
 <tr>
   
-  <td><span class="anchor" id="variable-collect"></span>procedure(collect_interface),</td>
+  <td><span class="anchor" id="variable-collect"></span>procedure(<a href='../interface/collect_interface.html'>collect_interface</a>),</td>
   
   <td>public,</td>
   <td>pointer, nopass</td><td>::</td>
@@ -1545,7 +1779,7 @@ private subroutine check_string(error, actual, expected, message, more)
   
 <tr>
   
-  <td><span class="anchor" id="variable-test"></span>procedure(test_interface),</td>
+  <td><span class="anchor" id="variable-test"></span>procedure(<a href='../interface/test_interface.html'>test_interface</a>),</td>
   
   <td>public,</td>
   <td>pointer, nopass</td><td>::</td>
@@ -1626,7 +1860,7 @@ public function <a href='../proc/new_testsuite.html'>new_testsuite</a>(name, col
   
 <tr>
   
-  <td><span class="anchor" ></span>procedure(collect_interface)</td>
+  <td><span class="anchor" ></span>procedure(<a href='../interface/collect_interface.html'>collect_interface</a>)</td>
   <td></td>
   <td></td>
   
@@ -1709,7 +1943,7 @@ public function <a href='../proc/new_unittest.html'>new_unittest</a>(name, test,
   
 <tr>
   
-  <td><span class="anchor" ></span>procedure(test_interface)</td>
+  <td><span class="anchor" ></span>procedure(<a href='../interface/test_interface.html'>test_interface</a>)</td>
   <td></td>
   <td></td>
   
@@ -1966,7 +2200,7 @@ public subroutine <a href='../proc/run_selected.html'>run_selected</a>(collect, 
   
 <tr>
   
-  <td><span class="anchor" ></span>procedure(collect_interface)</td>
+  <td><span class="anchor" ></span>procedure(<a href='../interface/collect_interface.html'>collect_interface</a>)</td>
   <td></td>
   <td></td>
   
@@ -2070,7 +2304,7 @@ public subroutine <a href='../proc/run_testsuite.html'>run_testsuite</a>(collect
   
 <tr>
   
-  <td><span class="anchor" ></span>procedure(collect_interface)</td>
+  <td><span class="anchor" ></span>procedure(<a href='../interface/collect_interface.html'>collect_interface</a>)</td>
   <td></td>
   <td></td>
   
@@ -2221,7 +2455,7 @@ public subroutine <a href='../proc/test_failed.html'>test_failed</a>(error, mess
           <p class="text-right">
             Documentation generated by 
             <a href="https://github.com/cmacmackin/ford">FORD</a>
-             on 2020-11-16 11:19  
+             on 2020-11-17 09:45  
           </p>
         </div>
         <div class="col-xs-12 col-md-4 col-md-pull-4"><p class="text-center"> MCTC-library was developed by Grimme group, Bonn</p></div>
