@@ -134,7 +134,7 @@
      <li><i class="fa fa-list-ol"></i>
        <a data-toggle="tooltip"
     data-placement="bottom" data-html="true"
-    title=" 1.9% of total for source files.">51 statements</a>
+    title=" 0.6% of total for source files.">17 statements</a>
      </li> 
      
      
@@ -178,7 +178,7 @@
   <div id="mods-0" class="panel-collapse collapse">
     <div class="list-group">
       
-      <a class="list-group-item" href="../module/mctc_io_read_gaussian.html">mctc_io_read_gaussian</a>
+      <a class="list-group-item" href="../module/mctc_io_write_gaussian.html">mctc_io_write_gaussian</a>
       
     </div>
   </div>
@@ -234,7 +234,7 @@
   <div id="mods-1" class="panel-collapse collapse">
     <div class="list-group">
       
-      <a class="list-group-item" href="../module/mctc_io_read_gaussian.html">mctc_io_read_gaussian</a>
+      <a class="list-group-item" href="../module/mctc_io_write_gaussian.html">mctc_io_write_gaussian</a>
       
     </div>
   </div>
@@ -283,78 +283,32 @@
 <a name="ln-12"></a><span class="c">! See the License for the specific language governing permissions and</span>
 <a name="ln-13"></a><span class="c">! limitations under the License.</span>
 <a name="ln-14"></a>
-<a name="ln-15"></a><span class="k">module </span><span class="n">mctc_io_read_gaussian</span>
+<a name="ln-15"></a><span class="k">module </span><span class="n">mctc_io_write_gaussian</span>
 <a name="ln-16"></a>   <span class="k">use </span><span class="n">mctc_env_accuracy</span><span class="p">,</span> <span class="n">only</span> <span class="p">:</span> <span class="n">wp</span>
-<a name="ln-17"></a>   <span class="k">use </span><span class="n">mctc_env_error</span><span class="p">,</span> <span class="n">only</span> <span class="p">:</span> <span class="n">error_type</span><span class="p">,</span> <span class="n">fatal_error</span>
-<a name="ln-18"></a>   <span class="k">use </span><span class="n">mctc_io_structure</span><span class="p">,</span> <span class="n">only</span> <span class="p">:</span> <span class="n">structure_type</span><span class="p">,</span> <span class="n">new</span>
-<a name="ln-19"></a>   <span class="k">implicit none</span>
-<a name="ln-20"></a><span class="k">   private</span>
-<a name="ln-21"></a>
-<a name="ln-22"></a><span class="k">   public</span> <span class="kd">::</span> <span class="n">read_gaussian_external</span>
+<a name="ln-17"></a>   <span class="k">use </span><span class="n">mctc_io_structure</span><span class="p">,</span> <span class="n">only</span> <span class="p">:</span> <span class="n">structure_type</span>
+<a name="ln-18"></a>   <span class="k">implicit none</span>
+<a name="ln-19"></a><span class="k">   private</span>
+<a name="ln-20"></a>
+<a name="ln-21"></a><span class="k">   public</span> <span class="kd">::</span> <span class="n">write_gaussian_external</span>
+<a name="ln-22"></a>
 <a name="ln-23"></a>
-<a name="ln-24"></a>
-<a name="ln-25"></a><span class="k">contains</span>
+<a name="ln-24"></a><span class="k">contains</span>
+<a name="ln-25"></a>
 <a name="ln-26"></a>
-<a name="ln-27"></a>
-<a name="ln-28"></a><span class="k">subroutine </span><span class="n">read_gaussian_external</span><span class="p">(</span><span class="n">self</span><span class="p">,</span> <span class="n">unit</span><span class="p">,</span> <span class="n">error</span><span class="p">)</span>
-<a name="ln-29"></a>
-<a name="ln-30"></a>   <span class="c">!&gt; Instance of the molecular structure data</span>
-<a name="ln-31"></a>   <span class="k">type</span><span class="p">(</span><span class="n">structure_type</span><span class="p">),</span> <span class="k">intent</span><span class="p">(</span><span class="n">out</span><span class="p">)</span> <span class="kd">::</span> <span class="n">self</span>
-<a name="ln-32"></a>
-<a name="ln-33"></a>   <span class="c">!&gt; File handle</span>
-<a name="ln-34"></a>   <span class="kt">integer</span><span class="p">,</span> <span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span> <span class="kd">::</span> <span class="n">unit</span>
-<a name="ln-35"></a>
-<a name="ln-36"></a>   <span class="c">!&gt; Error handling</span>
-<a name="ln-37"></a>   <span class="k">type</span><span class="p">(</span><span class="n">error_type</span><span class="p">),</span> <span class="k">allocatable</span><span class="p">,</span> <span class="k">intent</span><span class="p">(</span><span class="n">out</span><span class="p">)</span> <span class="kd">::</span> <span class="n">error</span>
+<a name="ln-27"></a><span class="k">subroutine </span><span class="n">write_gaussian_external</span><span class="p">(</span><span class="n">mol</span><span class="p">,</span> <span class="n">unit</span><span class="p">)</span>
+<a name="ln-28"></a>   <span class="k">type</span><span class="p">(</span><span class="n">structure_type</span><span class="p">),</span> <span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span> <span class="kd">::</span> <span class="n">mol</span>
+<a name="ln-29"></a>   <span class="kt">integer</span><span class="p">,</span> <span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span> <span class="kd">::</span> <span class="n">unit</span>
+<a name="ln-30"></a>   <span class="kt">integer</span> <span class="kd">::</span> <span class="n">iat</span>
+<a name="ln-31"></a>
+<a name="ln-32"></a>   <span class="k">write</span><span class="p">(</span><span class="n">unit</span><span class="p">,</span> <span class="s1">&#39;(4i10)&#39;</span><span class="p">)</span> <span class="n">mol</span><span class="p">%</span><span class="n">nat</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="nb">nint</span><span class="p">(</span><span class="n">mol</span><span class="p">%</span><span class="n">charge</span><span class="p">),</span> <span class="n">mol</span><span class="p">%</span><span class="n">uhf</span>
+<a name="ln-33"></a>   <span class="k">do </span><span class="n">iat</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">mol</span><span class="p">%</span><span class="n">nat</span>
+<a name="ln-34"></a>      <span class="k">write</span><span class="p">(</span><span class="n">unit</span><span class="p">,</span> <span class="s1">&#39;(i10,4f20.12)&#39;</span><span class="p">)</span> <span class="n">mol</span><span class="p">%</span><span class="n">num</span><span class="p">(</span><span class="n">mol</span><span class="p">%</span><span class="n">id</span><span class="p">(</span><span class="n">iat</span><span class="p">)),</span> <span class="n">mol</span><span class="p">%</span><span class="n">xyz</span><span class="p">(:,</span> <span class="n">iat</span><span class="p">),</span> <span class="mf">0.0_wp</span>
+<a name="ln-35"></a>   <span class="k">end do</span>
+<a name="ln-36"></a>
+<a name="ln-37"></a><span class="k">end subroutine </span><span class="n">write_gaussian_external</span>
 <a name="ln-38"></a>
-<a name="ln-39"></a>   <span class="kt">integer</span> <span class="kd">::</span> <span class="nb">stat</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">mode</span><span class="p">,</span> <span class="n">chrg</span><span class="p">,</span> <span class="n">spin</span><span class="p">,</span> <span class="n">iat</span><span class="p">,</span> <span class="n">ii</span>
-<a name="ln-40"></a>   <span class="kt">integer</span><span class="p">,</span> <span class="k">allocatable</span> <span class="kd">::</span> <span class="n">at</span><span class="p">(:)</span>
-<a name="ln-41"></a>   <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span> <span class="k">allocatable</span> <span class="kd">::</span> <span class="n">xyz</span><span class="p">(:,:)</span>
-<a name="ln-42"></a>   <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">)</span> <span class="kd">::</span> <span class="n">coord</span><span class="p">(</span><span class="mi">3</span><span class="p">),</span> <span class="n">q</span>
-<a name="ln-43"></a>
-<a name="ln-44"></a>   <span class="k">read</span><span class="p">(</span><span class="n">unit</span><span class="p">,</span> <span class="s1">&#39;(4i10)&#39;</span><span class="p">,</span> <span class="n">iostat</span><span class="o">=</span><span class="nb">stat</span><span class="p">)</span> <span class="n">n</span><span class="p">,</span> <span class="n">mode</span><span class="p">,</span> <span class="n">chrg</span><span class="p">,</span> <span class="n">spin</span>
-<a name="ln-45"></a>   <span class="k">if</span> <span class="p">(</span><span class="nb">stat</span><span class="p">.</span><span class="n">ne</span><span class="p">.</span><span class="mi">0</span><span class="p">)</span> <span class="k">then</span>
-<a name="ln-46"></a><span class="k">      call </span><span class="n">fatal_error</span><span class="p">(</span><span class="n">error</span><span class="p">,</span> <span class="s2">&quot;Could not read number of atoms, check format!&quot;</span><span class="p">)</span>
-<a name="ln-47"></a>      <span class="k">return</span>
-<a name="ln-48"></a><span class="k">   end if</span>
-<a name="ln-49"></a>
-<a name="ln-50"></a><span class="k">   if</span> <span class="p">(</span><span class="n">n</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">)</span> <span class="k">then</span>
-<a name="ln-51"></a><span class="k">      call </span><span class="n">fatal_error</span><span class="p">(</span><span class="n">error</span><span class="p">,</span> <span class="s2">&quot;Found no atoms, cannot work without atoms!&quot;</span><span class="p">)</span>
-<a name="ln-52"></a>      <span class="k">return</span>
-<a name="ln-53"></a><span class="k">   end if</span>
-<a name="ln-54"></a>
-<a name="ln-55"></a><span class="k">   allocate</span><span class="p">(</span><span class="n">xyz</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="n">n</span><span class="p">))</span>
-<a name="ln-56"></a>   <span class="k">allocate</span><span class="p">(</span><span class="n">at</span><span class="p">(</span><span class="n">n</span><span class="p">))</span>
-<a name="ln-57"></a>
-<a name="ln-58"></a>   <span class="n">ii</span> <span class="o">=</span> <span class="mi">0</span>
-<a name="ln-59"></a>   <span class="k">do while</span> <span class="p">(</span><span class="n">ii</span> <span class="o">&lt;</span> <span class="n">n</span><span class="p">)</span>
-<a name="ln-60"></a>      <span class="k">read</span><span class="p">(</span><span class="n">unit</span><span class="p">,</span> <span class="s1">&#39;(i10, 4f20.12)&#39;</span><span class="p">,</span> <span class="n">iostat</span><span class="o">=</span><span class="nb">stat</span><span class="p">)</span> <span class="n">iat</span><span class="p">,</span> <span class="n">coord</span><span class="p">,</span> <span class="n">q</span>
-<a name="ln-61"></a>      <span class="k">if</span> <span class="p">(</span><span class="nb">is_iostat_end</span><span class="p">(</span><span class="nb">stat</span><span class="p">))</span> <span class="k">exit</span>
-<a name="ln-62"></a><span class="k">      if</span> <span class="p">(</span><span class="nb">stat</span><span class="p">.</span><span class="n">ne</span><span class="p">.</span><span class="mi">0</span><span class="p">)</span> <span class="k">then</span>
-<a name="ln-63"></a><span class="k">         call </span><span class="n">fatal_error</span><span class="p">(</span><span class="n">error</span><span class="p">,</span> <span class="s2">&quot;Could not read geometry from Gaussian file&quot;</span><span class="p">)</span>
-<a name="ln-64"></a>         <span class="k">return</span>
-<a name="ln-65"></a><span class="k">      end if</span>
-<a name="ln-66"></a><span class="k">      if</span> <span class="p">(</span><span class="n">iat</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span> <span class="k">then</span>
-<a name="ln-67"></a><span class="k">         </span><span class="n">ii</span> <span class="o">=</span> <span class="n">ii</span><span class="o">+</span><span class="mi">1</span>
-<a name="ln-68"></a>         <span class="n">at</span><span class="p">(</span><span class="n">ii</span><span class="p">)</span> <span class="o">=</span> <span class="n">iat</span>
-<a name="ln-69"></a>         <span class="n">xyz</span><span class="p">(:,</span> <span class="n">ii</span><span class="p">)</span> <span class="o">=</span> <span class="n">coord</span>
-<a name="ln-70"></a>      <span class="k">else</span>
-<a name="ln-71"></a><span class="k">         call </span><span class="n">fatal_error</span><span class="p">(</span><span class="n">error</span><span class="p">,</span> <span class="s2">&quot;Invalid atomic number&quot;</span><span class="p">)</span>
-<a name="ln-72"></a>         <span class="k">return</span>
-<a name="ln-73"></a><span class="k">      end if</span>
-<a name="ln-74"></a><span class="k">   end do</span>
-<a name="ln-75"></a>
-<a name="ln-76"></a><span class="k">   call </span><span class="n">new</span><span class="p">(</span><span class="n">self</span><span class="p">,</span> <span class="n">at</span><span class="p">,</span> <span class="n">xyz</span><span class="p">,</span> <span class="n">charge</span><span class="o">=</span><span class="kt">real</span><span class="p">(</span><span class="n">chrg</span><span class="p">,</span> <span class="n">wp</span><span class="p">),</span> <span class="n">uhf</span><span class="o">=</span><span class="n">spin</span><span class="p">)</span>
-<a name="ln-77"></a>
-<a name="ln-78"></a>   <span class="k">if</span> <span class="p">(</span><span class="n">ii</span> <span class="o">/=</span> <span class="n">n</span><span class="p">)</span> <span class="k">then</span>
-<a name="ln-79"></a><span class="k">      call </span><span class="n">fatal_error</span><span class="p">(</span><span class="n">error</span><span class="p">,</span> <span class="s2">&quot;Atom number missmatch in Gaussian file&quot;</span><span class="p">)</span>
-<a name="ln-80"></a>      <span class="k">return</span>
-<a name="ln-81"></a><span class="k">   end if</span>
-<a name="ln-82"></a>
-<a name="ln-83"></a><span class="k">end subroutine </span><span class="n">read_gaussian_external</span>
-<a name="ln-84"></a>
-<a name="ln-85"></a>
-<a name="ln-86"></a><span class="k">end module </span><span class="n">mctc_io_read_gaussian</span>
+<a name="ln-39"></a>
+<a name="ln-40"></a><span class="k">end module </span><span class="n">mctc_io_write_gaussian</span>
 </pre></div>
 
     </section>
@@ -373,7 +327,7 @@
           <p class="text-right">
             Documentation generated by 
             <a href="https://github.com/cmacmackin/ford">FORD</a>
-             on 2020-11-17 09:51  
+             on 2020-11-19 13:25  
           </p>
         </div>
         <div class="col-xs-12 col-md-4 col-md-pull-4"><p class="text-center"> MCTC-library was developed by Grimme group, Bonn</p></div>
