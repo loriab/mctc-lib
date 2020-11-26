@@ -134,7 +134,7 @@
      <li><i class="fa fa-list-ol"></i>
        <a data-toggle="tooltip"
     data-placement="bottom" data-html="true"
-    title=" 2.7% of total for source files.">73 statements</a>
+    title=" 2.6% of total for source files.">72 statements</a>
      </li> 
      
      
@@ -297,8 +297,8 @@
 <a name="ln-26"></a><span class="k">contains</span>
 <a name="ln-27"></a>
 <a name="ln-28"></a>
-<a name="ln-29"></a><span class="k">subroutine </span><span class="n">write_vasp</span><span class="p">(</span><span class="n">mol</span><span class="p">,</span> <span class="n">unit</span><span class="p">,</span> <span class="n">comment_line</span><span class="p">)</span>
-<a name="ln-30"></a>   <span class="k">class</span><span class="p">(</span><span class="n">structure_type</span><span class="p">),</span> <span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span> <span class="kd">::</span> <span class="n">mol</span>
+<a name="ln-29"></a><span class="k">subroutine </span><span class="n">write_vasp</span><span class="p">(</span><span class="n">self</span><span class="p">,</span> <span class="n">unit</span><span class="p">,</span> <span class="n">comment_line</span><span class="p">)</span>
+<a name="ln-30"></a>   <span class="k">class</span><span class="p">(</span><span class="n">structure_type</span><span class="p">),</span> <span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span> <span class="kd">::</span> <span class="n">self</span>
 <a name="ln-31"></a>   <span class="kt">integer</span><span class="p">,</span> <span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span> <span class="kd">::</span> <span class="n">unit</span>
 <a name="ln-32"></a>   <span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=*</span><span class="p">),</span> <span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">),</span> <span class="k">optional</span> <span class="kd">::</span> <span class="n">comment_line</span>
 <a name="ln-33"></a>   <span class="kt">integer</span> <span class="kd">::</span> <span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">,</span> <span class="n">izp</span>
@@ -306,18 +306,18 @@
 <a name="ln-35"></a>   <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span> <span class="k">allocatable</span> <span class="kd">::</span> <span class="n">inv_lat</span><span class="p">(:,</span> <span class="p">:)</span>
 <a name="ln-36"></a>   <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span> <span class="k">allocatable</span> <span class="kd">::</span> <span class="n">abc</span><span class="p">(:,</span> <span class="p">:)</span>
 <a name="ln-37"></a>
-<a name="ln-38"></a>   <span class="k">allocate</span><span class="p">(</span><span class="n">species</span><span class="p">(</span><span class="n">mol</span><span class="p">%</span><span class="n">nat</span><span class="p">))</span>
-<a name="ln-39"></a>   <span class="k">allocate</span><span class="p">(</span><span class="n">kinds</span><span class="p">(</span><span class="n">mol</span><span class="p">%</span><span class="n">nat</span><span class="p">),</span> <span class="n">source</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<a name="ln-38"></a>   <span class="k">allocate</span><span class="p">(</span><span class="n">species</span><span class="p">(</span><span class="n">self</span><span class="p">%</span><span class="n">nat</span><span class="p">))</span>
+<a name="ln-39"></a>   <span class="k">allocate</span><span class="p">(</span><span class="n">kinds</span><span class="p">(</span><span class="n">self</span><span class="p">%</span><span class="n">nat</span><span class="p">),</span> <span class="n">source</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 <a name="ln-40"></a>
 <a name="ln-41"></a>   <span class="n">j</span> <span class="o">=</span> <span class="mi">0</span>
 <a name="ln-42"></a>   <span class="n">izp</span> <span class="o">=</span> <span class="mi">0</span>
-<a name="ln-43"></a>   <span class="k">do </span><span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">mol</span><span class="p">%</span><span class="n">nat</span>
-<a name="ln-44"></a>      <span class="k">if</span> <span class="p">(</span><span class="n">izp</span><span class="p">.</span><span class="n">eq</span><span class="p">.</span><span class="n">mol</span><span class="p">%</span><span class="n">id</span><span class="p">(</span><span class="n">i</span><span class="p">))</span> <span class="k">then</span>
+<a name="ln-43"></a>   <span class="k">do </span><span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">self</span><span class="p">%</span><span class="n">nat</span>
+<a name="ln-44"></a>      <span class="k">if</span> <span class="p">(</span><span class="n">izp</span><span class="p">.</span><span class="n">eq</span><span class="p">.</span><span class="n">self</span><span class="p">%</span><span class="n">id</span><span class="p">(</span><span class="n">i</span><span class="p">))</span> <span class="k">then</span>
 <a name="ln-45"></a><span class="k">         </span><span class="n">kinds</span><span class="p">(</span><span class="n">j</span><span class="p">)</span> <span class="o">=</span> <span class="n">kinds</span><span class="p">(</span><span class="n">j</span><span class="p">)</span><span class="o">+</span><span class="mi">1</span>
 <a name="ln-46"></a>      <span class="k">else</span>
 <a name="ln-47"></a><span class="k">         </span><span class="n">j</span> <span class="o">=</span> <span class="n">j</span><span class="o">+</span><span class="mi">1</span>
-<a name="ln-48"></a>         <span class="n">izp</span> <span class="o">=</span> <span class="n">mol</span><span class="p">%</span><span class="n">id</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
-<a name="ln-49"></a>         <span class="n">species</span><span class="p">(</span><span class="n">j</span><span class="p">)</span> <span class="o">=</span> <span class="n">mol</span><span class="p">%</span><span class="n">id</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+<a name="ln-48"></a>         <span class="n">izp</span> <span class="o">=</span> <span class="n">self</span><span class="p">%</span><span class="n">id</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+<a name="ln-49"></a>         <span class="n">species</span><span class="p">(</span><span class="n">j</span><span class="p">)</span> <span class="o">=</span> <span class="n">self</span><span class="p">%</span><span class="n">id</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
 <a name="ln-50"></a>      <span class="n">endif</span>
 <a name="ln-51"></a>   <span class="n">enddo</span>
 <a name="ln-52"></a>
@@ -325,62 +325,61 @@
 <a name="ln-54"></a>   <span class="k">if</span> <span class="p">(</span><span class="nb">present</span><span class="p">(</span><span class="n">comment_line</span><span class="p">))</span> <span class="k">then</span>
 <a name="ln-55"></a><span class="k">      write</span><span class="p">(</span><span class="n">unit</span><span class="p">,</span> <span class="s1">&#39;(a)&#39;</span><span class="p">)</span> <span class="n">comment_line</span>
 <a name="ln-56"></a>   <span class="k">else</span>
-<a name="ln-57"></a><span class="k">      do </span><span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">j</span>
-<a name="ln-58"></a>         <span class="k">write</span><span class="p">(</span><span class="n">unit</span><span class="p">,</span> <span class="s1">&#39;(1x, a)&#39;</span><span class="p">,</span> <span class="n">advance</span><span class="o">=</span><span class="s1">&#39;no&#39;</span><span class="p">)</span> <span class="n">mol</span><span class="p">%</span><span class="n">sym</span><span class="p">(</span><span class="n">species</span><span class="p">(</span><span class="n">i</span><span class="p">))</span>
-<a name="ln-59"></a>      <span class="n">enddo</span>
-<a name="ln-60"></a>      <span class="k">write</span><span class="p">(</span><span class="n">unit</span><span class="p">,</span> <span class="s1">&#39;(a)&#39;</span><span class="p">)</span>
-<a name="ln-61"></a>   <span class="k">end if</span>
-<a name="ln-62"></a>
-<a name="ln-63"></a>   <span class="c">! scaling factor for lattice parameters is always one</span>
-<a name="ln-64"></a>   <span class="k">write</span><span class="p">(</span><span class="n">unit</span><span class="p">,</span> <span class="s1">&#39;(f20.14)&#39;</span><span class="p">)</span> <span class="n">mol</span><span class="p">%</span><span class="n">info</span><span class="p">%</span><span class="nb">scale</span>
-<a name="ln-65"></a>   <span class="c">! write the lattice parameters</span>
-<a name="ln-66"></a>   <span class="k">if</span> <span class="p">(</span><span class="nb">allocated</span><span class="p">(</span><span class="n">mol</span><span class="p">%</span><span class="n">lattice</span><span class="p">))</span> <span class="k">then</span>
-<a name="ln-67"></a><span class="k">      do </span><span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span>
-<a name="ln-68"></a>         <span class="k">write</span><span class="p">(</span><span class="n">unit</span><span class="p">,</span> <span class="s1">&#39;(3f20.14)&#39;</span><span class="p">)</span> <span class="n">mol</span><span class="p">%</span><span class="n">lattice</span><span class="p">(:,</span> <span class="n">i</span><span class="p">)</span><span class="o">*</span><span class="n">autoaa</span><span class="o">/</span><span class="n">mol</span><span class="p">%</span><span class="n">info</span><span class="p">%</span><span class="nb">scale</span>
-<a name="ln-69"></a><span class="nb">      </span><span class="n">enddo</span>
-<a name="ln-70"></a>   <span class="k">else</span>
-<a name="ln-71"></a><span class="k">      write</span><span class="p">(</span><span class="n">unit</span><span class="p">,</span> <span class="s1">&#39;(3f20.14)&#39;</span><span class="p">)</span> <span class="nb">spread</span><span class="p">(</span><span class="mf">0.0_wp</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">9</span><span class="p">)</span>
-<a name="ln-72"></a>   <span class="k">end if</span>
-<a name="ln-73"></a>
-<a name="ln-74"></a><span class="k">   if</span> <span class="p">(</span><span class="nb">present</span><span class="p">(</span><span class="n">comment_line</span><span class="p">))</span> <span class="k">then</span>
-<a name="ln-75"></a><span class="k">      do </span><span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">j</span>
-<a name="ln-76"></a>         <span class="k">write</span><span class="p">(</span><span class="n">unit</span><span class="p">,</span> <span class="s1">&#39;(1x, a)&#39;</span><span class="p">,</span> <span class="n">advance</span><span class="o">=</span><span class="s1">&#39;no&#39;</span><span class="p">)</span> <span class="n">mol</span><span class="p">%</span><span class="n">sym</span><span class="p">(</span><span class="n">species</span><span class="p">(</span><span class="n">i</span><span class="p">))</span>
-<a name="ln-77"></a>      <span class="n">enddo</span>
-<a name="ln-78"></a>      <span class="k">write</span><span class="p">(</span><span class="n">unit</span><span class="p">,</span> <span class="s1">&#39;(a)&#39;</span><span class="p">)</span>
-<a name="ln-79"></a>   <span class="k">end if</span>
-<a name="ln-80"></a>
-<a name="ln-81"></a>   <span class="c">! write the count of the consequtive atom types</span>
-<a name="ln-82"></a>   <span class="k">do </span><span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">j</span>
-<a name="ln-83"></a>      <span class="k">write</span><span class="p">(</span><span class="n">unit</span><span class="p">,</span> <span class="s1">&#39;(1x, i0)&#39;</span><span class="p">,</span> <span class="n">advance</span><span class="o">=</span><span class="s1">&#39;no&#39;</span><span class="p">)</span> <span class="n">kinds</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
-<a name="ln-84"></a>   <span class="n">enddo</span>
-<a name="ln-85"></a>   <span class="k">write</span><span class="p">(</span><span class="n">unit</span><span class="p">,</span> <span class="s1">&#39;(a)&#39;</span><span class="p">)</span>
-<a name="ln-86"></a>   <span class="k">deallocate</span><span class="p">(</span><span class="n">kinds</span><span class="p">,</span> <span class="n">species</span><span class="p">)</span>
-<a name="ln-87"></a>
-<a name="ln-88"></a>   <span class="k">if</span> <span class="p">(</span><span class="n">mol</span><span class="p">%</span><span class="n">info</span><span class="p">%</span><span class="n">selective</span><span class="p">)</span> <span class="k">write</span><span class="p">(</span><span class="n">unit</span><span class="p">,</span> <span class="s1">&#39;(&quot;Selective&quot;)&#39;</span><span class="p">)</span>
-<a name="ln-89"></a>
-<a name="ln-90"></a>   <span class="c">! we write cartesian coordinates</span>
-<a name="ln-91"></a>   <span class="k">if</span> <span class="p">(.</span><span class="nb">not</span><span class="p">.</span><span class="nb">allocated</span><span class="p">(</span><span class="n">mol</span><span class="p">%</span><span class="n">lattice</span><span class="p">)</span> <span class="p">.</span><span class="nb">or</span><span class="p">.</span> <span class="n">mol</span><span class="p">%</span><span class="n">info</span><span class="p">%</span><span class="n">cartesian</span><span class="p">)</span> <span class="k">then</span>
-<a name="ln-92"></a><span class="k">      write</span><span class="p">(</span><span class="n">unit</span><span class="p">,</span> <span class="s1">&#39;(&quot;Cartesian&quot;)&#39;</span><span class="p">)</span>
-<a name="ln-93"></a>
-<a name="ln-94"></a>      <span class="c">! now write the cartesian coordinates</span>
-<a name="ln-95"></a>      <span class="k">do </span><span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">mol</span><span class="p">%</span><span class="n">nat</span>
-<a name="ln-96"></a>         <span class="k">write</span><span class="p">(</span><span class="n">unit</span><span class="p">,</span> <span class="s1">&#39;(3f20.14)&#39;</span><span class="p">)</span> <span class="n">mol</span><span class="p">%</span><span class="n">xyz</span><span class="p">(:,</span> <span class="n">i</span><span class="p">)</span><span class="o">*</span><span class="n">autoaa</span><span class="o">/</span><span class="n">mol</span><span class="p">%</span><span class="n">info</span><span class="p">%</span><span class="nb">scale</span>
-<a name="ln-97"></a><span class="nb">      </span><span class="n">enddo</span>
-<a name="ln-98"></a>   <span class="k">else</span>
-<a name="ln-99"></a><span class="k">      write</span><span class="p">(</span><span class="n">unit</span><span class="p">,</span> <span class="s1">&#39;(&quot;Direct&quot;)&#39;</span><span class="p">)</span>
-<a name="ln-100"></a>      <span class="n">inv_lat</span> <span class="o">=</span> <span class="n">matinv_3x3</span><span class="p">(</span><span class="n">mol</span><span class="p">%</span><span class="n">lattice</span><span class="p">)</span>
-<a name="ln-101"></a>      <span class="n">abc</span> <span class="o">=</span> <span class="nb">matmul</span><span class="p">(</span><span class="n">inv_lat</span><span class="p">,</span> <span class="n">mol</span><span class="p">%</span><span class="n">xyz</span><span class="p">)</span>
-<a name="ln-102"></a>
-<a name="ln-103"></a>      <span class="c">! now write the fractional coordinates</span>
-<a name="ln-104"></a>      <span class="k">do </span><span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">mol</span><span class="p">%</span><span class="n">nat</span>
-<a name="ln-105"></a>         <span class="k">write</span><span class="p">(</span><span class="n">unit</span><span class="p">,</span> <span class="s1">&#39;(3f20.14)&#39;</span><span class="p">)</span> <span class="n">abc</span><span class="p">(:,</span> <span class="n">i</span><span class="p">)</span>
-<a name="ln-106"></a>      <span class="n">enddo</span>
-<a name="ln-107"></a>   <span class="n">endif</span>
-<a name="ln-108"></a>
-<a name="ln-109"></a><span class="k">end subroutine </span><span class="n">write_vasp</span>
+<a name="ln-57"></a><span class="k">      if</span> <span class="p">(</span><span class="nb">allocated</span><span class="p">(</span><span class="n">self</span><span class="p">%</span><span class="n">comment</span><span class="p">))</span> <span class="k">then</span>
+<a name="ln-58"></a><span class="k">         write</span><span class="p">(</span><span class="n">unit</span><span class="p">,</span> <span class="s1">&#39;(a)&#39;</span><span class="p">)</span> <span class="n">self</span><span class="p">%</span><span class="n">comment</span>
+<a name="ln-59"></a>      <span class="k">else</span>
+<a name="ln-60"></a><span class="k">         write</span><span class="p">(</span><span class="n">unit</span><span class="p">,</span> <span class="s1">&#39;(a)&#39;</span><span class="p">)</span>
+<a name="ln-61"></a>      <span class="k">end if</span>
+<a name="ln-62"></a><span class="k">   end if</span>
+<a name="ln-63"></a>
+<a name="ln-64"></a>   <span class="c">! scaling factor for lattice parameters is always one</span>
+<a name="ln-65"></a>   <span class="k">write</span><span class="p">(</span><span class="n">unit</span><span class="p">,</span> <span class="s1">&#39;(f20.14)&#39;</span><span class="p">)</span> <span class="n">self</span><span class="p">%</span><span class="n">info</span><span class="p">%</span><span class="nb">scale</span>
+<a name="ln-66"></a>   <span class="c">! write the lattice parameters</span>
+<a name="ln-67"></a>   <span class="k">if</span> <span class="p">(</span><span class="nb">allocated</span><span class="p">(</span><span class="n">self</span><span class="p">%</span><span class="n">lattice</span><span class="p">))</span> <span class="k">then</span>
+<a name="ln-68"></a><span class="k">      do </span><span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span>
+<a name="ln-69"></a>         <span class="k">write</span><span class="p">(</span><span class="n">unit</span><span class="p">,</span> <span class="s1">&#39;(3f20.14)&#39;</span><span class="p">)</span> <span class="n">self</span><span class="p">%</span><span class="n">lattice</span><span class="p">(:,</span> <span class="n">i</span><span class="p">)</span><span class="o">*</span><span class="n">autoaa</span><span class="o">/</span><span class="n">self</span><span class="p">%</span><span class="n">info</span><span class="p">%</span><span class="nb">scale</span>
+<a name="ln-70"></a><span class="nb">      </span><span class="n">enddo</span>
+<a name="ln-71"></a>   <span class="k">else</span>
+<a name="ln-72"></a><span class="k">      write</span><span class="p">(</span><span class="n">unit</span><span class="p">,</span> <span class="s1">&#39;(3f20.14)&#39;</span><span class="p">)</span> <span class="nb">spread</span><span class="p">(</span><span class="mf">0.0_wp</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">9</span><span class="p">)</span>
+<a name="ln-73"></a>   <span class="k">end if</span>
+<a name="ln-74"></a>
+<a name="ln-75"></a><span class="k">   do </span><span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">j</span>
+<a name="ln-76"></a>      <span class="k">write</span><span class="p">(</span><span class="n">unit</span><span class="p">,</span> <span class="s1">&#39;(1x, a)&#39;</span><span class="p">,</span> <span class="n">advance</span><span class="o">=</span><span class="s1">&#39;no&#39;</span><span class="p">)</span> <span class="n">self</span><span class="p">%</span><span class="n">sym</span><span class="p">(</span><span class="n">species</span><span class="p">(</span><span class="n">i</span><span class="p">))</span>
+<a name="ln-77"></a>   <span class="n">enddo</span>
+<a name="ln-78"></a>   <span class="k">write</span><span class="p">(</span><span class="n">unit</span><span class="p">,</span> <span class="s1">&#39;(a)&#39;</span><span class="p">)</span>
+<a name="ln-79"></a>
+<a name="ln-80"></a>   <span class="c">! write the count of the consequtive atom types</span>
+<a name="ln-81"></a>   <span class="k">do </span><span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">j</span>
+<a name="ln-82"></a>      <span class="k">write</span><span class="p">(</span><span class="n">unit</span><span class="p">,</span> <span class="s1">&#39;(1x, i0)&#39;</span><span class="p">,</span> <span class="n">advance</span><span class="o">=</span><span class="s1">&#39;no&#39;</span><span class="p">)</span> <span class="n">kinds</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+<a name="ln-83"></a>   <span class="n">enddo</span>
+<a name="ln-84"></a>   <span class="k">write</span><span class="p">(</span><span class="n">unit</span><span class="p">,</span> <span class="s1">&#39;(a)&#39;</span><span class="p">)</span>
+<a name="ln-85"></a>   <span class="k">deallocate</span><span class="p">(</span><span class="n">kinds</span><span class="p">,</span> <span class="n">species</span><span class="p">)</span>
+<a name="ln-86"></a>
+<a name="ln-87"></a>   <span class="k">if</span> <span class="p">(</span><span class="n">self</span><span class="p">%</span><span class="n">info</span><span class="p">%</span><span class="n">selective</span><span class="p">)</span> <span class="k">write</span><span class="p">(</span><span class="n">unit</span><span class="p">,</span> <span class="s1">&#39;(&quot;Selective&quot;)&#39;</span><span class="p">)</span>
+<a name="ln-88"></a>
+<a name="ln-89"></a>   <span class="c">! we write cartesian coordinates</span>
+<a name="ln-90"></a>   <span class="k">if</span> <span class="p">(.</span><span class="nb">not</span><span class="p">.</span><span class="nb">allocated</span><span class="p">(</span><span class="n">self</span><span class="p">%</span><span class="n">lattice</span><span class="p">)</span> <span class="p">.</span><span class="nb">or</span><span class="p">.</span> <span class="n">self</span><span class="p">%</span><span class="n">info</span><span class="p">%</span><span class="n">cartesian</span><span class="p">)</span> <span class="k">then</span>
+<a name="ln-91"></a><span class="k">      write</span><span class="p">(</span><span class="n">unit</span><span class="p">,</span> <span class="s1">&#39;(&quot;Cartesian&quot;)&#39;</span><span class="p">)</span>
+<a name="ln-92"></a>
+<a name="ln-93"></a>      <span class="c">! now write the cartesian coordinates</span>
+<a name="ln-94"></a>      <span class="k">do </span><span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">self</span><span class="p">%</span><span class="n">nat</span>
+<a name="ln-95"></a>         <span class="k">write</span><span class="p">(</span><span class="n">unit</span><span class="p">,</span> <span class="s1">&#39;(3f20.14)&#39;</span><span class="p">)</span> <span class="n">self</span><span class="p">%</span><span class="n">xyz</span><span class="p">(:,</span> <span class="n">i</span><span class="p">)</span><span class="o">*</span><span class="n">autoaa</span><span class="o">/</span><span class="n">self</span><span class="p">%</span><span class="n">info</span><span class="p">%</span><span class="nb">scale</span>
+<a name="ln-96"></a><span class="nb">      </span><span class="n">enddo</span>
+<a name="ln-97"></a>   <span class="k">else</span>
+<a name="ln-98"></a><span class="k">      write</span><span class="p">(</span><span class="n">unit</span><span class="p">,</span> <span class="s1">&#39;(&quot;Direct&quot;)&#39;</span><span class="p">)</span>
+<a name="ln-99"></a>      <span class="n">inv_lat</span> <span class="o">=</span> <span class="n">matinv_3x3</span><span class="p">(</span><span class="n">self</span><span class="p">%</span><span class="n">lattice</span><span class="p">)</span>
+<a name="ln-100"></a>      <span class="n">abc</span> <span class="o">=</span> <span class="nb">matmul</span><span class="p">(</span><span class="n">inv_lat</span><span class="p">,</span> <span class="n">self</span><span class="p">%</span><span class="n">xyz</span><span class="p">)</span>
+<a name="ln-101"></a>
+<a name="ln-102"></a>      <span class="c">! now write the fractional coordinates</span>
+<a name="ln-103"></a>      <span class="k">do </span><span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">self</span><span class="p">%</span><span class="n">nat</span>
+<a name="ln-104"></a>         <span class="k">write</span><span class="p">(</span><span class="n">unit</span><span class="p">,</span> <span class="s1">&#39;(3f20.14)&#39;</span><span class="p">)</span> <span class="n">abc</span><span class="p">(:,</span> <span class="n">i</span><span class="p">)</span>
+<a name="ln-105"></a>      <span class="n">enddo</span>
+<a name="ln-106"></a>   <span class="n">endif</span>
+<a name="ln-107"></a>
+<a name="ln-108"></a><span class="k">end subroutine </span><span class="n">write_vasp</span>
+<a name="ln-109"></a>
 <a name="ln-110"></a>
-<a name="ln-111"></a>
-<a name="ln-112"></a><span class="k">end module </span><span class="n">mctc_io_write_vasp</span>
+<a name="ln-111"></a><span class="k">end module </span><span class="n">mctc_io_write_vasp</span>
 </pre></div>
 
     </section>
@@ -399,7 +398,7 @@
           <p class="text-right">
             Documentation generated by 
             <a href="https://github.com/cmacmackin/ford">FORD</a>
-             on 2020-11-22 11:43  
+             on 2020-11-26 19:02  
           </p>
         </div>
         <div class="col-xs-12 col-md-4 col-md-pull-4"><p class="text-center"> MCTC-library was developed by Grimme group, Bonn</p></div>

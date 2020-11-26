@@ -134,7 +134,7 @@
      <li><i class="fa fa-list-ol"></i>
        <a data-toggle="tooltip"
     data-placement="bottom" data-html="true"
-    title="<p>27.3% of total for derived types.</p>Including implementation: 15 statements, 27.3% of total for derived types.">15 statements</a>
+    title="<p>31.0% of total for derived types.</p>Including implementation: 18 statements, 31.0% of total for derived types.">18 statements</a>
      </li> 
      
      
@@ -179,7 +179,11 @@
   <div id="vars-0" class="panel-collapse collapse">
     <div class="list-group">
       
+      <a class="list-group-item" href="../type/structure_type.html#variable-bond">bond</a>
+      
       <a class="list-group-item" href="../type/structure_type.html#variable-charge">charge</a>
+      
+      <a class="list-group-item" href="../type/structure_type.html#variable-comment">comment</a>
       
       <a class="list-group-item" href="../type/structure_type.html#variable-id">id</a>
       
@@ -188,6 +192,8 @@
       <a class="list-group-item" href="../type/structure_type.html#variable-lattice">lattice</a>
       
       <a class="list-group-item" href="../type/structure_type.html#variable-nat">nat</a>
+      
+      <a class="list-group-item" href="../type/structure_type.html#variable-nbd">nbd</a>
       
       <a class="list-group-item" href="../type/structure_type.html#variable-nid">nid</a>
       
@@ -261,7 +267,11 @@
   <div id="vars-1" class="panel-collapse collapse">
     <div class="list-group">
       
+      <a class="list-group-item" href="../type/structure_type.html#variable-bond">bond</a>
+      
       <a class="list-group-item" href="../type/structure_type.html#variable-charge">charge</a>
+      
+      <a class="list-group-item" href="../type/structure_type.html#variable-comment">comment</a>
       
       <a class="list-group-item" href="../type/structure_type.html#variable-id">id</a>
       
@@ -270,6 +280,8 @@
       <a class="list-group-item" href="../type/structure_type.html#variable-lattice">lattice</a>
       
       <a class="list-group-item" href="../type/structure_type.html#variable-nat">nat</a>
+      
+      <a class="list-group-item" href="../type/structure_type.html#variable-nbd">nbd</a>
       
       <a class="list-group-item" href="../type/structure_type.html#variable-nid">nid</a>
       
@@ -341,11 +353,39 @@
   
 <tr>
   
+  <td><span class="anchor" id="variable-bond"></span>integer,</td>
+  
+  <td>public,</td>
+  <td>allocatable</td><td>::</td>
+  <td><strong>bond</strong>(:,:)</td><td></td><td></td><td><p>Bond indices</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
   <td><span class="anchor" id="variable-charge"></span>real(kind=wp),</td>
   
   <td>public</td>
   <td></td><td>::</td>
   <td><strong>charge</strong></td><td> =</td><td>0.0_wp</td><td><p>Total charge</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-comment"></span>character(len=:),</td>
+  
+  <td>public,</td>
+  <td>allocatable</td><td>::</td>
+  <td><strong>comment</strong></td><td></td><td></td><td><p>Comment, name or identifier for this structure</p></td>
   
 </tr>
 
@@ -402,6 +442,20 @@
   <td>public</td>
   <td></td><td>::</td>
   <td><strong>nat</strong></td><td> =</td><td>0</td><td><p>Number of atoms</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-nbd"></span>integer,</td>
+  
+  <td>public</td>
+  <td></td><td>::</td>
+  <td><strong>nbd</strong></td><td> =</td><td>0</td><td><p>Number of bonds</p></td>
   
 </tr>
 
@@ -541,6 +595,9 @@
       <span class="c">!&gt; Number of unique species</span>
       <span class="kt">integer</span> <span class="kd">::</span> <span class="n">nid</span> <span class="o">=</span> <span class="mi">0</span>
 
+      <span class="c">!&gt; Number of bonds</span>
+      <span class="kt">integer</span> <span class="kd">::</span> <span class="n">nbd</span> <span class="o">=</span> <span class="mi">0</span>
+
       <span class="c">!&gt; Species identifier</span>
       <span class="kt">integer</span><span class="p">,</span> <span class="k">allocatable</span> <span class="kd">::</span> <span class="n">id</span><span class="p">(:)</span>
 
@@ -564,6 +621,12 @@
 
       <span class="c">!&gt; Periodic directions</span>
       <span class="kt">logical</span><span class="p">,</span> <span class="k">allocatable</span> <span class="kd">::</span> <span class="n">periodic</span><span class="p">(:)</span>
+
+      <span class="c">!&gt; Bond indices</span>
+      <span class="kt">integer</span><span class="p">,</span> <span class="k">allocatable</span> <span class="kd">::</span> <span class="n">bond</span><span class="p">(:,</span> <span class="p">:)</span>
+
+      <span class="c">!&gt; Comment, name or identifier for this structure</span>
+      <span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="p">:),</span> <span class="k">allocatable</span> <span class="kd">::</span> <span class="n">comment</span>
 
       <span class="c">!&gt; Vendor specific structure annotations</span>
       <span class="k">type</span><span class="p">(</span><span class="n">structure_info</span><span class="p">)</span> <span class="kd">::</span> <span class="n">info</span> <span class="o">=</span> <span class="n">structure_info</span><span class="p">()</span>
@@ -595,7 +658,7 @@
           <p class="text-right">
             Documentation generated by 
             <a href="https://github.com/cmacmackin/ford">FORD</a>
-             on 2020-11-22 11:43  
+             on 2020-11-26 19:02  
           </p>
         </div>
         <div class="col-xs-12 col-md-4 col-md-pull-4"><p class="text-center"> MCTC-library was developed by Grimme group, Bonn</p></div>

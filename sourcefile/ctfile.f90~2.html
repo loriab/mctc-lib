@@ -134,7 +134,7 @@
      <li><i class="fa fa-list-ol"></i>
        <a data-toggle="tooltip"
     data-placement="bottom" data-html="true"
-    title=" 2.6% of total for source files.">70 statements</a>
+    title=" 3.1% of total for source files.">85 statements</a>
      </li> 
      
      
@@ -341,60 +341,69 @@
 <a name="ln-70"></a>
 <a name="ln-71"></a><span class="nb">   </span><span class="k">call </span><span class="nb">date_and_time</span><span class="p">(</span><span class="n">date</span><span class="p">,</span> <span class="nb">time</span><span class="p">)</span>
 <a name="ln-72"></a>
-<a name="ln-73"></a>   <span class="k">write</span><span class="p">(</span><span class="n">unit</span><span class="p">,</span> <span class="s1">&#39;(a)&#39;</span><span class="p">)</span>
-<a name="ln-74"></a>   <span class="k">write</span><span class="p">(</span><span class="n">unit</span><span class="p">,</span> <span class="s1">&#39;(2x, 3x, 5x, 3a2, a4, &quot;3D&quot;)&#39;</span><span class="p">)</span> <span class="p">&amp;</span>
-<a name="ln-75"></a>      <span class="p">&amp;</span>  <span class="n">date</span><span class="p">(</span><span class="mi">5</span><span class="p">:</span><span class="mi">6</span><span class="p">),</span> <span class="n">date</span><span class="p">(</span><span class="mi">7</span><span class="p">:</span><span class="mi">8</span><span class="p">),</span> <span class="n">date</span><span class="p">(</span><span class="mi">3</span><span class="p">:</span><span class="mi">4</span><span class="p">),</span> <span class="nb">time</span><span class="p">(:</span><span class="mi">4</span><span class="p">)</span>
-<a name="ln-76"></a>   <span class="k">if</span> <span class="p">(</span><span class="nb">present</span><span class="p">(</span><span class="n">comment_line</span><span class="p">))</span> <span class="k">then</span>
-<a name="ln-77"></a><span class="k">      write</span><span class="p">(</span><span class="n">unit</span><span class="p">,</span> <span class="s1">&#39;(a)&#39;</span><span class="p">)</span> <span class="n">comment_line</span>
-<a name="ln-78"></a>   <span class="k">else</span>
-<a name="ln-79"></a><span class="k">      write</span><span class="p">(</span><span class="n">unit</span><span class="p">,</span> <span class="s1">&#39;(a)&#39;</span><span class="p">)</span>
-<a name="ln-80"></a>   <span class="k">end if</span>
-<a name="ln-81"></a><span class="k">   write</span><span class="p">(</span><span class="n">unit</span><span class="p">,</span> <span class="s1">&#39;(3i3, 3x, 2i3, 12x, i3, 1x, a5)&#39;</span><span class="p">)</span> <span class="p">&amp;</span>
-<a name="ln-82"></a>      <span class="p">&amp;</span>  <span class="n">self</span><span class="p">%</span><span class="n">nat</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">999</span><span class="p">,</span> <span class="s1">&#39;V2000&#39;</span>
-<a name="ln-83"></a>      <span class="c">!&amp;  len(self), len(self%bonds), 0, 0, 0, 999, &#39;V2000&#39;</span>
-<a name="ln-84"></a>
-<a name="ln-85"></a>   <span class="n">has_sdf_data</span> <span class="o">=</span> <span class="nb">allocated</span><span class="p">(</span><span class="n">self</span><span class="p">%</span><span class="n">sdf</span><span class="p">)</span>
-<a name="ln-86"></a>
-<a name="ln-87"></a>   <span class="k">do </span><span class="n">iatom</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">self</span><span class="p">%</span><span class="n">nat</span>
-<a name="ln-88"></a>      <span class="k">if</span> <span class="p">(</span><span class="n">has_sdf_data</span><span class="p">)</span> <span class="k">then</span>
-<a name="ln-89"></a><span class="k">         </span><span class="n">list12</span> <span class="o">=</span> <span class="p">[</span><span class="n">self</span><span class="p">%</span><span class="n">sdf</span><span class="p">(</span><span class="n">iatom</span><span class="p">)%</span><span class="n">isotope</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">self</span><span class="p">%</span><span class="n">sdf</span><span class="p">(</span><span class="n">iatom</span><span class="p">)%</span><span class="n">valence</span><span class="p">,</span> <span class="p">&amp;</span>
-<a name="ln-90"></a>            <span class="p">&amp;</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>
-<a name="ln-91"></a>      <span class="k">else</span>
-<a name="ln-92"></a><span class="k">         </span><span class="n">list12</span> <span class="o">=</span> <span class="mi">0</span>
-<a name="ln-93"></a>      <span class="n">endif</span>
-<a name="ln-94"></a>      <span class="k">write</span><span class="p">(</span><span class="n">unit</span><span class="p">,</span> <span class="s1">&#39;(3f10.4, 1x, a3, i2, 11i3)&#39;</span><span class="p">)</span> <span class="p">&amp;</span>
-<a name="ln-95"></a>         <span class="p">&amp;</span> <span class="n">self</span><span class="p">%</span><span class="n">xyz</span><span class="p">(:,</span> <span class="n">iatom</span><span class="p">)</span><span class="o">*</span><span class="n">autoaa</span><span class="p">,</span> <span class="n">self</span><span class="p">%</span><span class="n">sym</span><span class="p">(</span><span class="n">self</span><span class="p">%</span><span class="n">id</span><span class="p">(</span><span class="n">iatom</span><span class="p">)),</span> <span class="n">list12</span>
-<a name="ln-96"></a>   <span class="n">enddo</span>
-<a name="ln-97"></a>
-<a name="ln-98"></a><span class="c">!   do ibond = 1, len(self%bonds)</span>
-<a name="ln-99"></a><span class="c">!      call self%bonds%get_item(ibond, iatoms)</span>
-<a name="ln-100"></a><span class="c">!      write(unit, &#39;(7i3)&#39;) &amp;</span>
-<a name="ln-101"></a><span class="c">!         &amp; iatoms, list4</span>
-<a name="ln-102"></a><span class="c">!   enddo</span>
-<a name="ln-103"></a>
-<a name="ln-104"></a>   <span class="k">if</span> <span class="p">(</span><span class="n">has_sdf_data</span><span class="p">)</span> <span class="k">then</span>
-<a name="ln-105"></a><span class="k">      if</span> <span class="p">(</span><span class="nb">sum</span><span class="p">(</span><span class="n">self</span><span class="p">%</span><span class="n">sdf</span><span class="p">%</span><span class="n">charge</span><span class="p">)</span> <span class="o">/=</span> <span class="nb">nint</span><span class="p">(</span><span class="n">self</span><span class="p">%</span><span class="n">charge</span><span class="p">))</span> <span class="k">then</span>
-<a name="ln-106"></a><span class="k">         write</span><span class="p">(</span><span class="n">unit</span><span class="p">,</span> <span class="s1">&#39;(a, *(i3, 1x, i3, 1x, i3))&#39;</span><span class="p">)</span> <span class="s2">&quot;M  CHG&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="nb">nint</span><span class="p">(</span><span class="n">self</span><span class="p">%</span><span class="n">charge</span><span class="p">)</span>
-<a name="ln-107"></a>      <span class="k">else</span>
-<a name="ln-108"></a><span class="k">         do </span><span class="n">iatom</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">self</span><span class="p">%</span><span class="n">nat</span>
-<a name="ln-109"></a>            <span class="k">if</span> <span class="p">(</span><span class="n">self</span><span class="p">%</span><span class="n">sdf</span><span class="p">(</span><span class="n">iatom</span><span class="p">)%</span><span class="n">charge</span> <span class="o">/=</span> <span class="mi">0</span><span class="p">)</span> <span class="k">then</span>
-<a name="ln-110"></a><span class="k">               write</span><span class="p">(</span><span class="n">unit</span><span class="p">,</span> <span class="s1">&#39;(a, *(i3, 1x, i3, 1x, i3))&#39;</span><span class="p">)</span> <span class="p">&amp;</span>
-<a name="ln-111"></a>                  <span class="p">&amp;</span> <span class="s2">&quot;M  CHG&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">iatom</span><span class="p">,</span> <span class="n">self</span><span class="p">%</span><span class="n">sdf</span><span class="p">(</span><span class="n">iatom</span><span class="p">)%</span><span class="n">charge</span>
-<a name="ln-112"></a>            <span class="k">end if</span>
-<a name="ln-113"></a><span class="k">         end do</span>
-<a name="ln-114"></a><span class="k">      end if</span>
-<a name="ln-115"></a><span class="k">   else</span>
-<a name="ln-116"></a><span class="k">      if</span> <span class="p">(</span><span class="nb">nint</span><span class="p">(</span><span class="n">self</span><span class="p">%</span><span class="n">charge</span><span class="p">)</span> <span class="o">/=</span> <span class="mi">0</span><span class="p">)</span> <span class="k">then</span>
-<a name="ln-117"></a><span class="k">         write</span><span class="p">(</span><span class="n">unit</span><span class="p">,</span> <span class="s1">&#39;(a, *(i3, 1x, i3, 1x, i3))&#39;</span><span class="p">)</span> <span class="s2">&quot;M  CHG&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="nb">nint</span><span class="p">(</span><span class="n">self</span><span class="p">%</span><span class="n">charge</span><span class="p">)</span>
-<a name="ln-118"></a>      <span class="k">end if</span>
-<a name="ln-119"></a><span class="k">   end if</span>
-<a name="ln-120"></a>
-<a name="ln-121"></a><span class="k">   write</span><span class="p">(</span><span class="n">unit</span><span class="p">,</span> <span class="s1">&#39;(a)&#39;</span><span class="p">)</span> <span class="s2">&quot;M  END&quot;</span>
-<a name="ln-122"></a>
-<a name="ln-123"></a><span class="k">end subroutine </span><span class="n">write_molfile</span>
-<a name="ln-124"></a>
-<a name="ln-125"></a>
-<a name="ln-126"></a><span class="k">end module </span><span class="n">mctc_io_write_ctfile</span>
+<a name="ln-73"></a>   <span class="k">if</span> <span class="p">(</span><span class="nb">present</span><span class="p">(</span><span class="n">comment_line</span><span class="p">))</span> <span class="k">then</span>
+<a name="ln-74"></a><span class="k">      write</span><span class="p">(</span><span class="n">unit</span><span class="p">,</span> <span class="s1">&#39;(a)&#39;</span><span class="p">)</span> <span class="n">comment_line</span>
+<a name="ln-75"></a>   <span class="k">else</span>
+<a name="ln-76"></a><span class="k">      if</span> <span class="p">(</span><span class="nb">allocated</span><span class="p">(</span><span class="n">self</span><span class="p">%</span><span class="n">comment</span><span class="p">))</span> <span class="k">then</span>
+<a name="ln-77"></a><span class="k">         write</span><span class="p">(</span><span class="n">unit</span><span class="p">,</span> <span class="s1">&#39;(a)&#39;</span><span class="p">)</span> <span class="n">self</span><span class="p">%</span><span class="n">comment</span>
+<a name="ln-78"></a>      <span class="k">else</span>
+<a name="ln-79"></a><span class="k">         write</span><span class="p">(</span><span class="n">unit</span><span class="p">,</span> <span class="s1">&#39;(a)&#39;</span><span class="p">)</span>
+<a name="ln-80"></a>      <span class="k">end if</span>
+<a name="ln-81"></a><span class="k">   end if</span>
+<a name="ln-82"></a><span class="k">   write</span><span class="p">(</span><span class="n">unit</span><span class="p">,</span> <span class="s1">&#39;(2x, 3x, 5x, 3a2, a4, &quot;3D&quot;)&#39;</span><span class="p">)</span> <span class="p">&amp;</span>
+<a name="ln-83"></a>      <span class="p">&amp;</span>  <span class="n">date</span><span class="p">(</span><span class="mi">5</span><span class="p">:</span><span class="mi">6</span><span class="p">),</span> <span class="n">date</span><span class="p">(</span><span class="mi">7</span><span class="p">:</span><span class="mi">8</span><span class="p">),</span> <span class="n">date</span><span class="p">(</span><span class="mi">3</span><span class="p">:</span><span class="mi">4</span><span class="p">),</span> <span class="nb">time</span><span class="p">(:</span><span class="mi">4</span><span class="p">)</span>
+<a name="ln-84"></a>   <span class="k">write</span><span class="p">(</span><span class="n">unit</span><span class="p">,</span> <span class="s1">&#39;(a)&#39;</span><span class="p">)</span>
+<a name="ln-85"></a>   <span class="k">write</span><span class="p">(</span><span class="n">unit</span><span class="p">,</span> <span class="s1">&#39;(3i3, 3x, 2i3, 12x, i3, 1x, a5)&#39;</span><span class="p">)</span> <span class="p">&amp;</span>
+<a name="ln-86"></a>      <span class="p">&amp;</span>  <span class="n">self</span><span class="p">%</span><span class="n">nat</span><span class="p">,</span> <span class="n">self</span><span class="p">%</span><span class="n">nbd</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">999</span><span class="p">,</span> <span class="s1">&#39;V2000&#39;</span>
+<a name="ln-87"></a>
+<a name="ln-88"></a>   <span class="n">has_sdf_data</span> <span class="o">=</span> <span class="nb">allocated</span><span class="p">(</span><span class="n">self</span><span class="p">%</span><span class="n">sdf</span><span class="p">)</span>
+<a name="ln-89"></a>
+<a name="ln-90"></a>   <span class="k">do </span><span class="n">iatom</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">self</span><span class="p">%</span><span class="n">nat</span>
+<a name="ln-91"></a>      <span class="k">if</span> <span class="p">(</span><span class="n">has_sdf_data</span><span class="p">)</span> <span class="k">then</span>
+<a name="ln-92"></a><span class="k">         </span><span class="n">list12</span> <span class="o">=</span> <span class="p">[</span><span class="n">self</span><span class="p">%</span><span class="n">sdf</span><span class="p">(</span><span class="n">iatom</span><span class="p">)%</span><span class="n">isotope</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">self</span><span class="p">%</span><span class="n">sdf</span><span class="p">(</span><span class="n">iatom</span><span class="p">)%</span><span class="n">valence</span><span class="p">,</span> <span class="p">&amp;</span>
+<a name="ln-93"></a>            <span class="p">&amp;</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>
+<a name="ln-94"></a>      <span class="k">else</span>
+<a name="ln-95"></a><span class="k">         </span><span class="n">list12</span> <span class="o">=</span> <span class="mi">0</span>
+<a name="ln-96"></a>      <span class="n">endif</span>
+<a name="ln-97"></a>      <span class="k">write</span><span class="p">(</span><span class="n">unit</span><span class="p">,</span> <span class="s1">&#39;(3f10.4, 1x, a3, i2, 11i3)&#39;</span><span class="p">)</span> <span class="p">&amp;</span>
+<a name="ln-98"></a>         <span class="p">&amp;</span> <span class="n">self</span><span class="p">%</span><span class="n">xyz</span><span class="p">(:,</span> <span class="n">iatom</span><span class="p">)</span><span class="o">*</span><span class="n">autoaa</span><span class="p">,</span> <span class="n">self</span><span class="p">%</span><span class="n">sym</span><span class="p">(</span><span class="n">self</span><span class="p">%</span><span class="n">id</span><span class="p">(</span><span class="n">iatom</span><span class="p">)),</span> <span class="n">list12</span>
+<a name="ln-99"></a>   <span class="n">enddo</span>
+<a name="ln-100"></a>
+<a name="ln-101"></a>   <span class="k">if</span> <span class="p">(</span><span class="n">self</span><span class="p">%</span><span class="n">nbd</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span> <span class="k">then</span>
+<a name="ln-102"></a><span class="k">      if</span> <span class="p">(</span><span class="n">size</span><span class="p">(</span><span class="n">self</span><span class="p">%</span><span class="n">bond</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">2</span><span class="p">)</span> <span class="k">then</span>
+<a name="ln-103"></a><span class="k">         do </span><span class="n">ibond</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">self</span><span class="p">%</span><span class="n">nbd</span>
+<a name="ln-104"></a>            <span class="k">write</span><span class="p">(</span><span class="n">unit</span><span class="p">,</span> <span class="s1">&#39;(7i3)&#39;</span><span class="p">)</span> <span class="n">self</span><span class="p">%</span><span class="n">bond</span><span class="p">(:</span><span class="mi">3</span><span class="p">,</span> <span class="n">ibond</span><span class="p">),</span> <span class="n">list4</span>
+<a name="ln-105"></a>         <span class="k">end do</span>
+<a name="ln-106"></a><span class="k">      else</span>
+<a name="ln-107"></a><span class="k">         do </span><span class="n">ibond</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">self</span><span class="p">%</span><span class="n">nbd</span>
+<a name="ln-108"></a>            <span class="k">write</span><span class="p">(</span><span class="n">unit</span><span class="p">,</span> <span class="s1">&#39;(7i3)&#39;</span><span class="p">)</span> <span class="n">self</span><span class="p">%</span><span class="n">bond</span><span class="p">(:</span><span class="mi">2</span><span class="p">,</span> <span class="n">ibond</span><span class="p">),</span> <span class="mi">1</span><span class="p">,</span> <span class="n">list4</span>
+<a name="ln-109"></a>         <span class="k">end do</span>
+<a name="ln-110"></a><span class="k">      end if</span>
+<a name="ln-111"></a><span class="k">   end if</span>
+<a name="ln-112"></a>
+<a name="ln-113"></a><span class="k">   if</span> <span class="p">(</span><span class="n">has_sdf_data</span><span class="p">)</span> <span class="k">then</span>
+<a name="ln-114"></a><span class="k">      if</span> <span class="p">(</span><span class="nb">sum</span><span class="p">(</span><span class="n">self</span><span class="p">%</span><span class="n">sdf</span><span class="p">%</span><span class="n">charge</span><span class="p">)</span> <span class="o">/=</span> <span class="nb">nint</span><span class="p">(</span><span class="n">self</span><span class="p">%</span><span class="n">charge</span><span class="p">))</span> <span class="k">then</span>
+<a name="ln-115"></a><span class="k">         write</span><span class="p">(</span><span class="n">unit</span><span class="p">,</span> <span class="s1">&#39;(a, *(i3, 1x, i3, 1x, i3))&#39;</span><span class="p">)</span> <span class="s2">&quot;M  CHG&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="nb">nint</span><span class="p">(</span><span class="n">self</span><span class="p">%</span><span class="n">charge</span><span class="p">)</span>
+<a name="ln-116"></a>      <span class="k">else</span>
+<a name="ln-117"></a><span class="k">         do </span><span class="n">iatom</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">self</span><span class="p">%</span><span class="n">nat</span>
+<a name="ln-118"></a>            <span class="k">if</span> <span class="p">(</span><span class="n">self</span><span class="p">%</span><span class="n">sdf</span><span class="p">(</span><span class="n">iatom</span><span class="p">)%</span><span class="n">charge</span> <span class="o">/=</span> <span class="mi">0</span><span class="p">)</span> <span class="k">then</span>
+<a name="ln-119"></a><span class="k">               write</span><span class="p">(</span><span class="n">unit</span><span class="p">,</span> <span class="s1">&#39;(a, *(i3, 1x, i3, 1x, i3))&#39;</span><span class="p">)</span> <span class="p">&amp;</span>
+<a name="ln-120"></a>                  <span class="p">&amp;</span> <span class="s2">&quot;M  CHG&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">iatom</span><span class="p">,</span> <span class="n">self</span><span class="p">%</span><span class="n">sdf</span><span class="p">(</span><span class="n">iatom</span><span class="p">)%</span><span class="n">charge</span>
+<a name="ln-121"></a>            <span class="k">end if</span>
+<a name="ln-122"></a><span class="k">         end do</span>
+<a name="ln-123"></a><span class="k">      end if</span>
+<a name="ln-124"></a><span class="k">   else</span>
+<a name="ln-125"></a><span class="k">      if</span> <span class="p">(</span><span class="nb">nint</span><span class="p">(</span><span class="n">self</span><span class="p">%</span><span class="n">charge</span><span class="p">)</span> <span class="o">/=</span> <span class="mi">0</span><span class="p">)</span> <span class="k">then</span>
+<a name="ln-126"></a><span class="k">         write</span><span class="p">(</span><span class="n">unit</span><span class="p">,</span> <span class="s1">&#39;(a, *(i3, 1x, i3, 1x, i3))&#39;</span><span class="p">)</span> <span class="s2">&quot;M  CHG&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="nb">nint</span><span class="p">(</span><span class="n">self</span><span class="p">%</span><span class="n">charge</span><span class="p">)</span>
+<a name="ln-127"></a>      <span class="k">end if</span>
+<a name="ln-128"></a><span class="k">   end if</span>
+<a name="ln-129"></a>
+<a name="ln-130"></a><span class="k">   write</span><span class="p">(</span><span class="n">unit</span><span class="p">,</span> <span class="s1">&#39;(a)&#39;</span><span class="p">)</span> <span class="s2">&quot;M  END&quot;</span>
+<a name="ln-131"></a>
+<a name="ln-132"></a><span class="k">end subroutine </span><span class="n">write_molfile</span>
+<a name="ln-133"></a>
+<a name="ln-134"></a>
+<a name="ln-135"></a><span class="k">end module </span><span class="n">mctc_io_write_ctfile</span>
 </pre></div>
 
     </section>
@@ -413,7 +422,7 @@
           <p class="text-right">
             Documentation generated by 
             <a href="https://github.com/cmacmackin/ford">FORD</a>
-             on 2020-11-22 11:43  
+             on 2020-11-26 19:02  
           </p>
         </div>
         <div class="col-xs-12 col-md-4 col-md-pull-4"><p class="text-center"> MCTC-library was developed by Grimme group, Bonn</p></div>

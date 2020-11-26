@@ -134,7 +134,7 @@
      <li><i class="fa fa-list-ol"></i>
        <a data-toggle="tooltip"
     data-placement="bottom" data-html="true"
-    title=" 3.5% of total for procedures.">56 statements</a>
+    title=" 3.8% of total for procedures.">61 statements</a>
      </li> 
      
      
@@ -207,7 +207,7 @@
     
     <div class="col-md-9" id='text'>
     <h2>
-public subroutine new_structure(self, num, sym, xyz, charge, uhf, lattice, periodic, info)
+public subroutine new_structure(self, num, sym, xyz, charge, uhf, lattice, periodic, info, bond)
     
     
    
@@ -367,6 +367,21 @@ public subroutine new_structure(self, num, sym, xyz, charge, uhf, lattice, perio
   
 </tr>
 
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-bond~2"></span>integer,</td>
+  <td>intent(in),</td>
+  <td>optional</td>
+  
+  <td></td><td>::</td>
+  <td><strong>bond</strong>(:,:)</td><td><p>Bond topology of the system</p></td>
+  
+</tr>
+
 </tbody>
 </table>
 
@@ -434,7 +449,8 @@ public subroutine new_structure(self, num, sym, xyz, charge, uhf, lattice, perio
     
     <section>
     <h2><span class="anchor" id="src"></span>Source Code</h2>
-    <div class="highlight"><pre><span></span><span class="k">subroutine </span><span class="n">new_structure</span><span class="p">(</span><span class="n">self</span><span class="p">,</span> <span class="n">num</span><span class="p">,</span> <span class="n">sym</span><span class="p">,</span> <span class="n">xyz</span><span class="p">,</span> <span class="n">charge</span><span class="p">,</span> <span class="n">uhf</span><span class="p">,</span> <span class="n">lattice</span><span class="p">,</span> <span class="n">periodic</span><span class="p">,</span> <span class="n">info</span><span class="p">)</span>
+    <div class="highlight"><pre><span></span><span class="k">subroutine </span><span class="n">new_structure</span><span class="p">(</span><span class="n">self</span><span class="p">,</span> <span class="n">num</span><span class="p">,</span> <span class="n">sym</span><span class="p">,</span> <span class="n">xyz</span><span class="p">,</span> <span class="n">charge</span><span class="p">,</span> <span class="n">uhf</span><span class="p">,</span> <span class="n">lattice</span><span class="p">,</span> <span class="n">periodic</span><span class="p">,</span> <span class="p">&amp;</span>
+      <span class="p">&amp;</span> <span class="n">info</span><span class="p">,</span> <span class="n">bond</span><span class="p">)</span>
 
    <span class="c">!&gt; Instance of the structure representation</span>
    <span class="k">type</span><span class="p">(</span><span class="n">structure_type</span><span class="p">),</span> <span class="k">intent</span><span class="p">(</span><span class="n">out</span><span class="p">)</span> <span class="kd">::</span> <span class="n">self</span>
@@ -462,6 +478,9 @@ public subroutine new_structure(self, num, sym, xyz, charge, uhf, lattice, perio
 
    <span class="c">!&gt; Vendor specific structure information</span>
    <span class="k">type</span><span class="p">(</span><span class="n">structure_info</span><span class="p">),</span> <span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">),</span> <span class="k">optional</span> <span class="kd">::</span> <span class="n">info</span>
+
+   <span class="c">!&gt; Bond topology of the system</span>
+   <span class="kt">integer</span><span class="p">,</span> <span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">),</span> <span class="k">optional</span> <span class="kd">::</span> <span class="n">bond</span><span class="p">(:,</span> <span class="p">:)</span>
 
    <span class="kt">integer</span> <span class="kd">::</span> <span class="n">ndim</span><span class="p">,</span> <span class="n">iid</span>
    <span class="kt">integer</span><span class="p">,</span> <span class="k">allocatable</span> <span class="kd">::</span> <span class="n">map</span><span class="p">(:)</span>
@@ -518,6 +537,11 @@ public subroutine new_structure(self, num, sym, xyz, charge, uhf, lattice, perio
 <span class="k">      </span><span class="n">self</span><span class="p">%</span><span class="n">info</span> <span class="o">=</span> <span class="n">structure_info</span><span class="p">()</span>
    <span class="k">end if</span>
 
+<span class="k">   if</span> <span class="p">(</span><span class="nb">present</span><span class="p">(</span><span class="n">bond</span><span class="p">))</span> <span class="k">then</span>
+<span class="k">      </span><span class="n">self</span><span class="p">%</span><span class="n">nbd</span> <span class="o">=</span> <span class="n">size</span><span class="p">(</span><span class="n">bond</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+      <span class="n">self</span><span class="p">%</span><span class="n">bond</span> <span class="o">=</span> <span class="n">bond</span>
+   <span class="k">end if</span>
+
 <span class="k">end subroutine </span><span class="n">new_structure</span>
 </pre></div>
 
@@ -540,7 +564,7 @@ public subroutine new_structure(self, num, sym, xyz, charge, uhf, lattice, perio
           <p class="text-right">
             Documentation generated by 
             <a href="https://github.com/cmacmackin/ford">FORD</a>
-             on 2020-11-22 11:43  
+             on 2020-11-26 19:02  
           </p>
         </div>
         <div class="col-xs-12 col-md-4 col-md-pull-4"><p class="text-center"> MCTC-library was developed by Grimme group, Bonn</p></div>

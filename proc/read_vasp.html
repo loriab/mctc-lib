@@ -134,7 +134,7 @@
      <li><i class="fa fa-list-ol"></i>
        <a data-toggle="tooltip"
     data-placement="bottom" data-html="true"
-    title=" 8.4% of total for procedures.">133 statements</a>
+    title=" 8.4% of total for procedures.">137 statements</a>
      </li> 
      
      
@@ -207,7 +207,7 @@
     
     <div class="col-md-9" id='text'>
     <h2>
-public subroutine read_vasp(mol, unit, error)
+public subroutine read_vasp(self, unit, error)
     
     
    
@@ -236,12 +236,12 @@ public subroutine read_vasp(mol, unit, error)
   
 <tr>
   
-  <td><span class="anchor" id="variable-mol~2"></span>type(<a href='../type/structure_type.html'>structure_type</a>),</td>
+  <td><span class="anchor" id="variable-self~4"></span>type(<a href='../type/structure_type.html'>structure_type</a>),</td>
   <td>intent(out)</td>
   <td></td>
   
   <td></td><td>::</td>
-  <td><strong>mol</strong></td><td><p>Instance of the molecular structure data</p></td>
+  <td><strong>self</strong></td><td><p>Instance of the molecular structure data</p></td>
   
 </tr>
 
@@ -342,10 +342,10 @@ public subroutine read_vasp(mol, unit, error)
     
     <section>
     <h2><span class="anchor" id="src"></span>Source Code</h2>
-    <div class="highlight"><pre><span></span><span class="k">subroutine </span><span class="n">read_vasp</span><span class="p">(</span><span class="n">mol</span><span class="p">,</span> <span class="n">unit</span><span class="p">,</span> <span class="n">error</span><span class="p">)</span>
+    <div class="highlight"><pre><span></span><span class="k">subroutine </span><span class="n">read_vasp</span><span class="p">(</span><span class="n">self</span><span class="p">,</span> <span class="n">unit</span><span class="p">,</span> <span class="n">error</span><span class="p">)</span>
 
    <span class="c">!&gt; Instance of the molecular structure data</span>
-   <span class="k">type</span><span class="p">(</span><span class="n">structure_type</span><span class="p">),</span> <span class="k">intent</span><span class="p">(</span><span class="n">out</span><span class="p">)</span> <span class="kd">::</span> <span class="n">mol</span>
+   <span class="k">type</span><span class="p">(</span><span class="n">structure_type</span><span class="p">),</span> <span class="k">intent</span><span class="p">(</span><span class="n">out</span><span class="p">)</span> <span class="kd">::</span> <span class="n">self</span>
 
    <span class="c">!&gt; File handle</span>
    <span class="kt">integer</span><span class="p">,</span> <span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span> <span class="kd">::</span> <span class="n">unit</span>
@@ -358,7 +358,7 @@ public subroutine read_vasp(mol, unit, error)
 <span class="nb">   </span><span class="kt">integer</span><span class="p">,</span> <span class="k">allocatable</span> <span class="kd">::</span> <span class="n">ncount</span><span class="p">(:)</span>
    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">)</span> <span class="kd">::</span> <span class="n">ddum</span><span class="p">,</span> <span class="n">latvec</span><span class="p">(</span><span class="mi">3</span><span class="p">),</span> <span class="n">scalar</span><span class="p">,</span> <span class="n">coord</span><span class="p">(</span><span class="mi">3</span><span class="p">),</span> <span class="n">lattice</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span> <span class="k">allocatable</span> <span class="kd">::</span> <span class="n">xyz</span><span class="p">(:,</span> <span class="p">:)</span>
-   <span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="p">:),</span> <span class="k">allocatable</span> <span class="kd">::</span> <span class="n">line</span>
+   <span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="p">:),</span> <span class="k">allocatable</span> <span class="kd">::</span> <span class="n">line</span><span class="p">,</span> <span class="n">comment</span>
    <span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="mi">2</span><span class="o">*</span><span class="n">symbol_length</span><span class="p">),</span> <span class="k">allocatable</span> <span class="kd">::</span> <span class="n">args</span><span class="p">(:),</span> <span class="n">args2</span><span class="p">(:)</span>
    <span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="n">symbol_length</span><span class="p">),</span> <span class="k">allocatable</span> <span class="kd">::</span> <span class="n">sym</span><span class="p">(:)</span>
    <span class="k">type</span><span class="p">(</span><span class="n">structure_info</span><span class="p">)</span> <span class="kd">::</span> <span class="n">info</span>
@@ -378,6 +378,7 @@ public subroutine read_vasp(mol, unit, error)
 <span class="k">   if</span> <span class="p">(</span><span class="n">debug</span><span class="p">)</span> <span class="k">print</span><span class="s1">&#39;(&quot;&gt;&quot;, a)&#39;</span><span class="p">,</span> <span class="n">line</span>
 
    <span class="k">call </span><span class="n">parse_line</span><span class="p">(</span><span class="n">line</span><span class="p">,</span> <span class="n">args</span><span class="p">,</span> <span class="n">ntype</span><span class="p">)</span>
+   <span class="k">call </span><span class="nb">move_alloc</span><span class="p">(</span><span class="n">line</span><span class="p">,</span> <span class="n">comment</span><span class="p">)</span>
 
    <span class="c">! this line contains the global scaling factor,</span>
    <span class="k">call </span><span class="n">getline</span><span class="p">(</span><span class="n">unit</span><span class="p">,</span> <span class="n">line</span><span class="p">,</span> <span class="nb">stat</span><span class="p">)</span>
@@ -433,7 +434,9 @@ public subroutine read_vasp(mol, unit, error)
 <span class="k">         call </span><span class="n">fatal_error</span><span class="p">(</span><span class="n">error</span><span class="p">,</span> <span class="s2">&quot;Unexpected end of input encountered&quot;</span><span class="p">)</span>
          <span class="k">return</span>
 <span class="k">      end if</span>
-<span class="k">   end if</span>
+<span class="k">   else</span>
+<span class="k">      deallocate</span><span class="p">(</span><span class="n">comment</span><span class="p">)</span>
+   <span class="k">end if</span>
 <span class="k">   call </span><span class="n">parse_line</span><span class="p">(</span><span class="n">line</span><span class="p">,</span> <span class="n">args2</span><span class="p">,</span> <span class="n">nn</span><span class="p">)</span>
    <span class="k">if</span> <span class="p">(</span><span class="n">nn</span> <span class="o">/=</span> <span class="n">ntype</span><span class="p">)</span> <span class="k">then</span>
 <span class="k">      call </span><span class="n">fatal_error</span><span class="p">(</span><span class="n">error</span><span class="p">,</span> <span class="s1">&#39;Number of atom types mismatches the number of counts&#39;</span><span class="p">)</span>
@@ -505,7 +508,8 @@ public subroutine read_vasp(mol, unit, error)
 
    <span class="c">! save information about this POSCAR for later</span>
    <span class="n">info</span> <span class="o">=</span> <span class="n">structure_info</span><span class="p">(</span><span class="nb">scale</span><span class="o">=</span><span class="n">ddum</span><span class="p">,</span> <span class="n">selective</span><span class="o">=</span><span class="n">selective</span><span class="p">,</span> <span class="n">cartesian</span><span class="o">=</span><span class="n">cartesian</span><span class="p">)</span>
-   <span class="k">call </span><span class="n">new</span><span class="p">(</span><span class="n">mol</span><span class="p">,</span> <span class="n">sym</span><span class="p">,</span> <span class="n">xyz</span><span class="p">,</span> <span class="n">lattice</span><span class="o">=</span><span class="n">lattice</span><span class="p">,</span> <span class="n">info</span><span class="o">=</span><span class="n">info</span><span class="p">)</span>
+   <span class="k">call </span><span class="n">new</span><span class="p">(</span><span class="n">self</span><span class="p">,</span> <span class="n">sym</span><span class="p">,</span> <span class="n">xyz</span><span class="p">,</span> <span class="n">lattice</span><span class="o">=</span><span class="n">lattice</span><span class="p">,</span> <span class="n">info</span><span class="o">=</span><span class="n">info</span><span class="p">)</span>
+   <span class="k">if</span> <span class="p">(</span><span class="nb">allocated</span><span class="p">(</span><span class="n">comment</span><span class="p">))</span> <span class="n">self</span><span class="p">%</span><span class="n">comment</span> <span class="o">=</span> <span class="n">comment</span>
 
 <span class="k">end subroutine </span><span class="n">read_vasp</span>
 </pre></div>
@@ -529,7 +533,7 @@ public subroutine read_vasp(mol, unit, error)
           <p class="text-right">
             Documentation generated by 
             <a href="https://github.com/cmacmackin/ford">FORD</a>
-             on 2020-11-22 11:43  
+             on 2020-11-26 19:02  
           </p>
         </div>
         <div class="col-xs-12 col-md-4 col-md-pull-4"><p class="text-center"> MCTC-library was developed by Grimme group, Bonn</p></div>

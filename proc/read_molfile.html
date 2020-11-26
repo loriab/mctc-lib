@@ -134,7 +134,7 @@
      <li><i class="fa fa-list-ol"></i>
        <a data-toggle="tooltip"
     data-placement="bottom" data-html="true"
-    title=" 5.2% of total for procedures.">83 statements</a>
+    title=" 5.4% of total for procedures.">87 statements</a>
      </li> 
      
      
@@ -207,7 +207,7 @@
     
     <div class="col-md-9" id='text'>
     <h2>
-public subroutine read_molfile(mol, unit, error)
+public subroutine read_molfile(self, unit, error)
     
     
    
@@ -236,12 +236,12 @@ public subroutine read_molfile(mol, unit, error)
   
 <tr>
   
-  <td><span class="anchor" id="variable-mol~4"></span>type(<a href='../type/structure_type.html'>structure_type</a>),</td>
+  <td><span class="anchor" id="variable-self~7"></span>type(<a href='../type/structure_type.html'>structure_type</a>),</td>
   <td>intent(out)</td>
   <td></td>
   
   <td></td><td>::</td>
-  <td><strong>mol</strong></td><td><p>Instance of the molecular structure data</p></td>
+  <td><strong>self</strong></td><td><p>Instance of the molecular structure data</p></td>
   
 </tr>
 
@@ -342,10 +342,10 @@ public subroutine read_molfile(mol, unit, error)
     
     <section>
     <h2><span class="anchor" id="src"></span>Source Code</h2>
-    <div class="highlight"><pre><span></span><span class="k">subroutine </span><span class="n">read_molfile</span><span class="p">(</span><span class="n">mol</span><span class="p">,</span> <span class="n">unit</span><span class="p">,</span> <span class="n">error</span><span class="p">)</span>
+    <div class="highlight"><pre><span></span><span class="k">subroutine </span><span class="n">read_molfile</span><span class="p">(</span><span class="n">self</span><span class="p">,</span> <span class="n">unit</span><span class="p">,</span> <span class="n">error</span><span class="p">)</span>
 
    <span class="c">!&gt; Instance of the molecular structure data</span>
-   <span class="k">type</span><span class="p">(</span><span class="n">structure_type</span><span class="p">),</span> <span class="k">intent</span><span class="p">(</span><span class="n">out</span><span class="p">)</span> <span class="kd">::</span> <span class="n">mol</span>
+   <span class="k">type</span><span class="p">(</span><span class="n">structure_type</span><span class="p">),</span> <span class="k">intent</span><span class="p">(</span><span class="n">out</span><span class="p">)</span> <span class="kd">::</span> <span class="n">self</span>
 
    <span class="c">!&gt; File handle</span>
    <span class="kt">integer</span><span class="p">,</span> <span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span> <span class="kd">::</span> <span class="n">unit</span>
@@ -354,7 +354,7 @@ public subroutine read_molfile(mol, unit, error)
    <span class="k">type</span><span class="p">(</span><span class="n">error_type</span><span class="p">),</span> <span class="k">allocatable</span><span class="p">,</span> <span class="k">intent</span><span class="p">(</span><span class="n">out</span><span class="p">)</span> <span class="kd">::</span> <span class="n">error</span>
 
    <span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="p">:),</span> <span class="k">allocatable</span> <span class="kd">::</span> <span class="n">line</span>
-   <span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="p">:),</span> <span class="k">allocatable</span> <span class="kd">::</span> <span class="n">name</span>
+   <span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="p">:),</span> <span class="k">allocatable</span> <span class="kd">::</span> <span class="n">comment</span>
    <span class="kt">integer</span> <span class="kd">::</span> <span class="n">i</span><span class="p">,</span> <span class="n">iatom</span><span class="p">,</span> <span class="n">jatom</span><span class="p">,</span> <span class="n">ibond</span><span class="p">,</span> <span class="n">btype</span><span class="p">,</span> <span class="n">atomtype</span>
    <span class="kt">integer</span> <span class="kd">::</span> <span class="nb">stat</span><span class="p">,</span> <span class="n">length</span><span class="p">,</span> <span class="n">charge</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">15</span><span class="p">)</span>
    <span class="kt">integer</span> <span class="kd">::</span> <span class="n">number_of_atoms</span><span class="p">,</span> <span class="n">number_of_bonds</span><span class="p">,</span> <span class="n">number_of_atom_lists</span><span class="p">,</span> <span class="p">&amp;</span>
@@ -370,10 +370,11 @@ public subroutine read_molfile(mol, unit, error)
    <span class="k">type</span><span class="p">(</span><span class="n">sdf_data</span><span class="p">),</span> <span class="k">allocatable</span> <span class="kd">::</span> <span class="n">sdf</span><span class="p">(:)</span>
    <span class="k">type</span><span class="p">(</span><span class="n">structure_info</span><span class="p">)</span> <span class="kd">::</span> <span class="n">info</span>
    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span> <span class="k">allocatable</span> <span class="kd">::</span> <span class="n">xyz</span><span class="p">(:,</span> <span class="p">:)</span>
+   <span class="kt">integer</span><span class="p">,</span> <span class="k">allocatable</span> <span class="kd">::</span> <span class="n">bond</span><span class="p">(:,</span> <span class="p">:)</span>
 
    <span class="n">two_dim</span> <span class="o">=</span> <span class="p">.</span><span class="n">false</span><span class="p">.</span>
 
-   <span class="k">call </span><span class="n">getline</span><span class="p">(</span><span class="n">unit</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="nb">stat</span><span class="p">)</span>
+   <span class="k">call </span><span class="n">getline</span><span class="p">(</span><span class="n">unit</span><span class="p">,</span> <span class="n">comment</span><span class="p">,</span> <span class="nb">stat</span><span class="p">)</span>
    <span class="k">call </span><span class="n">getline</span><span class="p">(</span><span class="n">unit</span><span class="p">,</span> <span class="n">line</span><span class="p">,</span> <span class="nb">stat</span><span class="p">)</span>
    <span class="k">read</span><span class="p">(</span><span class="n">line</span><span class="p">,</span> <span class="s1">&#39;(20x, a2)&#39;</span><span class="p">,</span> <span class="n">iostat</span><span class="o">=</span><span class="nb">stat</span><span class="p">)</span> <span class="n">sdf_dim</span>
    <span class="k">if</span> <span class="p">(</span><span class="nb">stat</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="k">then</span>
@@ -414,7 +415,7 @@ public subroutine read_molfile(mol, unit, error)
       <span class="n">sdf</span><span class="p">(</span><span class="n">iatom</span><span class="p">)%</span><span class="n">valence</span> <span class="o">=</span> <span class="n">list12</span><span class="p">(</span><span class="mi">6</span><span class="p">)</span>
    <span class="k">end do</span>
 
-   <span class="c">!call mol%bonds%allocate(size=number_of_bonds, order=3)</span>
+<span class="k">   allocate</span><span class="p">(</span><span class="n">bond</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="n">number_of_bonds</span><span class="p">))</span>
    <span class="k">do </span><span class="n">ibond</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">number_of_bonds</span>
       <span class="k">call </span><span class="n">getline</span><span class="p">(</span><span class="n">unit</span><span class="p">,</span> <span class="n">line</span><span class="p">,</span> <span class="nb">stat</span><span class="p">)</span>
       <span class="k">read</span><span class="p">(</span><span class="n">line</span><span class="p">,</span> <span class="s1">&#39;(7i3)&#39;</span><span class="p">,</span> <span class="n">iostat</span><span class="o">=</span><span class="nb">stat</span><span class="p">)</span> <span class="p">&amp;</span>
@@ -423,7 +424,7 @@ public subroutine read_molfile(mol, unit, error)
 <span class="k">         call </span><span class="n">fatal_error</span><span class="p">(</span><span class="n">error</span><span class="p">,</span> <span class="s2">&quot;Cannot read topology from connection table&quot;</span><span class="p">)</span>
          <span class="k">return</span>
 <span class="k">      end if</span>
-      <span class="c">!call mol%bonds%push_back([iatom, jatom, btype])</span>
+<span class="k">      </span><span class="n">bond</span><span class="p">(:,</span> <span class="n">ibond</span><span class="p">)</span> <span class="o">=</span> <span class="p">[</span><span class="n">ibond</span><span class="p">,</span> <span class="n">jatom</span><span class="p">,</span> <span class="n">btype</span><span class="p">]</span>
    <span class="k">end do</span>
 
 <span class="k">   do while</span><span class="p">(</span><span class="nb">stat</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span>
@@ -444,9 +445,9 @@ public subroutine read_molfile(mol, unit, error)
 
 <span class="k">   </span><span class="n">info</span> <span class="o">=</span> <span class="n">structure_info</span><span class="p">(</span><span class="n">two_dimensional</span><span class="o">=</span><span class="n">two_dim</span><span class="p">,</span> <span class="p">&amp;</span>
       <span class="p">&amp;</span> <span class="n">missing_hydrogen</span><span class="o">=</span><span class="nb">any</span><span class="p">(</span><span class="n">sdf</span><span class="p">%</span><span class="n">hydrogens</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">))</span>
-   <span class="k">call </span><span class="n">new</span><span class="p">(</span><span class="n">mol</span><span class="p">,</span> <span class="n">sym</span><span class="p">,</span> <span class="n">xyz</span><span class="p">,</span> <span class="n">charge</span><span class="o">=</span><span class="kt">real</span><span class="p">(</span><span class="nb">sum</span><span class="p">(</span><span class="n">sdf</span><span class="p">%</span><span class="n">charge</span><span class="p">),</span> <span class="n">wp</span><span class="p">),</span> <span class="n">info</span><span class="o">=</span><span class="n">info</span><span class="p">)</span>
-   <span class="k">call </span><span class="nb">move_alloc</span><span class="p">(</span><span class="n">sdf</span><span class="p">,</span> <span class="n">mol</span><span class="p">%</span><span class="n">sdf</span><span class="p">)</span>
-   <span class="c">!if (len(name) &gt; 0) mol%name = name</span>
+   <span class="k">call </span><span class="n">new</span><span class="p">(</span><span class="n">self</span><span class="p">,</span> <span class="n">sym</span><span class="p">,</span> <span class="n">xyz</span><span class="p">,</span> <span class="n">charge</span><span class="o">=</span><span class="kt">real</span><span class="p">(</span><span class="nb">sum</span><span class="p">(</span><span class="n">sdf</span><span class="p">%</span><span class="n">charge</span><span class="p">),</span> <span class="n">wp</span><span class="p">),</span> <span class="n">info</span><span class="o">=</span><span class="n">info</span><span class="p">,</span> <span class="n">bond</span><span class="o">=</span><span class="n">bond</span><span class="p">)</span>
+   <span class="k">call </span><span class="nb">move_alloc</span><span class="p">(</span><span class="n">sdf</span><span class="p">,</span> <span class="n">self</span><span class="p">%</span><span class="n">sdf</span><span class="p">)</span>
+   <span class="k">if</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">comment</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span> <span class="n">self</span><span class="p">%</span><span class="n">comment</span> <span class="o">=</span> <span class="n">comment</span>
 
 <span class="k">end subroutine </span><span class="n">read_molfile</span>
 </pre></div>
@@ -470,7 +471,7 @@ public subroutine read_molfile(mol, unit, error)
           <p class="text-right">
             Documentation generated by 
             <a href="https://github.com/cmacmackin/ford">FORD</a>
-             on 2020-11-22 11:43  
+             on 2020-11-26 19:02  
           </p>
         </div>
         <div class="col-xs-12 col-md-4 col-md-pull-4"><p class="text-center"> MCTC-library was developed by Grimme group, Bonn</p></div>

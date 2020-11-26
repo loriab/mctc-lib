@@ -134,7 +134,7 @@
      <li><i class="fa fa-list-ol"></i>
        <a data-toggle="tooltip"
     data-placement="bottom" data-html="true"
-    title=" 2.8% of total for procedures.">45 statements</a>
+    title=" 3.7% of total for procedures.">60 statements</a>
      </li> 
      
      
@@ -236,7 +236,7 @@ public subroutine write_molfile(self, unit, comment_line)
   
 <tr>
   
-  <td><span class="anchor" id="variable-self~6"></span>class(<a href='../type/structure_type.html'>structure_type</a>),</td>
+  <td><span class="anchor" id="variable-self~11"></span>class(<a href='../type/structure_type.html'>structure_type</a>),</td>
   <td>intent(in)</td>
   <td></td>
   
@@ -355,17 +355,20 @@ public subroutine write_molfile(self, unit, comment_line)
 
 <span class="nb">   </span><span class="k">call </span><span class="nb">date_and_time</span><span class="p">(</span><span class="n">date</span><span class="p">,</span> <span class="nb">time</span><span class="p">)</span>
 
-   <span class="k">write</span><span class="p">(</span><span class="n">unit</span><span class="p">,</span> <span class="s1">&#39;(a)&#39;</span><span class="p">)</span>
-   <span class="k">write</span><span class="p">(</span><span class="n">unit</span><span class="p">,</span> <span class="s1">&#39;(2x, 3x, 5x, 3a2, a4, &quot;3D&quot;)&#39;</span><span class="p">)</span> <span class="p">&amp;</span>
-      <span class="p">&amp;</span>  <span class="n">date</span><span class="p">(</span><span class="mi">5</span><span class="p">:</span><span class="mi">6</span><span class="p">),</span> <span class="n">date</span><span class="p">(</span><span class="mi">7</span><span class="p">:</span><span class="mi">8</span><span class="p">),</span> <span class="n">date</span><span class="p">(</span><span class="mi">3</span><span class="p">:</span><span class="mi">4</span><span class="p">),</span> <span class="nb">time</span><span class="p">(:</span><span class="mi">4</span><span class="p">)</span>
    <span class="k">if</span> <span class="p">(</span><span class="nb">present</span><span class="p">(</span><span class="n">comment_line</span><span class="p">))</span> <span class="k">then</span>
 <span class="k">      write</span><span class="p">(</span><span class="n">unit</span><span class="p">,</span> <span class="s1">&#39;(a)&#39;</span><span class="p">)</span> <span class="n">comment_line</span>
    <span class="k">else</span>
-<span class="k">      write</span><span class="p">(</span><span class="n">unit</span><span class="p">,</span> <span class="s1">&#39;(a)&#39;</span><span class="p">)</span>
-   <span class="k">end if</span>
-<span class="k">   write</span><span class="p">(</span><span class="n">unit</span><span class="p">,</span> <span class="s1">&#39;(3i3, 3x, 2i3, 12x, i3, 1x, a5)&#39;</span><span class="p">)</span> <span class="p">&amp;</span>
-      <span class="p">&amp;</span>  <span class="n">self</span><span class="p">%</span><span class="n">nat</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">999</span><span class="p">,</span> <span class="s1">&#39;V2000&#39;</span>
-      <span class="c">!&amp;  len(self), len(self%bonds), 0, 0, 0, 999, &#39;V2000&#39;</span>
+<span class="k">      if</span> <span class="p">(</span><span class="nb">allocated</span><span class="p">(</span><span class="n">self</span><span class="p">%</span><span class="n">comment</span><span class="p">))</span> <span class="k">then</span>
+<span class="k">         write</span><span class="p">(</span><span class="n">unit</span><span class="p">,</span> <span class="s1">&#39;(a)&#39;</span><span class="p">)</span> <span class="n">self</span><span class="p">%</span><span class="n">comment</span>
+      <span class="k">else</span>
+<span class="k">         write</span><span class="p">(</span><span class="n">unit</span><span class="p">,</span> <span class="s1">&#39;(a)&#39;</span><span class="p">)</span>
+      <span class="k">end if</span>
+<span class="k">   end if</span>
+<span class="k">   write</span><span class="p">(</span><span class="n">unit</span><span class="p">,</span> <span class="s1">&#39;(2x, 3x, 5x, 3a2, a4, &quot;3D&quot;)&#39;</span><span class="p">)</span> <span class="p">&amp;</span>
+      <span class="p">&amp;</span>  <span class="n">date</span><span class="p">(</span><span class="mi">5</span><span class="p">:</span><span class="mi">6</span><span class="p">),</span> <span class="n">date</span><span class="p">(</span><span class="mi">7</span><span class="p">:</span><span class="mi">8</span><span class="p">),</span> <span class="n">date</span><span class="p">(</span><span class="mi">3</span><span class="p">:</span><span class="mi">4</span><span class="p">),</span> <span class="nb">time</span><span class="p">(:</span><span class="mi">4</span><span class="p">)</span>
+   <span class="k">write</span><span class="p">(</span><span class="n">unit</span><span class="p">,</span> <span class="s1">&#39;(a)&#39;</span><span class="p">)</span>
+   <span class="k">write</span><span class="p">(</span><span class="n">unit</span><span class="p">,</span> <span class="s1">&#39;(3i3, 3x, 2i3, 12x, i3, 1x, a5)&#39;</span><span class="p">)</span> <span class="p">&amp;</span>
+      <span class="p">&amp;</span>  <span class="n">self</span><span class="p">%</span><span class="n">nat</span><span class="p">,</span> <span class="n">self</span><span class="p">%</span><span class="n">nbd</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">999</span><span class="p">,</span> <span class="s1">&#39;V2000&#39;</span>
 
    <span class="n">has_sdf_data</span> <span class="o">=</span> <span class="nb">allocated</span><span class="p">(</span><span class="n">self</span><span class="p">%</span><span class="n">sdf</span><span class="p">)</span>
 
@@ -380,13 +383,19 @@ public subroutine write_molfile(self, unit, comment_line)
          <span class="p">&amp;</span> <span class="n">self</span><span class="p">%</span><span class="n">xyz</span><span class="p">(:,</span> <span class="n">iatom</span><span class="p">)</span><span class="o">*</span><span class="n">autoaa</span><span class="p">,</span> <span class="n">self</span><span class="p">%</span><span class="n">sym</span><span class="p">(</span><span class="n">self</span><span class="p">%</span><span class="n">id</span><span class="p">(</span><span class="n">iatom</span><span class="p">)),</span> <span class="n">list12</span>
    <span class="n">enddo</span>
 
-<span class="c">!   do ibond = 1, len(self%bonds)</span>
-<span class="c">!      call self%bonds%get_item(ibond, iatoms)</span>
-<span class="c">!      write(unit, &#39;(7i3)&#39;) &amp;</span>
-<span class="c">!         &amp; iatoms, list4</span>
-<span class="c">!   enddo</span>
+   <span class="k">if</span> <span class="p">(</span><span class="n">self</span><span class="p">%</span><span class="n">nbd</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span> <span class="k">then</span>
+<span class="k">      if</span> <span class="p">(</span><span class="n">size</span><span class="p">(</span><span class="n">self</span><span class="p">%</span><span class="n">bond</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">2</span><span class="p">)</span> <span class="k">then</span>
+<span class="k">         do </span><span class="n">ibond</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">self</span><span class="p">%</span><span class="n">nbd</span>
+            <span class="k">write</span><span class="p">(</span><span class="n">unit</span><span class="p">,</span> <span class="s1">&#39;(7i3)&#39;</span><span class="p">)</span> <span class="n">self</span><span class="p">%</span><span class="n">bond</span><span class="p">(:</span><span class="mi">3</span><span class="p">,</span> <span class="n">ibond</span><span class="p">),</span> <span class="n">list4</span>
+         <span class="k">end do</span>
+<span class="k">      else</span>
+<span class="k">         do </span><span class="n">ibond</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">self</span><span class="p">%</span><span class="n">nbd</span>
+            <span class="k">write</span><span class="p">(</span><span class="n">unit</span><span class="p">,</span> <span class="s1">&#39;(7i3)&#39;</span><span class="p">)</span> <span class="n">self</span><span class="p">%</span><span class="n">bond</span><span class="p">(:</span><span class="mi">2</span><span class="p">,</span> <span class="n">ibond</span><span class="p">),</span> <span class="mi">1</span><span class="p">,</span> <span class="n">list4</span>
+         <span class="k">end do</span>
+<span class="k">      end if</span>
+<span class="k">   end if</span>
 
-   <span class="k">if</span> <span class="p">(</span><span class="n">has_sdf_data</span><span class="p">)</span> <span class="k">then</span>
+<span class="k">   if</span> <span class="p">(</span><span class="n">has_sdf_data</span><span class="p">)</span> <span class="k">then</span>
 <span class="k">      if</span> <span class="p">(</span><span class="nb">sum</span><span class="p">(</span><span class="n">self</span><span class="p">%</span><span class="n">sdf</span><span class="p">%</span><span class="n">charge</span><span class="p">)</span> <span class="o">/=</span> <span class="nb">nint</span><span class="p">(</span><span class="n">self</span><span class="p">%</span><span class="n">charge</span><span class="p">))</span> <span class="k">then</span>
 <span class="k">         write</span><span class="p">(</span><span class="n">unit</span><span class="p">,</span> <span class="s1">&#39;(a, *(i3, 1x, i3, 1x, i3))&#39;</span><span class="p">)</span> <span class="s2">&quot;M  CHG&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="nb">nint</span><span class="p">(</span><span class="n">self</span><span class="p">%</span><span class="n">charge</span><span class="p">)</span>
       <span class="k">else</span>
@@ -427,7 +436,7 @@ public subroutine write_molfile(self, unit, comment_line)
           <p class="text-right">
             Documentation generated by 
             <a href="https://github.com/cmacmackin/ford">FORD</a>
-             on 2020-11-22 11:43  
+             on 2020-11-26 19:02  
           </p>
         </div>
         <div class="col-xs-12 col-md-4 col-md-pull-4"><p class="text-center"> MCTC-library was developed by Grimme group, Bonn</p></div>
