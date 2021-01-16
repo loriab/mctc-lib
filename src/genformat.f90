@@ -12,146 +12,67 @@
 ! See the License for the specific language governing permissions and
 ! limitations under the License.
 
-module mctc_io_read_genformat
+module mctc_io_write_genformat
    use mctc_env_accuracy, only : wp
-   use mctc_env_error, only : error_type, fatal_error
-   use mctc_io_convert, only : aatoau
-   use mctc_io_structure, only : structure_type, new
-   use mctc_io_structure_info, only : structure_info
-   use mctc_io_symbols, only : to_number, symbol_length
-   use mctc_io_utils, only : getline
+   use mctc_io_convert, only : autoaa
+   use mctc_io_math, only : matinv_3x3
+   use mctc_io_symbols, only : to_symbol
+   use mctc_io_structure, only : structure_type
    implicit none
    private
 
-   public :: read_genformat
+   public :: write_genformat
 
 
 contains
 
 
-subroutine read_genformat(mol, unit, error)
+subroutine write_genformat(mol, unit)
+   class(structure_type), intent(in) :: mol
+   integer, intent(in) :: unit
+   integer :: iat, izp
+   real(wp), parameter :: zero3(3) = 0.0_wp
+   real(wp), allocatable :: inv_lat(:, :)
+   real(wp), allocatable :: abc(:, :)
 
-   !> Instance of the molecular structure data
-   type(structure_type),intent(out) :: mol
-
-   !> File handle
-   integer,intent(in) :: unit
-
-   !> Error handling
-   type(error_type), allocatable, intent(out) :: error
-
-   character(len=:), allocatable :: line
-   integer :: natoms, nspecies, iatom, dummy, isp, ilat, stat, istart, iend
-   logical :: cartesian, periodic
-   real(wp) :: coord(3), lattice(3, 3)
-   character(len=1) :: variant
-   character(len=symbol_length), allocatable :: species(:), sym(:)
-   real(wp), allocatable :: xyz(:, :), abc(:, :)
-   type(structure_info) :: info
-
-   call next_line(unit, line, stat)
-   read(line, *, iostat=stat) natoms, variant
-   if (stat /= 0 .or. natoms < 1) then
-      call fatal_error(error, 'could not read number of atoms')
-      return
-   end if
-
-   allocate(species(natoms))
-   allocate(sym(natoms))
-   allocate(xyz(3, natoms))
-   allocate(abc(3, natoms))
-
-   select case(variant)
-   case('c', 'C')
-      cartesian = .true.
-      periodic = .false.
-   case('s', 'S')
-      cartesian = .true.
-      periodic = .true.
-   case('f', 'F')
-      cartesian = .false.
-      periodic = .true.
-   case default
-      call fatal_error(error, 'invalid input version')
-      return
-   endselect
-
-   call next_line(unit, line, stat)
-   istart = 1
-   iend = 1
-   isp = 0
-   do while(iend < len_trim(line))
-      istart = verify(line(iend:), ' ') - 1 + iend
-      iend = scan(line(istart:), ' ') - 1 + istart
-      if (iend < istart) iend = len_trim(line)
-      isp = isp + 1
-      species(isp) = trim(line(istart:iend))
-   end do
-   nspecies = isp
-   if (any(to_number(species(:nspecies)) == 0)) then
-      call fatal_error(error, 'unknown atom type present')
-      return
-   end if
-
-   do iatom = 1, natoms
-      call next_line(unit, line, stat)
-      read(line, *, iostat=stat) dummy, isp, coord
-      if (stat /= 0) then
-         call fatal_error(error, 'could not read coordinates from file')
-         return
-      end if
-      sym(iatom) = species(isp)
-      if (cartesian) then
-         xyz(:, iatom) = coord * aatoau
-      else
-         abc(:, iatom) = coord
-      end if
-   end do
-
-   if (periodic) then
-      call next_line(unit, line, stat)
-      if (stat /= 0) then
-         call fatal_error(error, 'missing lattice information')
-         return
-      end if
-      do ilat = 1, 3
-         call next_line(unit, line, stat)
-         read(line, *, iostat=stat) coord
-         if (stat /= 0) then
-            call fatal_error(error, 'could not read lattice from file')
-            return
-         end if
-         lattice(:, ilat) = coord * aatoau
-      end do
-      if (.not.cartesian) then
-         xyz = matmul(lattice, abc)
-      end if
-      info = structure_info(cartesian=cartesian)
-      call new(mol, sym, xyz, lattice=lattice, info=info)
+   write(unit, '(i0, 1x)', advance='no') mol%nat
+   if (.not.any(mol%periodic)) then
+      write(unit, '("C")') ! cluster
    else
-      call new(mol, sym, xyz)
-   end if
+      if (mol%info%cartesian) then
+         write(unit, '("S")') ! supercell
+      else
+         write(unit, '("F")') ! fractional
+      endif
+   endif
+
+   do izp = 1, mol%nid
+      write(unit, '(1x, a)', advance='no') trim(mol%sym(izp))
+   enddo
+   write(unit, '(a)')
+
+   if (.not.any(mol%periodic) .or. mol%info%cartesian) then
+      ! now write the cartesian coordinates
+      do iat = 1, mol%nat
+         write(unit, '(2i5, 3es24.14)') iat, mol%id(iat), mol%xyz(:, iat)*autoaa
+      enddo
+   else
+      inv_lat = matinv_3x3(mol%lattice)
+      abc = matmul(inv_lat, mol%xyz)
+      ! now write the fractional coordinates
+      do iat = 1, mol%nat
+         write(unit, '(2i5, 3es24.15)') iat, mol%id(iat), abc(:, iat)
+      enddo
+   endif
+
+   if (any(mol%periodic)) then
+      ! scaling factor for lattice parameters is always one
+      write(unit, '(3f20.14)') zero3
+      ! write the lattice parameters
+      write(unit, '(3f20.14)') mol%lattice(:, :)*autoaa
+   endif
+
+end subroutine write_genformat
 
 
-contains
-
-subroutine next_line(unit, line, stat)
-   integer,intent(in) :: unit
-   character(len=:), allocatable, intent(out) :: line
-   integer, intent(out) :: stat
-   integer :: ihash
-
-   stat = 0
-   do while(stat == 0)
-      call getline(unit, line, stat)
-      ihash = index(line, '#')
-      if (ihash > 0) line = line(:ihash-1)
-      if (len_trim(line) > 0) exit
-   end do
-   line = trim(adjustl(line))
-end subroutine next_line
-
-end subroutine read_genformat
-
-
-end module mctc_io_read_genformat
+end module mctc_io_write_genformat

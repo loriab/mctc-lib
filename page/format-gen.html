@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+   
+   <meta name="description" content="Modular computation tool chain library">
+    
+    <meta name="author" content="Grimme group, Bonn" >
+    <link rel="icon" href="../favicon.png">
+
+    <title>DFTB+ general format &ndash; MCTC-library</title>
+
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    <link href="../css/pygments.css" rel="stylesheet">
+    <link href="../css/font-awesome.min.css" rel="stylesheet">
+    <link href="../css/local.css" rel="stylesheet">
+    
+    <link  href="../tipuesearch/tipuesearch.css" rel="stylesheet">
+    
+    
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    
+    <script src="../js/jquery-2.1.3.min.js"></script>
+    <script src="../js/svg-pan-zoom.min.js"></script>
+
+  </head>
+
+  <body>
+
+    <!-- Fixed navbar -->
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="../index.html">MCTC-library </a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+        
+            <li><a href='../page/index.html'>Supported formats</a></li>
+      
+            <li class="dropdown hidden-xs visible-sm visible-md hidden-lg">
+              <a href="#" class="dropdown-toggle"
+              data-toggle="dropdown" role="button"
+              aria-haspopup="true"
+     aria-expanded="false">Contents <span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          
+              
+            <li><a href="../lists/files.html">Source Files</a></li>
+        
+        
+        
+            <li><a href="../lists/modules.html">Modules</a></li>
+        
+            
+                                
+            <li><a href="../lists/procedures.html">Procedures</a></li>
+        
+        
+            <li><a href="../lists/absint.html">Abstract Interfaces</a></li>
+               
+            <li><a href="../lists/types.html">Derived Types</a></li>
+        
+        
+            <li><a href="../program/main.html">Program</a></li>
+      
+            </ul>
+            </li>
+
+
+<li class="visible-xs hidden-sm visible-lg"><a href="../lists/files.html">Source Files</a></li>
+
+
+
+<li class="visible-xs hidden-sm visible-lg"><a href="../lists/modules.html">Modules</a></li>
+
+
+
+<li class="visible-xs hidden-sm visible-lg"><a href="../lists/procedures.html">Procedures</a></li>
+
+
+<li class="visible-xs hidden-sm visible-lg"><a href="../lists/absint.html">Abstract Interfaces</a></li>
+                             
+<li class="visible-xs hidden-sm visible-lg"><a href="../lists/types.html">Derived Types</a></li>
+
+
+<li class="visible-xs hidden-sm visible-lg"><a href="../program/main.html">Program</a></li>
+
+          </ul>
+        
+        <form action="../search.html" class="navbar-form navbar-right" role="search">
+        <div class="form-group">
+          <input type="text" class="form-control" placeholder="Search" name="q" id="tipue_search_input" autocomplete="off" required>
+        </div>
+<!--
+        <button type="submit" class="btn btn-default">Submit</button>
+-->
+        </form>
+        
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
+
+    <div class="container">
+    
+  <div class="row">
+    <h1>DFTB+ general format</h1>
+    <div class="row">
+    <div class="col-lg-12">
+    <div class="well well-sm" style="min-height: 40px;">
+      <ul class="list-inline" style="margin-bottom:0px; display:inline">
+         
+         
+<!--
+        
+-->
+      </ul>
+        <ol class="breadcrumb in-well">
+      
+         <li><a href='../page/index.html'>Supported formats</a></li>
+      
+         <li class="active">DFTB+ general format</li>
+      </ol>
+    </div>
+    </div>
+    </div>
+  </div>
+  
+  <div class="row">
+    <div class="col-md-9 col-md-push-3" id='text'>
+      <h2 id="specification">Specification</h2>
+<p></p><div class="alert alert-info" role="alert"><h4>Note</h4><p><a href="https://dftbplus.org/fileadmin/DFTBPLUS/public/dftbplus/latest/manual.pdf">Reference</a></p></div>
+<p>The general (gen) format is used for DFTB+ as geometry input format.
+It is based on the <a href="./format-xyz.html">xyz format</a>.</p>
+<p>The first line contains the number of atoms and the specific kind of provided
+geometry.
+Available types are cluster (<code>C</code>), supercell (<code>S</code>), fractional (<code>F</code>),
+and helical (<code>H</code>), the letter defining the format is case-insensitive.</p>
+<p>The second line gives the element symbols for each group of atoms separated by
+spaces, the groups are indexed starting from 1 and references in the specification
+of the atomic coordinates by this index rather than their element symbol.</p>
+<p>The following lines are specified as two integers and three reals separated by
+spaces. The first integer is currently ignored. The second integer references
+the the element symbol in the second line.
+The atomic coordinates are given in Ångström for cluster, supercell and helical,
+while they are given as fraction of the lattice vector for fractional input types.</p>
+<p>For supercell and fractional input the next lines contains three reals containing
+the origin of the stucture, followed by three lines of each three reals for the
+lattice vectors.</p>
+<p>Lines starting with the <code>#</code> are comments and are ignored while parsing.</p>
+<p>The format is identified by the extension <code>gen</code>.</p>
+<h2 id="example">Example</h2>
+<p>Caffeine molecule in genFormat:</p>
+<div class="codehilite"><pre><span></span><code>24 C
+ C N O H
+    1    1    1.07317000000000E+00    4.88500000000000E-02   -7.57300000000000E-02
+    2    2    2.51365000000000E+00    1.25600000000000E-02   -7.58000000000000E-02
+    3    1    3.35199000000000E+00    1.09592000000000E+00   -7.53300000000000E-02
+    4    2    4.61898000000000E+00    7.30280000000000E-01   -7.54900000000000E-02
+    5    1    4.57907000000000E+00   -6.31440000000000E-01   -7.53100000000000E-02
+    6    1    3.30131000000000E+00   -1.10256000000000E+00   -7.52400000000000E-02
+    7    1    2.98068000000000E+00   -2.48687000000000E+00   -7.37700000000000E-02
+    8    3    1.82530000000000E+00   -2.90038000000000E+00   -7.57700000000000E-02
+    9    2    4.11440000000000E+00   -3.30433000000000E+00   -6.93600000000000E-02
+   10    1    5.45174000000000E+00   -2.85618000000000E+00   -7.23500000000000E-02
+   11    3    6.38934000000000E+00   -3.65965000000000E+00   -7.23200000000000E-02
+   12    2    5.66240000000000E+00   -1.47682000000000E+00   -7.48700000000000E-02
+   13    1    7.00947000000000E+00   -9.36480000000000E-01   -7.52400000000000E-02
+   14    1    3.92063000000000E+00   -4.74093000000000E+00   -6.15800000000000E-02
+   15    4    7.33980000000000E-01    1.08786000000000E+00   -7.50300000000000E-02
+   16    4    7.12390000000000E-01   -4.56980000000000E-01    8.23350000000000E-01
+   17    4    7.12400000000000E-01   -4.55800000000000E-01   -9.75490000000000E-01
+   18    4    2.99301000000000E+00    2.11762000000000E+00   -7.47800000000000E-02
+   19    4    7.76531000000000E+00   -1.72634000000000E+00   -7.59100000000000E-02
+   20    4    7.14864000000000E+00   -3.21820000000000E-01    8.19690000000000E-01
+   21    4    7.14802000000000E+00   -3.20760000000000E-01   -9.69530000000000E-01
+   22    4    2.86501000000000E+00   -5.02316000000000E+00   -5.83300000000000E-02
+   23    4    4.40233000000000E+00   -5.15920000000000E+00    8.28370000000000E-01
+   24    4    4.40017000000000E+00   -5.16929000000000E+00   -9.47800000000000E-01
+</code></pre></div>
+
+<p>Ammonia molecular crystal:</p>
+<div class="codehilite"><pre><span></span><code>16 S
+ H N
+    1    1    2.19855889440000E+00    1.76390058240000E+00    8.80145481600000E-01
+    2    1    1.76390058240000E+00    8.80145481600000E-01    2.19855889440000E+00
+    3    1    8.80145481600000E-01    2.19855889440000E+00    1.76390058240000E+00
+    4    1    4.84115108400000E+00    1.61941554720000E+00    4.93981400880000E+00
+    5    1    4.35630903840000E+00    2.49981169680000E+00    3.63248012160000E+00
+    6    1    3.51957925440000E+00    1.15357413600000E+00    4.08403345680000E+00
+    7    1    4.08403345680000E+00    3.51957925440000E+00    1.15357413600000E+00
+    8    1    4.93981400880000E+00    4.84115108400000E+00    1.61941554720000E+00
+    9    1    3.63248012160000E+00    4.35630903840000E+00    2.49981169680000E+00
+   10    1    2.49981169680000E+00    3.63248012160000E+00    4.35630903840000E+00
+   11    1    1.15357413600000E+00    4.08403345680000E+00    3.51957925440000E+00
+   12    1    1.61941554720000E+00    4.93981400880000E+00    4.84115108400000E+00
+   13    2    1.37461317840000E+00    1.37461317840000E+00    1.37461317840000E+00
+   14    2    3.99815460000000E+00    1.99105592400000E+00    4.46364507600000E+00
+   15    2    4.46364507600000E+00    3.99815460000000E+00    1.99105592400000E+00
+   16    2    1.99105592400000E+00    4.46364507600000E+00    3.99815460000000E+00
+    0.00000000000000    0.00000000000000    0.00000000000000
+    5.01336000000000    0.00000000000000    0.00000000000000
+    0.00000000000000    5.01336000000000    0.00000000000000
+    0.00000000000000    0.00000000000000    5.01336000000000
+</code></pre></div>
+
+<h2 id="extensions">Extensions</h2>
+<p>No extension implemented to the original format.</p>
+<h2 id="missing-features">Missing Features</h2>
+<p>The following features are currently not supported:</p>
+<ul>
+<li>Helical boundary conditions</li>
+</ul>
+<p></p><div class="alert alert-info" role="alert"><h4>Note</h4><p>Feel free to contribute support for missing features
+      or bring missing features to our attention by opening an issue.</p></div>
+    </div>
+    
+    <div class="col-md-3 col-md-pull-9">
+      <hr class="visible-xs visible-sm">
+        <div class="well toc">
+          <ul class="nav nav-stacked nav-pills">
+            <li role="presentation" class="title"><a href='../page/index.html'>Supported formats</a></li>
+          </ul>
+          <hr>
+          <ul class="nav nav-stacked nav-pills">
+            
+            <li role="presentation">
+            <a href='../page/./format-ctfile.html'>Connection table format</a>
+            
+            </li>
+            
+            <li role="presentation">
+            <a href='../page/./format-ein.html'>Gaussian external format</a>
+            
+            </li>
+            
+            <li role="presentation" class="disabled">
+            <a href='../page/./format-gen.html'>DFTB+ general format</a>
+            
+            </li>
+            
+            <li role="presentation">
+            <a href='../page/./format-pdb.html'>Protein data bank (PDB) format</a>
+            
+            </li>
+            
+            <li role="presentation">
+            <a href='../page/./format-tmol.html'>Turbomole's coordinate data group</a>
+            
+            </li>
+            
+            <li role="presentation">
+            <a href='../page/./format-vasp.html'>Vasp's POSCAR format</a>
+            
+            </li>
+            
+            <li role="presentation">
+            <a href='../page/./format-xyz.html'>xyz format</a>
+            
+            </li>
+            
+          </ul>
+        </div>
+    </div>
+    
+  </div>
+
+    <hr>    
+    </div> <!-- /container -->
+    <footer>
+      <div class="container">
+      <div class="row">
+        <div class="col-xs-6 col-md-4"><p>&copy; 2021 
+                                          </p></div>
+        <div class="col-xs-6 col-md-4 col-md-push-4">
+          <p class="text-right">
+            Documentation generated by 
+            <a href="https://github.com/cmacmackin/ford">FORD</a>
+             on 2021-01-15 23:59  
+          </p>
+        </div>
+        <div class="col-xs-12 col-md-4 col-md-pull-4"><p class="text-center"> MCTC-library was developed by Grimme group, Bonn</p></div>
+      </div>
+      <br>
+      </div> <!-- /container -->    
+    </footer>
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+<!--
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+-->
+    <script src="../js/bootstrap.min.js"></script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="../js/ie10-viewport-bug-workaround.js"></script>
+
+    <!-- MathJax JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } },
+        jax: ['input/TeX','input/MathML','output/HTML-CSS'],
+        extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']
+      });
+    </script>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    
+    <script src="../tipuesearch/tipuesearch_content.js"></script>
+    <script src="../tipuesearch/tipuesearch_set.js"></script>
+    <script src="../tipuesearch/tipuesearch.js"></script>
+    
+    
+  </body>
+</html>

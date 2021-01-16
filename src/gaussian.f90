@@ -12,75 +12,29 @@
 ! See the License for the specific language governing permissions and
 ! limitations under the License.
 
-module mctc_io_read_gaussian
+module mctc_io_write_gaussian
    use mctc_env_accuracy, only : wp
-   use mctc_env_error, only : error_type, fatal_error
-   use mctc_io_structure, only : structure_type, new
+   use mctc_io_structure, only : structure_type
    implicit none
    private
 
-   public :: read_gaussian_external
+   public :: write_gaussian_external
 
 
 contains
 
 
-subroutine read_gaussian_external(self, unit, error)
-
-   !> Instance of the molecular structure data
-   type(structure_type), intent(out) :: self
-
-   !> File handle
+subroutine write_gaussian_external(mol, unit)
+   type(structure_type), intent(in) :: mol
    integer, intent(in) :: unit
+   integer :: iat
 
-   !> Error handling
-   type(error_type), allocatable, intent(out) :: error
-
-   integer :: stat, n, mode, chrg, spin, iat, ii
-   integer, allocatable :: at(:)
-   real(wp), allocatable :: xyz(:,:)
-   real(wp) :: coord(3), q
-
-   read(unit, '(4i10)', iostat=stat) n, mode, chrg, spin
-   if (stat.ne.0) then
-      call fatal_error(error, "Could not read number of atoms, check format!")
-      return
-   end if
-
-   if (n <= 0) then
-      call fatal_error(error, "Found no atoms, cannot work without atoms!")
-      return
-   end if
-
-   allocate(xyz(3, n))
-   allocate(at(n))
-
-   ii = 0
-   do while (ii < n)
-      read(unit, '(i10, 4f20.12)', iostat=stat) iat, coord, q
-      if (is_iostat_end(stat)) exit
-      if (stat.ne.0) then
-         call fatal_error(error, "Could not read geometry from Gaussian file")
-         return
-      end if
-      if (iat > 0) then
-         ii = ii+1
-         at(ii) = iat
-         xyz(:, ii) = coord
-      else
-         call fatal_error(error, "Invalid atomic number")
-         return
-      end if
+   write(unit, '(4i10)') mol%nat, 1, nint(mol%charge), mol%uhf
+   do iat = 1, mol%nat
+      write(unit, '(i10,4f20.12)') mol%num(mol%id(iat)), mol%xyz(:, iat), 0.0_wp
    end do
 
-   call new(self, at, xyz, charge=real(chrg, wp), uhf=spin)
-
-   if (ii /= n) then
-      call fatal_error(error, "Atom number missmatch in Gaussian file")
-      return
-   end if
-
-end subroutine read_gaussian_external
+end subroutine write_gaussian_external
 
 
-end module mctc_io_read_gaussian
+end module mctc_io_write_gaussian

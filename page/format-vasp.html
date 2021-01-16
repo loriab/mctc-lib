@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+   
+   <meta name="description" content="Modular computation tool chain library">
+    
+    <meta name="author" content="Grimme group, Bonn" >
+    <link rel="icon" href="../favicon.png">
+
+    <title>Vasp's POSCAR format &ndash; MCTC-library</title>
+
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    <link href="../css/pygments.css" rel="stylesheet">
+    <link href="../css/font-awesome.min.css" rel="stylesheet">
+    <link href="../css/local.css" rel="stylesheet">
+    
+    <link  href="../tipuesearch/tipuesearch.css" rel="stylesheet">
+    
+    
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    
+    <script src="../js/jquery-2.1.3.min.js"></script>
+    <script src="../js/svg-pan-zoom.min.js"></script>
+
+  </head>
+
+  <body>
+
+    <!-- Fixed navbar -->
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="../index.html">MCTC-library </a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+        
+            <li><a href='../page/index.html'>Supported formats</a></li>
+      
+            <li class="dropdown hidden-xs visible-sm visible-md hidden-lg">
+              <a href="#" class="dropdown-toggle"
+              data-toggle="dropdown" role="button"
+              aria-haspopup="true"
+     aria-expanded="false">Contents <span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          
+              
+            <li><a href="../lists/files.html">Source Files</a></li>
+        
+        
+        
+            <li><a href="../lists/modules.html">Modules</a></li>
+        
+            
+                                
+            <li><a href="../lists/procedures.html">Procedures</a></li>
+        
+        
+            <li><a href="../lists/absint.html">Abstract Interfaces</a></li>
+               
+            <li><a href="../lists/types.html">Derived Types</a></li>
+        
+        
+            <li><a href="../program/main.html">Program</a></li>
+      
+            </ul>
+            </li>
+
+
+<li class="visible-xs hidden-sm visible-lg"><a href="../lists/files.html">Source Files</a></li>
+
+
+
+<li class="visible-xs hidden-sm visible-lg"><a href="../lists/modules.html">Modules</a></li>
+
+
+
+<li class="visible-xs hidden-sm visible-lg"><a href="../lists/procedures.html">Procedures</a></li>
+
+
+<li class="visible-xs hidden-sm visible-lg"><a href="../lists/absint.html">Abstract Interfaces</a></li>
+                             
+<li class="visible-xs hidden-sm visible-lg"><a href="../lists/types.html">Derived Types</a></li>
+
+
+<li class="visible-xs hidden-sm visible-lg"><a href="../program/main.html">Program</a></li>
+
+          </ul>
+        
+        <form action="../search.html" class="navbar-form navbar-right" role="search">
+        <div class="form-group">
+          <input type="text" class="form-control" placeholder="Search" name="q" id="tipue_search_input" autocomplete="off" required>
+        </div>
+<!--
+        <button type="submit" class="btn btn-default">Submit</button>
+-->
+        </form>
+        
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
+
+    <div class="container">
+    
+  <div class="row">
+    <h1>Vasp's POSCAR format</h1>
+    <div class="row">
+    <div class="col-lg-12">
+    <div class="well well-sm" style="min-height: 40px;">
+      <ul class="list-inline" style="margin-bottom:0px; display:inline">
+         
+         
+<!--
+        
+-->
+      </ul>
+        <ol class="breadcrumb in-well">
+      
+         <li><a href='../page/index.html'>Supported formats</a></li>
+      
+         <li class="active">Vasp's POSCAR format</li>
+      </ol>
+    </div>
+    </div>
+    </div>
+  </div>
+  
+  <div class="row">
+    <div class="col-md-9 col-md-push-3" id='text'>
+      <p></p><div class="alert alert-info" role="alert"><h4>Note</h4><p><a href="https://www.vasp.at/wiki/index.php/POSCAR">Reference</a></p></div>
+<p>The format is identified by the extension <code>vasp</code>, <code>poscar</code> or <code>contcar</code>.
+Alternatively, the basenames <code>poscar</code> and <code>contcar</code> identify the format as well.</p>
+<h2 id="examples">Examples</h2>
+<p>Ammonia molecular crystal in pre Vasp 5 POSCAR format:</p>
+<div class="codehilite"><pre><span></span><code> H  N 
+ 1.0000000000000000
+     5.0133599999999996    0.0000000000000000    0.0000000000000000
+     0.0000000000000000    5.0133599999999996    0.0000000000000000
+     0.0000000000000000    0.0000000000000000    5.0133599999999996
+  12   4
+Cartesian
+  2.1985588943999996  1.7639005823999998  0.8801454815999999
+  1.7639005823999998  0.8801454815999999  2.1985588943999996
+  0.8801454815999999  2.1985588943999996  1.7639005823999998
+  4.8411510839999998  1.6194155471999998  4.9398140088000000
+  4.3563090384000001  2.4998116967999997  3.6324801215999996
+  3.5195792543999995  1.1535741359999998  4.0840334567999994
+  4.0840334567999994  3.5195792543999995  1.1535741359999998
+  4.9398140088000000  4.8411510839999998  1.6194155471999998
+  3.6324801215999996  4.3563090384000001  2.4998116967999997
+  2.4998116967999997  3.6324801215999996  4.3563090384000001
+  1.1535741359999998  4.0840334567999994  3.5195792543999995
+  1.6194155471999998  4.9398140088000000  4.8411510839999998
+  1.3746131783999997  1.3746131783999997  1.3746131783999997
+  3.9981545999999994  1.9910559239999999  4.4636450759999997
+  4.4636450759999997  3.9981545999999994  1.9910559239999999
+  1.9910559239999999  4.4636450759999997  3.9981545999999994
+</code></pre></div>
+
+<p>Carbondioxide in POSCAR format:</p>
+<div class="codehilite"><pre><span></span><code>4CO2
+    1.00000000000000
+    5.68032000000000    0.00000000000000    0.00000000000000
+    0.00000000000000    5.68032000000000    0.00000000000000
+    0.00000000000000    0.00000000000000    5.68032000000000
+ C    O   
+ 4 8
+Cartesian
+    0.94412598720000    0.94378516800000    0.95435056320000
+    3.71799665280000    0.95565703680000    3.73168622400000
+    3.71595173760000    3.71492928000000    0.96923300160000
+    0.95298728640000    3.72208648320000    3.72969811200000
+    1.62139054080000    1.61906160960000    1.63138790400000
+    0.26566856640000    0.26941757760000    0.27765404160000
+    4.39145539200000    1.63462568640000    3.05459208000000
+    3.04408348800000    0.27646117440000    4.40804192640000
+    4.39105776960000    3.04164095040000    0.28810583040000
+    3.03999365760000    4.38793359360000    1.64973533760000
+    0.27413224320000    4.40037349440000    3.05737543680000
+    1.63121749440000    3.04345865280000    4.40230480320000
+</code></pre></div>
+
+<h2 id="extensions">Extensions</h2>
+<p>No extension implemented to the original format.</p>
+<h2 id="missing-features">Missing Features</h2>
+<p>The implementation of this format is (to our knowledge) feature-complete.</p>
+<p></p><div class="alert alert-info" role="alert"><h4>Note</h4><p>Feel free to bring missing features to our attention by opening an issue.</p></div>
+    </div>
+    
+    <div class="col-md-3 col-md-pull-9">
+      <hr class="visible-xs visible-sm">
+        <div class="well toc">
+          <ul class="nav nav-stacked nav-pills">
+            <li role="presentation" class="title"><a href='../page/index.html'>Supported formats</a></li>
+          </ul>
+          <hr>
+          <ul class="nav nav-stacked nav-pills">
+            
+            <li role="presentation">
+            <a href='../page/./format-ctfile.html'>Connection table format</a>
+            
+            </li>
+            
+            <li role="presentation">
+            <a href='../page/./format-ein.html'>Gaussian external format</a>
+            
+            </li>
+            
+            <li role="presentation">
+            <a href='../page/./format-gen.html'>DFTB+ general format</a>
+            
+            </li>
+            
+            <li role="presentation">
+            <a href='../page/./format-pdb.html'>Protein data bank (PDB) format</a>
+            
+            </li>
+            
+            <li role="presentation">
+            <a href='../page/./format-tmol.html'>Turbomole's coordinate data group</a>
+            
+            </li>
+            
+            <li role="presentation" class="disabled">
+            <a href='../page/./format-vasp.html'>Vasp's POSCAR format</a>
+            
+            </li>
+            
+            <li role="presentation">
+            <a href='../page/./format-xyz.html'>xyz format</a>
+            
+            </li>
+            
+          </ul>
+        </div>
+    </div>
+    
+  </div>
+
+    <hr>    
+    </div> <!-- /container -->
+    <footer>
+      <div class="container">
+      <div class="row">
+        <div class="col-xs-6 col-md-4"><p>&copy; 2021 
+                                          </p></div>
+        <div class="col-xs-6 col-md-4 col-md-push-4">
+          <p class="text-right">
+            Documentation generated by 
+            <a href="https://github.com/cmacmackin/ford">FORD</a>
+             on 2021-01-15 23:59  
+          </p>
+        </div>
+        <div class="col-xs-12 col-md-4 col-md-pull-4"><p class="text-center"> MCTC-library was developed by Grimme group, Bonn</p></div>
+      </div>
+      <br>
+      </div> <!-- /container -->    
+    </footer>
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+<!--
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+-->
+    <script src="../js/bootstrap.min.js"></script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="../js/ie10-viewport-bug-workaround.js"></script>
+
+    <!-- MathJax JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } },
+        jax: ['input/TeX','input/MathML','output/HTML-CSS'],
+        extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']
+      });
+    </script>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    
+    <script src="../tipuesearch/tipuesearch_content.js"></script>
+    <script src="../tipuesearch/tipuesearch_set.js"></script>
+    <script src="../tipuesearch/tipuesearch.js"></script>
+    
+    
+  </body>
+</html>

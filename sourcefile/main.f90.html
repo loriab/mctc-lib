@@ -49,6 +49,8 @@
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
         
+            <li><a href='../page/index.html'>Supported formats</a></li>
+      
             <li class="dropdown hidden-xs visible-sm visible-md hidden-lg">
               <a href="#" class="dropdown-toggle"
               data-toggle="dropdown" role="button"
@@ -300,10 +302,10 @@
 <a name="ln-29"></a><span class="c">!&gt; like folding back to central cells or removing lattice vector could be added</span>
 <a name="ln-30"></a><span class="c">!&gt; in a similar manner.</span>
 <a name="ln-31"></a><span class="k">program </span><span class="n">main</span>
-<a name="ln-32"></a>   <span class="k">use</span><span class="p">,</span> <span class="k">intrinsic</span> <span class="kd">::</span> <span class="n">iso_fortran_env</span><span class="p">,</span> <span class="n">only</span> <span class="p">:</span> <span class="n">output_unit</span><span class="p">,</span> <span class="n">error_unit</span><span class="p">,</span> <span class="n">input_unit</span>
+<a name="ln-32"></a>   <span class="k">use</span><span class="p">,</span> <span class="k">intrinsic</span> <span class="kd">::</span> <span class="n">iso_fortran_env</span><span class="p">,</span> <span class="k">only</span> <span class="p">:</span> <span class="n">output_unit</span><span class="p">,</span> <span class="n">error_unit</span><span class="p">,</span> <span class="n">input_unit</span>
 <a name="ln-33"></a>   <span class="k">use </span><span class="n">mctc_env</span>
 <a name="ln-34"></a>   <span class="k">use </span><span class="n">mctc_io</span>
-<a name="ln-35"></a>   <span class="k">use </span><span class="n">mctc_io_symbols</span><span class="p">,</span> <span class="n">only</span> <span class="p">:</span> <span class="n">to_symbol</span>
+<a name="ln-35"></a>   <span class="k">use </span><span class="n">mctc_io_symbols</span><span class="p">,</span> <span class="k">only</span> <span class="p">:</span> <span class="n">to_symbol</span>
 <a name="ln-36"></a>   <span class="k">use </span><span class="n">mctc_version</span>
 <a name="ln-37"></a>   <span class="k">implicit none</span>
 <a name="ln-38"></a><span class="k">   </span><span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=*</span><span class="p">),</span> <span class="k">parameter</span> <span class="kd">::</span> <span class="n">prog_name</span> <span class="o">=</span> <span class="s2">&quot;mctc-convert&quot;</span>
@@ -317,7 +319,7 @@
 <a name="ln-46"></a>   <span class="k">call </span><span class="n">get_arguments</span><span class="p">(</span><span class="n">input</span><span class="p">,</span> <span class="n">input_format</span><span class="p">,</span> <span class="n">output</span><span class="p">,</span> <span class="n">output_format</span><span class="p">,</span> <span class="n">normalize</span><span class="p">,</span> <span class="n">error</span><span class="p">)</span>
 <a name="ln-47"></a>   <span class="k">if</span> <span class="p">(</span><span class="nb">allocated</span><span class="p">(</span><span class="n">error</span><span class="p">))</span> <span class="k">then</span>
 <a name="ln-48"></a><span class="k">      write</span><span class="p">(</span><span class="n">error_unit</span><span class="p">,</span> <span class="s1">&#39;(a)&#39;</span><span class="p">)</span> <span class="n">error</span><span class="p">%</span><span class="n">message</span>
-<a name="ln-49"></a>      <span class="n">error</span> <span class="k">stop</span>
+<a name="ln-49"></a>      <span class="k">error stop</span>
 <a name="ln-50"></a><span class="k">   end if</span>
 <a name="ln-51"></a>
 <a name="ln-52"></a><span class="k">   if</span> <span class="p">(</span><span class="n">input</span> <span class="o">==</span> <span class="s2">&quot;-&quot;</span><span class="p">)</span> <span class="k">then</span>
@@ -328,7 +330,7 @@
 <a name="ln-57"></a>   <span class="k">end if</span>
 <a name="ln-58"></a><span class="k">   if</span> <span class="p">(</span><span class="nb">allocated</span><span class="p">(</span><span class="n">error</span><span class="p">))</span> <span class="k">then</span>
 <a name="ln-59"></a><span class="k">      write</span><span class="p">(</span><span class="n">error_unit</span><span class="p">,</span> <span class="s1">&#39;(a)&#39;</span><span class="p">)</span> <span class="n">error</span><span class="p">%</span><span class="n">message</span>
-<a name="ln-60"></a>      <span class="n">error</span> <span class="k">stop</span>
+<a name="ln-60"></a>      <span class="k">error stop</span>
 <a name="ln-61"></a><span class="k">   end if</span>
 <a name="ln-62"></a>
 <a name="ln-63"></a><span class="k">   if</span> <span class="p">(</span><span class="n">normalize</span><span class="p">)</span> <span class="k">then</span>
@@ -343,7 +345,7 @@
 <a name="ln-72"></a>   <span class="k">end if</span>
 <a name="ln-73"></a><span class="k">   if</span> <span class="p">(</span><span class="nb">allocated</span><span class="p">(</span><span class="n">error</span><span class="p">))</span> <span class="k">then</span>
 <a name="ln-74"></a><span class="k">      write</span><span class="p">(</span><span class="n">error_unit</span><span class="p">,</span> <span class="s1">&#39;(a)&#39;</span><span class="p">)</span> <span class="n">error</span><span class="p">%</span><span class="n">message</span>
-<a name="ln-75"></a>      <span class="n">error</span> <span class="k">stop</span>
+<a name="ln-75"></a>      <span class="k">error stop</span>
 <a name="ln-76"></a><span class="k">   end if</span>
 <a name="ln-77"></a>
 <a name="ln-78"></a>
@@ -489,7 +491,7 @@
 <a name="ln-218"></a><span class="k">   if</span> <span class="p">(.</span><span class="nb">not</span><span class="p">.(</span><span class="nb">allocated</span><span class="p">(</span><span class="n">input</span><span class="p">).</span><span class="nb">and</span><span class="p">.(</span><span class="nb">allocated</span><span class="p">(</span><span class="n">output</span><span class="p">))))</span> <span class="k">then</span>
 <a name="ln-219"></a><span class="k">      if</span> <span class="p">(.</span><span class="nb">not</span><span class="p">.</span><span class="nb">allocated</span><span class="p">(</span><span class="n">error</span><span class="p">))</span> <span class="k">then</span>
 <a name="ln-220"></a><span class="k">         call </span><span class="n">help</span><span class="p">(</span><span class="n">output_unit</span><span class="p">)</span>
-<a name="ln-221"></a>         <span class="n">error</span> <span class="k">stop</span>
+<a name="ln-221"></a>         <span class="k">error stop</span>
 <a name="ln-222"></a><span class="k">      end if</span>
 <a name="ln-223"></a><span class="k">   end if</span>
 <a name="ln-224"></a>
@@ -509,13 +511,13 @@
     <footer>
       <div class="container">
       <div class="row">
-        <div class="col-xs-6 col-md-4"><p>&copy; 2020 
+        <div class="col-xs-6 col-md-4"><p>&copy; 2021 
                                           </p></div>
         <div class="col-xs-6 col-md-4 col-md-push-4">
           <p class="text-right">
             Documentation generated by 
             <a href="https://github.com/cmacmackin/ford">FORD</a>
-             on 2020-12-31 12:11  
+             on 2021-01-15 23:59  
           </p>
         </div>
         <div class="col-xs-12 col-md-4 col-md-pull-4"><p class="text-center"> MCTC-library was developed by Grimme group, Bonn</p></div>
