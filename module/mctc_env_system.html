@@ -10,7 +10,7 @@
     <meta name="author" content="Grimme group, Bonn" >
     <link rel="icon" href="../favicon.png">
 
-    <title>mctc_io_read_xyz &ndash; MCTC-library</title>
+    <title>mctc_env_system &ndash; MCTC-library</title>
 
     <link href="../css/bootstrap.min.css" rel="stylesheet">
     <link href="../css/pygments.css" rel="stylesheet">
@@ -118,7 +118,7 @@
     
   
   <div class="row">
-    <h1>mctc_io_read_xyz 
+    <h1>mctc_env_system 
     <small>Module</small>
     
     </h1>
@@ -136,22 +136,22 @@
      <li><i class="fa fa-list-ol"></i>
        <a data-toggle="tooltip"
     data-placement="bottom" data-html="true"
-    title=" 2.9% of total for modules and submodules.">77 statements</a>
+    title=" 2.5% of total for modules and submodules.">67 statements</a>
      </li> 
      
      
      
-    <li><i class="fa fa-code"></i><a href="../src/xyz.f90"> Source File</a></li>
+    <li><i class="fa fa-code"></i><a href="../src/system.f90"> Source File</a></li>
      
      
   </ul>
   <ol class="breadcrumb in-well text-right">
   
     
-     <li><a href='../sourcefile/xyz.f90~2.html'>xyz.f90</a></li>
+     <li><a href='../sourcefile/system.f90.html'>system.f90</a></li>
     
   
-     <li class="active">mctc_io_read_xyz</li>
+     <li class="active">mctc_env_system</li>
   </ol>
 </div>
 </div>
@@ -184,13 +184,29 @@
 
 
 
+<div class="panel panel-primary">
+  <div class="panel-heading text-left"><h3 class="panel-title"><a data-toggle="collapse" href="#funcs-0">Functions</a></h3></div>
+  <div id="funcs-0" class="panel-collapse collapse">
+    <div class="list-group">
+      
+      <a class="list-group-item" href="../module/mctc_env_system.html#proc-is_unix">is_unix</a>
+      
+      <a class="list-group-item" href="../module/mctc_env_system.html#proc-is_windows">is_windows</a>
+      
+    </div>
+  </div>
+</div>
+
+
 
 <div class="panel panel-primary">
   <div class="panel-heading text-left"><h3 class="panel-title"><a data-toggle="collapse" href="#subs-0">Subroutines</a></h3></div>
   <div class="list-group">
     <div id="subs-0" class="panel-collapse collapse">
       
-      <a class="list-group-item" href="../module/mctc_io_read_xyz.html#proc-read_xyz">read_xyz</a>
+      <a class="list-group-item" href="../module/mctc_env_system.html#proc-get_argument">get_argument</a>
+      
+      <a class="list-group-item" href="../module/mctc_env_system.html#proc-get_variable">get_variable</a>
       
     </div>
   </div>
@@ -210,39 +226,10 @@
     </div>
     
     <div class="col-md-9" id='text'>
-    
-      <br>
+    <p>Module collecting commands to conveniently interface with system commands</p>
+      
     
   
-    <div class="panel panel-default">
-      <div class="panel-heading">
-  <h3 class="panel-title">Uses</h3>
-      </div>
-      <ul class="list-group">
-      
-      <li class="list-group-item">
-  <ul class="list-inline">
-    
-    <li><a href='../module/mctc_env_accuracy.html'>mctc_env_accuracy</a></li>
-    
-    <li><a href='../module/mctc_env_error.html'>mctc_env_error</a></li>
-    
-    <li><a href='../module/mctc_io_convert.html'>mctc_io_convert</a></li>
-    
-    <li><a href='../module/mctc_io_structure.html'>mctc_io_structure</a></li>
-    
-    <li><a href='../module/mctc_io_symbols.html'>mctc_io_symbols</a></li>
-    
-    <li><a href='../module/mctc_io_utils.html'>mctc_io_utils</a></li>
-    
-  </ul>
-      </li>
-      
-      
-      
-      </ul>
-    </div>
-    
 
     
     
@@ -266,13 +253,29 @@
 
 
 
+<div class="panel panel-primary">
+  <div class="panel-heading text-left"><h3 class="panel-title"><a data-toggle="collapse" href="#funcs-1">Functions</a></h3></div>
+  <div id="funcs-1" class="panel-collapse collapse">
+    <div class="list-group">
+      
+      <a class="list-group-item" href="../module/mctc_env_system.html#proc-is_unix">is_unix</a>
+      
+      <a class="list-group-item" href="../module/mctc_env_system.html#proc-is_windows">is_windows</a>
+      
+    </div>
+  </div>
+</div>
+
+
 
 <div class="panel panel-primary">
   <div class="panel-heading text-left"><h3 class="panel-title"><a data-toggle="collapse" href="#subs-1">Subroutines</a></h3></div>
   <div class="list-group">
     <div id="subs-1" class="panel-collapse collapse">
       
-      <a class="list-group-item" href="../module/mctc_io_read_xyz.html#proc-read_xyz">read_xyz</a>
+      <a class="list-group-item" href="../module/mctc_env_system.html#proc-get_argument">get_argument</a>
+      
+      <a class="list-group-item" href="../module/mctc_env_system.html#proc-get_variable">get_variable</a>
       
     </div>
   </div>
@@ -302,6 +305,90 @@
     
     
     
+     
+    <section>
+    <h2>Functions</h2>
+    
+    
+  <div class="panel panel-default">
+  <div class="panel-heading codesum"><span class="anchor" id="proc-is_unix"></span><h3>
+public function <a href='../proc/is_unix.html'>is_unix</a>()
+    
+    
+   
+</h3></div>
+  <div class="panel-body">
+       
+    
+
+
+
+
+
+
+
+<p>Try to determine if we run on Unix and probably can rely on POSIX compliance</p>
+    
+    <h4>Arguments</h4>
+    
+      <em>None</em>
+    
+    
+
+  
+  
+  
+  
+     <h4>Return Value <small>logical
+  </small></h4>
+  <p>Operating system seems to be Unix</p>
+    
+
+  </div>
+  </div>
+
+    
+    
+  <div class="panel panel-default">
+  <div class="panel-heading codesum"><span class="anchor" id="proc-is_windows"></span><h3>
+public function <a href='../proc/is_windows.html'>is_windows</a>()
+    
+    
+   
+</h3></div>
+  <div class="panel-body">
+       
+    
+
+
+
+
+
+
+
+<p>Try to determine if we run on Windows and don&rsquo;t have POSIX compliance around</p>
+    
+    <h4>Arguments</h4>
+    
+      <em>None</em>
+    
+    
+
+  
+  
+  
+  
+     <h4>Return Value <small>logical
+  </small></h4>
+  <p>Operating system seems to be Windows</p>
+    
+
+  </div>
+  </div>
+
+    
+    </section>
+    <br>
     
 
     
@@ -310,8 +397,8 @@
     
     
   <div class="panel panel-default">
-  <div class="panel-heading codesum"><span class="anchor" id="proc-read_xyz"></span><h3>
-public subroutine <a href='../proc/read_xyz.html'>read_xyz</a>(self, unit, error)
+  <div class="panel-heading codesum"><span class="anchor" id="proc-get_argument"></span><h3>
+public subroutine <a href='../proc/get_argument.html'>get_argument</a>(idx, arg)
     
     
    
@@ -319,6 +406,14 @@ public subroutine <a href='../proc/read_xyz.html'>read_xyz</a>(self, unit, error
   <div class="panel-body">
        
     
+
+
+
+
+
+
+
+<p>Obtain the command line argument at a given index</p>
     
     <h4>Arguments</h4>
     
@@ -339,27 +434,12 @@ public subroutine <a href='../proc/read_xyz.html'>read_xyz</a>(self, unit, error
   
 <tr>
   
-  <td><span class="anchor" ></span>type(<a href='../type/structure_type.html'>structure_type</a>),</td>
-  <td>intent(out)</td>
-  <td></td>
-  
-  <td></td><td>::</td>
-  <td><strong>self</strong></td><td><p>Instance of the molecular structure data</p></td>
-  
-</tr>
-
-  
-  
-  
-  
-<tr>
-  
   <td><span class="anchor" ></span>integer,</td>
   <td>intent(in)</td>
   <td></td>
   
   <td></td><td>::</td>
-  <td><strong>unit</strong></td><td><p>File handle</p></td>
+  <td><strong>idx</strong></td><td><p>Index of command line argument, range [0:command_argument_count()]</p></td>
   
 </tr>
 
@@ -369,12 +449,86 @@ public subroutine <a href='../proc/read_xyz.html'>read_xyz</a>(self, unit, error
   
 <tr>
   
-  <td><span class="anchor" ></span>type(<a href='../type/error_type.html'>error_type</a>),</td>
+  <td><span class="anchor" ></span>character(len=:),</td>
   <td>intent(out),</td>
   <td></td>
   
   <td>allocatable</td><td>::</td>
-  <td><strong>error</strong></td><td><p>Error handling</p></td>
+  <td><strong>arg</strong></td><td><p>Command line argument</p></td>
+  
+</tr>
+
+</tbody>
+</table>
+
+      
+    
+    
+
+  </div>
+  </div>
+
+    
+    
+  <div class="panel panel-default">
+  <div class="panel-heading codesum"><span class="anchor" id="proc-get_variable"></span><h3>
+public subroutine <a href='../proc/get_variable.html'>get_variable</a>(var, val)
+    
+    
+   
+</h3></div>
+  <div class="panel-body">
+       
+    
+
+
+
+
+
+
+
+<p>Obtain the value of an environment variable</p>
+    
+    <h4>Arguments</h4>
+    
+      
+      
+<table class="table table-striped varlist">
+<thead><tr><th>Type</th>
+<th>Intent</th><th>Optional</th>
+<th>Attributes</th><th></th><th>Name</th><th></th></thead>
+
+
+
+<tbody>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>character(len=*),</td>
+  <td>intent(in)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>var</strong></td><td><p>Name of variable</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>character(len=:),</td>
+  <td>intent(out),</td>
+  <td></td>
+  
+  <td>allocatable</td><td>::</td>
+  <td><strong>val</strong></td><td><p>Value of variable</p></td>
   
 </tr>
 

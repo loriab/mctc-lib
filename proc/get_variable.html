@@ -10,7 +10,7 @@
     <meta name="author" content="Grimme group, Bonn" >
     <link rel="icon" href="../favicon.png">
 
-    <title>mctc_io_read_xyz &ndash; MCTC-library</title>
+    <title>get_variable &ndash; MCTC-library</title>
 
     <link href="../css/bootstrap.min.css" rel="stylesheet">
     <link href="../css/pygments.css" rel="stylesheet">
@@ -118,8 +118,8 @@
     
   
   <div class="row">
-    <h1>mctc_io_read_xyz 
-    <small>Module</small>
+    <h1>get_variable
+      <small>Subroutine</small>
     
     </h1>
     
@@ -136,22 +136,24 @@
      <li><i class="fa fa-list-ol"></i>
        <a data-toggle="tooltip"
     data-placement="bottom" data-html="true"
-    title=" 2.9% of total for modules and submodules.">77 statements</a>
+    title=" 1.2% of total for procedures.">20 statements</a>
      </li> 
      
      
      
-    <li><i class="fa fa-code"></i><a href="../src/xyz.f90"> Source File</a></li>
+    <li><i class="fa fa-code"></i><a href="../src/system.f90"> Source File</a></li>
      
      
   </ul>
   <ol class="breadcrumb in-well text-right">
   
     
-     <li><a href='../sourcefile/xyz.f90~2.html'>xyz.f90</a></li>
+     <li><a href='../sourcefile/system.f90.html'>system.f90</a></li>
+    
+     <li><a href='../module/mctc_env_system.html'>mctc_env_system</a></li>
     
   
-     <li class="active">mctc_io_read_xyz</li>
+     <li class="active">get_variable</li>
   </ol>
 </div>
 </div>
@@ -185,23 +187,19 @@
 
 
 
+
+
+
+
+
+
+
 <div class="panel panel-primary">
-  <div class="panel-heading text-left"><h3 class="panel-title"><a data-toggle="collapse" href="#subs-0">Subroutines</a></h3></div>
+  <div class="panel-heading text-left"><h3 class="panel-title">Source Code</h3></div>
   <div class="list-group">
-    <div id="subs-0" class="panel-collapse collapse">
-      
-      <a class="list-group-item" href="../module/mctc_io_read_xyz.html#proc-read_xyz">read_xyz</a>
-      
-    </div>
+    <a class="list-group-item" href="../proc/get_variable.html#src">get_variable</a>
   </div>
 </div>
-
-
-
-
-
-
-
 
 
 
@@ -210,43 +208,70 @@
     </div>
     
     <div class="col-md-9" id='text'>
+    <h2>
+public subroutine get_variable(var, val)
     
-      <br>
+    
+   
+</h2>
     
   
-    <div class="panel panel-default">
-      <div class="panel-heading">
-  <h3 class="panel-title">Uses</h3>
-      </div>
-      <ul class="list-group">
+
+
+    
+    <p>Obtain the value of an environment variable</p>
+    
+
+    <h3>Arguments</h3>
+    
       
-      <li class="list-group-item">
-  <ul class="list-inline">
-    
-    <li><a href='../module/mctc_env_accuracy.html'>mctc_env_accuracy</a></li>
-    
-    <li><a href='../module/mctc_env_error.html'>mctc_env_error</a></li>
-    
-    <li><a href='../module/mctc_io_convert.html'>mctc_io_convert</a></li>
-    
-    <li><a href='../module/mctc_io_structure.html'>mctc_io_structure</a></li>
-    
-    <li><a href='../module/mctc_io_symbols.html'>mctc_io_symbols</a></li>
-    
-    <li><a href='../module/mctc_io_utils.html'>mctc_io_utils</a></li>
-    
-  </ul>
-      </li>
-      
-      
-      
-      </ul>
-    </div>
-    
+<table class="table table-striped varlist">
+<thead><tr><th>Type</th>
+<th>Intent</th><th>Optional</th>
+<th>Attributes</th><th></th><th>Name</th><th></th></thead>
+
+
+
+<tbody>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-var"></span>character(len=*),</td>
+  <td>intent(in)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>var</strong></td><td><p>Name of variable</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-val"></span>character(len=:),</td>
+  <td>intent(out),</td>
+  <td></td>
+  
+  <td>allocatable</td><td>::</td>
+  <td><strong>val</strong></td><td><p>Value of variable</p></td>
+  
+</tr>
+
+</tbody>
+</table>
 
     
     
-
+    
+    
+     
     <br>
 
     <section class="visible-xs visible-sm hidden-md">
@@ -267,23 +292,19 @@
 
 
 
+
+
+
+
+
+
+
 <div class="panel panel-primary">
-  <div class="panel-heading text-left"><h3 class="panel-title"><a data-toggle="collapse" href="#subs-1">Subroutines</a></h3></div>
+  <div class="panel-heading text-left"><h3 class="panel-title">Source Code</h3></div>
   <div class="list-group">
-    <div id="subs-1" class="panel-collapse collapse">
-      
-      <a class="list-group-item" href="../module/mctc_io_read_xyz.html#proc-read_xyz">read_xyz</a>
-      
-    </div>
+    <a class="list-group-item" href="../proc/get_variable.html#src">get_variable</a>
   </div>
 </div>
-
-
-
-
-
-
-
 
 
 
@@ -304,100 +325,51 @@
     
     
 
+
+    
+    
     
     <section>
-    <h2>Subroutines</h2>
-    
-    
-  <div class="panel panel-default">
-  <div class="panel-heading codesum"><span class="anchor" id="proc-read_xyz"></span><h3>
-public subroutine <a href='../proc/read_xyz.html'>read_xyz</a>(self, unit, error)
-    
-    
-   
-</h3></div>
-  <div class="panel-body">
-       
-    
-    
-    <h4>Arguments</h4>
-    
-      
-      
-<table class="table table-striped varlist">
-<thead><tr><th>Type</th>
-<th>Intent</th><th>Optional</th>
-<th>Attributes</th><th></th><th>Name</th><th></th></thead>
+    <h2><span class="anchor" id="src"></span>Source Code</h2>
+    <div class="highlight"><pre><span></span><span class="k">subroutine </span><span class="n">get_variable</span><span class="p">(</span><span class="n">var</span><span class="p">,</span> <span class="n">val</span><span class="p">)</span>
 
+   <span class="c">!&gt; Name of variable</span>
+   <span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=*</span><span class="p">),</span> <span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span> <span class="kd">::</span> <span class="n">var</span>
 
+   <span class="c">!&gt; Value of variable</span>
+   <span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="p">:),</span> <span class="k">allocatable</span><span class="p">,</span> <span class="k">intent</span><span class="p">(</span><span class="n">out</span><span class="p">)</span> <span class="kd">::</span> <span class="n">val</span>
 
-<tbody>
+   <span class="kt">integer</span> <span class="kd">::</span> <span class="n">length</span><span class="p">,</span> <span class="nb">stat</span>
 
-  
-  
-  
-  
-<tr>
-  
-  <td><span class="anchor" ></span>type(<a href='../type/structure_type.html'>structure_type</a>),</td>
-  <td>intent(out)</td>
-  <td></td>
-  
-  <td></td><td>::</td>
-  <td><strong>self</strong></td><td><p>Instance of the molecular structure data</p></td>
-  
-</tr>
+<span class="nb">   </span><span class="k">call </span><span class="nb">get_environment_variable</span><span class="p">(</span><span class="n">var</span><span class="p">,</span> <span class="n">length</span><span class="o">=</span><span class="n">length</span><span class="p">,</span> <span class="n">status</span><span class="o">=</span><span class="nb">stat</span><span class="p">)</span>
+   <span class="k">if</span> <span class="p">(</span><span class="nb">stat</span> <span class="o">/=</span> <span class="mi">0</span><span class="p">)</span> <span class="k">then</span>
+<span class="k">      return</span>
+<span class="k">   </span><span class="n">endif</span>
 
-  
-  
-  
-  
-<tr>
-  
-  <td><span class="anchor" ></span>integer,</td>
-  <td>intent(in)</td>
-  <td></td>
-  
-  <td></td><td>::</td>
-  <td><strong>unit</strong></td><td><p>File handle</p></td>
-  
-</tr>
+   <span class="k">allocate</span><span class="p">(</span><span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="n">length</span><span class="p">)</span> <span class="kd">::</span> <span class="n">val</span><span class="p">,</span> <span class="nb">stat</span><span class="o">=</span><span class="nb">stat</span><span class="p">)</span>
+   <span class="k">if</span> <span class="p">(</span><span class="nb">stat</span> <span class="o">/=</span> <span class="mi">0</span><span class="p">)</span> <span class="k">then</span>
+<span class="k">      return</span>
+<span class="k">   </span><span class="n">endif</span>
 
-  
-  
-  
-  
-<tr>
-  
-  <td><span class="anchor" ></span>type(<a href='../type/error_type.html'>error_type</a>),</td>
-  <td>intent(out),</td>
-  <td></td>
-  
-  <td>allocatable</td><td>::</td>
-  <td><strong>error</strong></td><td><p>Error handling</p></td>
-  
-</tr>
+   <span class="k">if</span> <span class="p">(</span><span class="n">length</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span> <span class="k">then</span>
+<span class="k">      call </span><span class="nb">get_environment_variable</span><span class="p">(</span><span class="n">var</span><span class="p">,</span> <span class="n">val</span><span class="p">,</span> <span class="n">status</span><span class="o">=</span><span class="nb">stat</span><span class="p">)</span>
+      <span class="k">if</span> <span class="p">(</span><span class="nb">stat</span> <span class="o">/=</span> <span class="mi">0</span><span class="p">)</span> <span class="k">then</span>
+<span class="k">         deallocate</span><span class="p">(</span><span class="n">val</span><span class="p">)</span>
+         <span class="k">return</span>
+<span class="k">      end if</span>
+<span class="k">   end if</span>
 
-</tbody>
-</table>
+<span class="k">end subroutine </span><span class="n">get_variable</span>
+</pre></div>
 
-      
-    
-    
-
-  </div>
-  </div>
-
-    
-    </section>    
+    </section>
     <br>
-    
     
     
     </div>
   </div>
 
-  
+
     <hr>    
     </div> <!-- /container -->
     <footer>
