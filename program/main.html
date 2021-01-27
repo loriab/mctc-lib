@@ -136,7 +136,7 @@
      <li><i class="fa fa-list-ol"></i>
        <a data-toggle="tooltip"
     data-placement="bottom" data-html="true"
-    title="100.0% of total for programs.">115 statements</a>
+    title="100.0% of total for programs.">160 statements</a>
      </li> 
      
      
@@ -187,6 +187,8 @@
       
       <a class="list-group-item" href="../program/main.html#variable-mol~7">mol</a>
       
+      <a class="list-group-item" href="../program/main.html#variable-mol_template">mol_template</a>
+      
       <a class="list-group-item" href="../program/main.html#variable-normalize~2">normalize</a>
       
       <a class="list-group-item" href="../program/main.html#variable-output~2">output</a>
@@ -194,6 +196,10 @@
       <a class="list-group-item" href="../program/main.html#variable-output_format~2">output_format</a>
       
       <a class="list-group-item" href="../program/main.html#variable-prog_name">prog_name</a>
+      
+      <a class="list-group-item" href="../program/main.html#variable-template~2">template</a>
+      
+      <a class="list-group-item" href="../program/main.html#variable-template_format~2">template_format</a>
       
     </div>
   </div>
@@ -312,6 +318,8 @@
       
       <a class="list-group-item" href="../program/main.html#variable-mol~7">mol</a>
       
+      <a class="list-group-item" href="../program/main.html#variable-mol_template">mol_template</a>
+      
       <a class="list-group-item" href="../program/main.html#variable-normalize~2">normalize</a>
       
       <a class="list-group-item" href="../program/main.html#variable-output~2">output</a>
@@ -319,6 +327,10 @@
       <a class="list-group-item" href="../program/main.html#variable-output_format~2">output_format</a>
       
       <a class="list-group-item" href="../program/main.html#variable-prog_name">prog_name</a>
+      
+      <a class="list-group-item" href="../program/main.html#variable-template~2">template</a>
+      
+      <a class="list-group-item" href="../program/main.html#variable-template_format~2">template_format</a>
       
     </div>
   </div>
@@ -448,6 +460,20 @@
   
 <tr>
   
+  <td><span class="anchor" id="variable-mol_template"></span>type(<a href='../type/structure_type.html'>structure_type</a>),</td>
+  
+  
+  <td>allocatable</td><td>::</td>
+  <td><strong>mol_template</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
   <td><span class="anchor" id="variable-normalize~2"></span>logical</td>
   
   
@@ -498,6 +524,34 @@
   
 </tr>
 
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-template~2"></span>character(len=:),</td>
+  
+  
+  <td>allocatable</td><td>::</td>
+  <td><strong>template</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-template_format~2"></span>integer,</td>
+  
+  
+  <td>allocatable</td><td>::</td>
+  <td><strong>template_format</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
 </tbody>
 </table>
 
@@ -523,7 +577,7 @@
     
   <div class="panel panel-default">
   <div class="panel-heading codesum"><span class="anchor" id="proc-get_arguments"></span><h3>
-subroutine <a href='../proc/get_arguments.html'>get_arguments</a>(input, input_format, output, output_format, normalize, error)
+subroutine <a href='../proc/get_arguments.html'>get_arguments</a>(input, input_format, output, output_format, normalize, template, template_format, error)
     
     
    
@@ -617,6 +671,36 @@ subroutine <a href='../proc/get_arguments.html'>get_arguments</a>(input, input_f
   
   <td></td><td>::</td>
   <td><strong>normalize</strong></td><td><p>Normalize element symbols</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>character(len=:),</td>
+  <td></td>
+  <td></td>
+  
+  <td>allocatable</td><td>::</td>
+  <td><strong>template</strong></td><td><p>Template file name</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>integer,</td>
+  <td>intent(out),</td>
+  <td></td>
+  
+  <td>allocatable</td><td>::</td>
+  <td><strong>template_format</strong></td><td><p>Template file format</p></td>
   
 </tr>
 
@@ -763,16 +847,34 @@ subroutine <a href='../proc/version.html'>version</a>(unit)
    <span class="k">implicit none</span>
 <span class="k">   </span><span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=*</span><span class="p">),</span> <span class="k">parameter</span> <span class="kd">::</span> <span class="n">prog_name</span> <span class="o">=</span> <span class="s2">&quot;mctc-convert&quot;</span>
 
-   <span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="p">:),</span> <span class="k">allocatable</span> <span class="kd">::</span> <span class="n">input</span><span class="p">,</span> <span class="n">output</span>
-   <span class="kt">integer</span><span class="p">,</span> <span class="k">allocatable</span> <span class="kd">::</span> <span class="n">input_format</span><span class="p">,</span> <span class="n">output_format</span>
+   <span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="p">:),</span> <span class="k">allocatable</span> <span class="kd">::</span> <span class="n">input</span><span class="p">,</span> <span class="n">output</span><span class="p">,</span> <span class="n">template</span>
+   <span class="kt">integer</span><span class="p">,</span> <span class="k">allocatable</span> <span class="kd">::</span> <span class="n">input_format</span><span class="p">,</span> <span class="n">output_format</span><span class="p">,</span> <span class="n">template_format</span>
    <span class="k">type</span><span class="p">(</span><span class="n">structure_type</span><span class="p">)</span> <span class="kd">::</span> <span class="n">mol</span>
+   <span class="k">type</span><span class="p">(</span><span class="n">structure_type</span><span class="p">),</span> <span class="k">allocatable</span> <span class="kd">::</span> <span class="n">mol_template</span>
    <span class="k">type</span><span class="p">(</span><span class="n">error_type</span><span class="p">),</span> <span class="k">allocatable</span> <span class="kd">::</span> <span class="n">error</span>
    <span class="kt">logical</span> <span class="kd">::</span> <span class="n">normalize</span>
 
-   <span class="k">call </span><span class="n">get_arguments</span><span class="p">(</span><span class="n">input</span><span class="p">,</span> <span class="n">input_format</span><span class="p">,</span> <span class="n">output</span><span class="p">,</span> <span class="n">output_format</span><span class="p">,</span> <span class="n">normalize</span><span class="p">,</span> <span class="n">error</span><span class="p">)</span>
+   <span class="k">call </span><span class="n">get_arguments</span><span class="p">(</span><span class="n">input</span><span class="p">,</span> <span class="n">input_format</span><span class="p">,</span> <span class="n">output</span><span class="p">,</span> <span class="n">output_format</span><span class="p">,</span> <span class="n">normalize</span><span class="p">,</span> <span class="p">&amp;</span>
+      <span class="p">&amp;</span> <span class="n">template</span><span class="p">,</span> <span class="n">template_format</span><span class="p">,</span> <span class="n">error</span><span class="p">)</span>
    <span class="k">if</span> <span class="p">(</span><span class="nb">allocated</span><span class="p">(</span><span class="n">error</span><span class="p">))</span> <span class="k">then</span>
 <span class="k">      write</span><span class="p">(</span><span class="n">error_unit</span><span class="p">,</span> <span class="s1">&#39;(a)&#39;</span><span class="p">)</span> <span class="n">error</span><span class="p">%</span><span class="n">message</span>
       <span class="k">error stop</span>
+<span class="k">   end if</span>
+
+<span class="k">   if</span> <span class="p">(</span><span class="nb">allocated</span><span class="p">(</span><span class="n">template</span><span class="p">))</span> <span class="k">then</span>
+<span class="k">      allocate</span><span class="p">(</span><span class="n">mol_template</span><span class="p">)</span>
+      <span class="k">if</span> <span class="p">(</span><span class="n">template</span> <span class="o">==</span> <span class="s2">&quot;-&quot;</span><span class="p">)</span> <span class="k">then</span>
+<span class="k">         if</span> <span class="p">(.</span><span class="nb">not</span><span class="p">.</span><span class="nb">allocated</span><span class="p">(</span><span class="n">template_format</span><span class="p">))</span> <span class="k">then</span>
+<span class="k">            </span><span class="n">template_format</span> <span class="o">=</span> <span class="nb">merge</span><span class="p">(</span><span class="n">output_format</span><span class="p">,</span> <span class="n">filetype</span><span class="p">%</span><span class="n">xyz</span><span class="p">,</span> <span class="nb">allocated</span><span class="p">(</span><span class="n">output_format</span><span class="p">))</span>
+         <span class="k">end if</span>
+<span class="k">         call </span><span class="n">read_structure</span><span class="p">(</span><span class="n">mol_template</span><span class="p">,</span> <span class="n">input_unit</span><span class="p">,</span> <span class="n">template_format</span><span class="p">,</span> <span class="n">error</span><span class="p">)</span>
+      <span class="k">else</span>
+<span class="k">         call </span><span class="n">read_structure</span><span class="p">(</span><span class="n">mol_template</span><span class="p">,</span> <span class="n">template</span><span class="p">,</span> <span class="n">error</span><span class="p">,</span> <span class="n">template_format</span><span class="p">)</span>
+      <span class="k">end if</span>
+<span class="k">      if</span> <span class="p">(</span><span class="nb">allocated</span><span class="p">(</span><span class="n">error</span><span class="p">))</span> <span class="k">then</span>
+<span class="k">         write</span><span class="p">(</span><span class="n">error_unit</span><span class="p">,</span> <span class="s1">&#39;(a)&#39;</span><span class="p">)</span> <span class="n">error</span><span class="p">%</span><span class="n">message</span>
+         <span class="k">error stop</span>
+<span class="k">      end if</span>
 <span class="k">   end if</span>
 
 <span class="k">   if</span> <span class="p">(</span><span class="n">input</span> <span class="o">==</span> <span class="s2">&quot;-&quot;</span><span class="p">)</span> <span class="k">then</span>
@@ -785,6 +887,22 @@ subroutine <a href='../proc/version.html'>version</a>(unit)
 <span class="k">      write</span><span class="p">(</span><span class="n">error_unit</span><span class="p">,</span> <span class="s1">&#39;(a)&#39;</span><span class="p">)</span> <span class="n">error</span><span class="p">%</span><span class="n">message</span>
       <span class="k">error stop</span>
 <span class="k">   end if</span>
+
+<span class="k">   if</span> <span class="p">(</span><span class="nb">allocated</span><span class="p">(</span><span class="n">mol_template</span><span class="p">))</span> <span class="k">then</span>
+<span class="k">      if</span> <span class="p">(</span><span class="n">mol</span><span class="p">%</span><span class="n">nat</span> <span class="o">/=</span> <span class="n">mol_template</span><span class="p">%</span><span class="n">nat</span><span class="p">)</span> <span class="k">then</span>
+<span class="k">         write</span><span class="p">(</span><span class="n">error_unit</span><span class="p">,</span> <span class="s1">&#39;(*(a, 1x))&#39;</span><span class="p">)</span> <span class="p">&amp;</span>
+            <span class="s2">&quot;Number of atoms missmatch in&quot;</span><span class="p">,</span> <span class="n">template</span><span class="p">,</span> <span class="s2">&quot;and&quot;</span><span class="p">,</span> <span class="n">input</span>
+         <span class="k">error stop</span>
+<span class="k">      end if</span>
+
+      <span class="c">! move_alloc can also move non-allocated objects</span>
+      <span class="k">call </span><span class="nb">move_alloc</span><span class="p">(</span><span class="n">mol_template</span><span class="p">%</span><span class="n">lattice</span><span class="p">,</span> <span class="n">mol</span><span class="p">%</span><span class="n">lattice</span><span class="p">)</span>
+      <span class="k">call </span><span class="nb">move_alloc</span><span class="p">(</span><span class="n">mol_template</span><span class="p">%</span><span class="n">periodic</span><span class="p">,</span> <span class="n">mol</span><span class="p">%</span><span class="n">periodic</span><span class="p">)</span>
+      <span class="k">call </span><span class="nb">move_alloc</span><span class="p">(</span><span class="n">mol_template</span><span class="p">%</span><span class="n">bond</span><span class="p">,</span> <span class="n">mol</span><span class="p">%</span><span class="n">bond</span><span class="p">)</span>
+      <span class="k">call </span><span class="nb">move_alloc</span><span class="p">(</span><span class="n">mol_template</span><span class="p">%</span><span class="n">comment</span><span class="p">,</span> <span class="n">mol</span><span class="p">%</span><span class="n">comment</span><span class="p">)</span>
+      <span class="k">call </span><span class="nb">move_alloc</span><span class="p">(</span><span class="n">mol_template</span><span class="p">%</span><span class="n">pdb</span><span class="p">,</span> <span class="n">mol</span><span class="p">%</span><span class="n">pdb</span><span class="p">)</span>
+      <span class="k">call </span><span class="nb">move_alloc</span><span class="p">(</span><span class="n">mol_template</span><span class="p">%</span><span class="n">sdf</span><span class="p">,</span> <span class="n">mol</span><span class="p">%</span><span class="n">sdf</span><span class="p">)</span>
+   <span class="k">end if</span>
 
 <span class="k">   if</span> <span class="p">(</span><span class="n">normalize</span><span class="p">)</span> <span class="k">then</span>
 <span class="k">      </span><span class="n">mol</span><span class="p">%</span><span class="n">sym</span> <span class="o">=</span> <span class="n">to_symbol</span><span class="p">(</span><span class="n">mol</span><span class="p">%</span><span class="n">num</span><span class="p">)</span>
@@ -821,6 +939,9 @@ subroutine <a href='../proc/version.html'>version</a>(unit)
       <span class="s2">&quot;-i, --input &lt;format&gt;&quot;</span><span class="p">,</span> <span class="s2">&quot;Hint for the format of the input file&quot;</span><span class="p">,</span> <span class="p">&amp;</span>
       <span class="s2">&quot;-o, --output &lt;format&gt;&quot;</span><span class="p">,</span> <span class="s2">&quot;Hint for the format of the output file&quot;</span><span class="p">,</span> <span class="p">&amp;</span>
       <span class="s2">&quot;--normalize&quot;</span><span class="p">,</span> <span class="s2">&quot;Normalize all element symbols to capitalized format&quot;</span><span class="p">,</span> <span class="p">&amp;</span>
+      <span class="s2">&quot;--template &lt;file&gt;&quot;</span><span class="p">,</span> <span class="s2">&quot;File to use as template to fill in meta data&quot;</span><span class="p">,</span> <span class="p">&amp;</span>
+      <span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="s2">&quot;(useful to add back SDF or PDB annotions)&quot;</span><span class="p">,</span> <span class="p">&amp;</span>
+      <span class="s2">&quot;--template-format &lt;format&gt;&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="s2">&quot;Hint for the format of the template file&quot;</span><span class="p">,</span> <span class="p">&amp;</span>
       <span class="s2">&quot;--version&quot;</span><span class="p">,</span> <span class="s2">&quot;Print program version and exit&quot;</span><span class="p">,</span> <span class="p">&amp;</span>
       <span class="s2">&quot;--help&quot;</span><span class="p">,</span> <span class="s2">&quot;Show this help message&quot;</span>
 
@@ -841,7 +962,7 @@ subroutine <a href='../proc/version.html'>version</a>(unit)
 
 
 <span class="k">subroutine </span><span class="n">get_arguments</span><span class="p">(</span><span class="n">input</span><span class="p">,</span> <span class="n">input_format</span><span class="p">,</span> <span class="n">output</span><span class="p">,</span> <span class="n">output_format</span><span class="p">,</span> <span class="n">normalize</span><span class="p">,</span> <span class="p">&amp;</span>
-      <span class="p">&amp;</span> <span class="n">error</span><span class="p">)</span>
+      <span class="p">&amp;</span> <span class="n">template</span><span class="p">,</span> <span class="n">template_format</span><span class="p">,</span> <span class="n">error</span><span class="p">)</span>
 
    <span class="c">!&gt; Input file name</span>
    <span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="p">:),</span> <span class="k">allocatable</span> <span class="kd">::</span> <span class="n">input</span>
@@ -854,6 +975,12 @@ subroutine <a href='../proc/version.html'>version</a>(unit)
 
    <span class="c">!&gt; Output file format</span>
    <span class="kt">integer</span><span class="p">,</span> <span class="k">allocatable</span><span class="p">,</span> <span class="k">intent</span><span class="p">(</span><span class="n">out</span><span class="p">)</span> <span class="kd">::</span> <span class="n">output_format</span>
+
+   <span class="c">!&gt; Template file name</span>
+   <span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="p">:),</span> <span class="k">allocatable</span> <span class="kd">::</span> <span class="n">template</span>
+
+   <span class="c">!&gt; Template file format</span>
+   <span class="kt">integer</span><span class="p">,</span> <span class="k">allocatable</span><span class="p">,</span> <span class="k">intent</span><span class="p">(</span><span class="n">out</span><span class="p">)</span> <span class="kd">::</span> <span class="n">template_format</span>
 
    <span class="c">!&gt; Normalize element symbols</span>
    <span class="kt">logical</span><span class="p">,</span> <span class="k">intent</span><span class="p">(</span><span class="n">out</span><span class="p">)</span> <span class="kd">::</span> <span class="n">normalize</span>
@@ -906,6 +1033,21 @@ subroutine <a href='../proc/version.html'>version</a>(unit)
 <span class="k">         </span><span class="n">output_format</span> <span class="o">=</span> <span class="n">get_filetype</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="o">//</span><span class="n">arg</span><span class="p">)</span>
       <span class="k">case</span><span class="p">(</span><span class="s2">&quot;--normalize&quot;</span><span class="p">)</span>
          <span class="n">normalize</span> <span class="o">=</span> <span class="p">.</span><span class="n">true</span><span class="p">.</span>
+      <span class="k">case</span><span class="p">(</span><span class="s2">&quot;--template&quot;</span><span class="p">)</span>
+         <span class="n">iarg</span> <span class="o">=</span> <span class="n">iarg</span> <span class="o">+</span> <span class="mi">1</span>
+         <span class="k">call </span><span class="n">get_argument</span><span class="p">(</span><span class="n">iarg</span><span class="p">,</span> <span class="n">template</span><span class="p">)</span>
+         <span class="k">if</span> <span class="p">(.</span><span class="nb">not</span><span class="p">.</span><span class="nb">allocated</span><span class="p">(</span><span class="n">template</span><span class="p">))</span> <span class="k">then</span>
+<span class="k">            call </span><span class="n">fatal_error</span><span class="p">(</span><span class="n">error</span><span class="p">,</span> <span class="s2">&quot;Missing argument for template file&quot;</span><span class="p">)</span>
+            <span class="k">exit</span>
+<span class="k">         end if</span>
+<span class="k">      case</span><span class="p">(</span><span class="s2">&quot;--template-format&quot;</span><span class="p">)</span>
+         <span class="n">iarg</span> <span class="o">=</span> <span class="n">iarg</span> <span class="o">+</span> <span class="mi">1</span>
+         <span class="k">call </span><span class="n">get_argument</span><span class="p">(</span><span class="n">iarg</span><span class="p">,</span> <span class="n">arg</span><span class="p">)</span>
+         <span class="k">if</span> <span class="p">(.</span><span class="nb">not</span><span class="p">.</span><span class="nb">allocated</span><span class="p">(</span><span class="n">arg</span><span class="p">))</span> <span class="k">then</span>
+<span class="k">            call </span><span class="n">fatal_error</span><span class="p">(</span><span class="n">error</span><span class="p">,</span> <span class="s2">&quot;Missing argument for template format&quot;</span><span class="p">)</span>
+            <span class="k">exit</span>
+<span class="k">         end if</span>
+<span class="k">         </span><span class="n">template_format</span> <span class="o">=</span> <span class="n">get_filetype</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="o">//</span><span class="n">arg</span><span class="p">)</span>
       <span class="k">end select</span>
 <span class="k">   end do</span>
 
@@ -940,7 +1082,7 @@ subroutine <a href='../proc/version.html'>version</a>(unit)
           <p class="text-right">
             Documentation generated by 
             <a href="https://github.com/cmacmackin/ford">FORD</a>
-             on 2021-01-23 08:12  
+             on 2021-01-27 11:04  
           </p>
         </div>
         <div class="col-xs-12 col-md-4 col-md-pull-4"><p class="text-center"> MCTC-library was developed by Grimme group, Bonn</p></div>
