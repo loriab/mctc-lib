@@ -319,13 +319,13 @@
 <a name="ln-46"></a>
 <a name="ln-47"></a>   <span class="k">if</span> <span class="p">(</span><span class="nb">present</span><span class="p">(</span><span class="n">energy</span><span class="p">))</span> <span class="k">then</span>
 <a name="ln-48"></a><span class="k">      write</span><span class="p">(</span><span class="n">unit</span><span class="p">,</span> <span class="n">sd_format</span><span class="p">)</span> <span class="s2">&quot;total energy / Eh&quot;</span><span class="p">,</span> <span class="n">energy</span>
-<a name="ln-49"></a>   <span class="n">endif</span>
+<a name="ln-49"></a>   <span class="k">endif</span>
 <a name="ln-50"></a>
-<a name="ln-51"></a>   <span class="k">if</span> <span class="p">(</span><span class="nb">present</span><span class="p">(</span><span class="n">gnorm</span><span class="p">))</span> <span class="k">then</span>
+<a name="ln-51"></a><span class="k">   if</span> <span class="p">(</span><span class="nb">present</span><span class="p">(</span><span class="n">gnorm</span><span class="p">))</span> <span class="k">then</span>
 <a name="ln-52"></a><span class="k">      write</span><span class="p">(</span><span class="n">unit</span><span class="p">,</span> <span class="n">sd_format</span><span class="p">)</span> <span class="s2">&quot;gradient norm / Eh/a0&quot;</span><span class="p">,</span> <span class="n">gnorm</span>
-<a name="ln-53"></a>   <span class="n">endif</span>
+<a name="ln-53"></a>   <span class="k">endif</span>
 <a name="ln-54"></a>
-<a name="ln-55"></a>   <span class="k">write</span><span class="p">(</span><span class="n">unit</span><span class="p">,</span> <span class="s1">&#39;(&quot;$$$$&quot;)&#39;</span><span class="p">)</span>
+<a name="ln-55"></a><span class="k">   write</span><span class="p">(</span><span class="n">unit</span><span class="p">,</span> <span class="s1">&#39;(&quot;$$$$&quot;)&#39;</span><span class="p">)</span>
 <a name="ln-56"></a>
 <a name="ln-57"></a><span class="k">end subroutine </span><span class="n">write_sdf</span>
 <a name="ln-58"></a>
@@ -366,12 +366,12 @@
 <a name="ln-93"></a>            <span class="p">&amp;</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>
 <a name="ln-94"></a>      <span class="k">else</span>
 <a name="ln-95"></a><span class="k">         </span><span class="n">list12</span> <span class="o">=</span> <span class="mi">0</span>
-<a name="ln-96"></a>      <span class="n">endif</span>
-<a name="ln-97"></a>      <span class="k">write</span><span class="p">(</span><span class="n">unit</span><span class="p">,</span> <span class="s1">&#39;(3f10.4, 1x, a3, i2, 11i3)&#39;</span><span class="p">)</span> <span class="p">&amp;</span>
+<a name="ln-96"></a>      <span class="k">endif</span>
+<a name="ln-97"></a><span class="k">      write</span><span class="p">(</span><span class="n">unit</span><span class="p">,</span> <span class="s1">&#39;(3f10.4, 1x, a3, i2, 11i3)&#39;</span><span class="p">)</span> <span class="p">&amp;</span>
 <a name="ln-98"></a>         <span class="p">&amp;</span> <span class="n">self</span><span class="p">%</span><span class="n">xyz</span><span class="p">(:,</span> <span class="n">iatom</span><span class="p">)</span><span class="o">*</span><span class="n">autoaa</span><span class="p">,</span> <span class="n">self</span><span class="p">%</span><span class="n">sym</span><span class="p">(</span><span class="n">self</span><span class="p">%</span><span class="n">id</span><span class="p">(</span><span class="n">iatom</span><span class="p">)),</span> <span class="n">list12</span>
-<a name="ln-99"></a>   <span class="n">enddo</span>
+<a name="ln-99"></a>   <span class="k">enddo</span>
 <a name="ln-100"></a>
-<a name="ln-101"></a>   <span class="k">if</span> <span class="p">(</span><span class="n">self</span><span class="p">%</span><span class="n">nbd</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span> <span class="k">then</span>
+<a name="ln-101"></a><span class="k">   if</span> <span class="p">(</span><span class="n">self</span><span class="p">%</span><span class="n">nbd</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span> <span class="k">then</span>
 <a name="ln-102"></a><span class="k">      if</span> <span class="p">(</span><span class="n">size</span><span class="p">(</span><span class="n">self</span><span class="p">%</span><span class="n">bond</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">2</span><span class="p">)</span> <span class="k">then</span>
 <a name="ln-103"></a><span class="k">         do </span><span class="n">ibond</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">self</span><span class="p">%</span><span class="n">nbd</span>
 <a name="ln-104"></a>            <span class="k">write</span><span class="p">(</span><span class="n">unit</span><span class="p">,</span> <span class="s1">&#39;(7i3)&#39;</span><span class="p">)</span> <span class="n">self</span><span class="p">%</span><span class="n">bond</span><span class="p">(:</span><span class="mi">3</span><span class="p">,</span> <span class="n">ibond</span><span class="p">),</span> <span class="n">list4</span>
@@ -424,7 +424,7 @@
           <p class="text-right">
             Documentation generated by 
             <a href="https://github.com/cmacmackin/ford">FORD</a>
-             on 2021-02-11 12:51  
+             on 2021-02-28 14:09  
           </p>
         </div>
         <div class="col-xs-12 col-md-4 col-md-pull-4"><p class="text-center"> MCTC-library was developed by Grimme group, Bonn</p></div>

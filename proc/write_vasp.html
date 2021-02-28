@@ -365,8 +365,8 @@ public subroutine write_vasp(self, unit, comment_line)
 <span class="k">         </span><span class="n">j</span> <span class="o">=</span> <span class="n">j</span><span class="o">+</span><span class="mi">1</span>
          <span class="n">izp</span> <span class="o">=</span> <span class="n">self</span><span class="p">%</span><span class="n">id</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
          <span class="n">species</span><span class="p">(</span><span class="n">j</span><span class="p">)</span> <span class="o">=</span> <span class="n">self</span><span class="p">%</span><span class="n">id</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
-      <span class="n">endif</span>
-   <span class="n">enddo</span>
+      <span class="k">endif</span>
+<span class="k">   enddo</span>
 
    <span class="c">! use vasp 5.x format</span>
    <span class="k">if</span> <span class="p">(</span><span class="nb">present</span><span class="p">(</span><span class="n">comment_line</span><span class="p">))</span> <span class="k">then</span>
@@ -385,21 +385,21 @@ public subroutine write_vasp(self, unit, comment_line)
    <span class="k">if</span> <span class="p">(</span><span class="nb">allocated</span><span class="p">(</span><span class="n">self</span><span class="p">%</span><span class="n">lattice</span><span class="p">))</span> <span class="k">then</span>
 <span class="k">      do </span><span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span>
          <span class="k">write</span><span class="p">(</span><span class="n">unit</span><span class="p">,</span> <span class="s1">&#39;(3f20.14)&#39;</span><span class="p">)</span> <span class="n">self</span><span class="p">%</span><span class="n">lattice</span><span class="p">(:,</span> <span class="n">i</span><span class="p">)</span><span class="o">*</span><span class="n">autoaa</span><span class="o">/</span><span class="n">self</span><span class="p">%</span><span class="n">info</span><span class="p">%</span><span class="nb">scale</span>
-<span class="nb">      </span><span class="n">enddo</span>
-   <span class="k">else</span>
+<span class="nb">      </span><span class="k">enddo</span>
+<span class="k">   else</span>
 <span class="k">      write</span><span class="p">(</span><span class="n">unit</span><span class="p">,</span> <span class="s1">&#39;(3f20.14)&#39;</span><span class="p">)</span> <span class="nb">spread</span><span class="p">(</span><span class="mf">0.0_wp</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">9</span><span class="p">)</span>
    <span class="k">end if</span>
 
 <span class="k">   do </span><span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">j</span>
       <span class="k">write</span><span class="p">(</span><span class="n">unit</span><span class="p">,</span> <span class="s1">&#39;(1x, a)&#39;</span><span class="p">,</span> <span class="n">advance</span><span class="o">=</span><span class="s1">&#39;no&#39;</span><span class="p">)</span> <span class="n">self</span><span class="p">%</span><span class="n">sym</span><span class="p">(</span><span class="n">species</span><span class="p">(</span><span class="n">i</span><span class="p">))</span>
-   <span class="n">enddo</span>
-   <span class="k">write</span><span class="p">(</span><span class="n">unit</span><span class="p">,</span> <span class="s1">&#39;(a)&#39;</span><span class="p">)</span>
+   <span class="k">enddo</span>
+<span class="k">   write</span><span class="p">(</span><span class="n">unit</span><span class="p">,</span> <span class="s1">&#39;(a)&#39;</span><span class="p">)</span>
 
    <span class="c">! write the count of the consequtive atom types</span>
    <span class="k">do </span><span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">j</span>
       <span class="k">write</span><span class="p">(</span><span class="n">unit</span><span class="p">,</span> <span class="s1">&#39;(1x, i0)&#39;</span><span class="p">,</span> <span class="n">advance</span><span class="o">=</span><span class="s1">&#39;no&#39;</span><span class="p">)</span> <span class="n">kinds</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
-   <span class="n">enddo</span>
-   <span class="k">write</span><span class="p">(</span><span class="n">unit</span><span class="p">,</span> <span class="s1">&#39;(a)&#39;</span><span class="p">)</span>
+   <span class="k">enddo</span>
+<span class="k">   write</span><span class="p">(</span><span class="n">unit</span><span class="p">,</span> <span class="s1">&#39;(a)&#39;</span><span class="p">)</span>
    <span class="k">deallocate</span><span class="p">(</span><span class="n">kinds</span><span class="p">,</span> <span class="n">species</span><span class="p">)</span>
 
    <span class="k">if</span> <span class="p">(</span><span class="n">self</span><span class="p">%</span><span class="n">info</span><span class="p">%</span><span class="n">selective</span><span class="p">)</span> <span class="k">write</span><span class="p">(</span><span class="n">unit</span><span class="p">,</span> <span class="s1">&#39;(&quot;Selective&quot;)&#39;</span><span class="p">)</span>
@@ -411,8 +411,8 @@ public subroutine write_vasp(self, unit, comment_line)
       <span class="c">! now write the cartesian coordinates</span>
       <span class="k">do </span><span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">self</span><span class="p">%</span><span class="n">nat</span>
          <span class="k">write</span><span class="p">(</span><span class="n">unit</span><span class="p">,</span> <span class="s1">&#39;(3f20.14)&#39;</span><span class="p">)</span> <span class="n">self</span><span class="p">%</span><span class="n">xyz</span><span class="p">(:,</span> <span class="n">i</span><span class="p">)</span><span class="o">*</span><span class="n">autoaa</span><span class="o">/</span><span class="n">self</span><span class="p">%</span><span class="n">info</span><span class="p">%</span><span class="nb">scale</span>
-<span class="nb">      </span><span class="n">enddo</span>
-   <span class="k">else</span>
+<span class="nb">      </span><span class="k">enddo</span>
+<span class="k">   else</span>
 <span class="k">      write</span><span class="p">(</span><span class="n">unit</span><span class="p">,</span> <span class="s1">&#39;(&quot;Direct&quot;)&#39;</span><span class="p">)</span>
       <span class="n">inv_lat</span> <span class="o">=</span> <span class="n">matinv_3x3</span><span class="p">(</span><span class="n">self</span><span class="p">%</span><span class="n">lattice</span><span class="p">)</span>
       <span class="n">abc</span> <span class="o">=</span> <span class="nb">matmul</span><span class="p">(</span><span class="n">inv_lat</span><span class="p">,</span> <span class="n">self</span><span class="p">%</span><span class="n">xyz</span><span class="p">)</span>
@@ -420,8 +420,8 @@ public subroutine write_vasp(self, unit, comment_line)
       <span class="c">! now write the fractional coordinates</span>
       <span class="k">do </span><span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">self</span><span class="p">%</span><span class="n">nat</span>
          <span class="k">write</span><span class="p">(</span><span class="n">unit</span><span class="p">,</span> <span class="s1">&#39;(3f20.14)&#39;</span><span class="p">)</span> <span class="n">abc</span><span class="p">(:,</span> <span class="n">i</span><span class="p">)</span>
-      <span class="n">enddo</span>
-   <span class="n">endif</span>
+      <span class="k">enddo</span>
+<span class="k">   endif</span>
 
 <span class="k">end subroutine </span><span class="n">write_vasp</span>
 </pre></div>
@@ -445,7 +445,7 @@ public subroutine write_vasp(self, unit, comment_line)
           <p class="text-right">
             Documentation generated by 
             <a href="https://github.com/cmacmackin/ford">FORD</a>
-             on 2021-02-11 12:51  
+             on 2021-02-28 14:09  
           </p>
         </div>
         <div class="col-xs-12 col-md-4 col-md-pull-4"><p class="text-center"> MCTC-library was developed by Grimme group, Bonn</p></div>

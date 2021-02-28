@@ -330,17 +330,17 @@
 <a name="ln-57"></a><span class="k">            write</span><span class="p">(</span><span class="n">unit</span><span class="p">,</span> <span class="s1">&#39;(&quot;TER   &quot;,i5,6x,a3,1x,a1,i4)&#39;</span><span class="p">)</span> <span class="n">iat</span> <span class="o">+</span> <span class="n">offset</span><span class="p">,</span> <span class="p">&amp;</span>
 <a name="ln-58"></a>               <span class="p">&amp;</span>  <span class="n">mol</span><span class="p">%</span><span class="n">pdb</span><span class="p">(</span><span class="n">iat</span><span class="o">-</span><span class="mi">1</span><span class="p">)%</span><span class="n">residue</span><span class="p">,</span> <span class="n">last_chain</span><span class="p">,</span> <span class="n">mol</span><span class="p">%</span><span class="n">pdb</span><span class="p">(</span><span class="n">iat</span><span class="p">)%</span><span class="n">residue_number</span>
 <a name="ln-59"></a>            <span class="n">offset</span> <span class="o">=</span> <span class="n">offset</span><span class="o">+</span><span class="mi">1</span>
-<a name="ln-60"></a>         <span class="n">endif</span>
+<a name="ln-60"></a>         <span class="k">endif</span>
 <a name="ln-61"></a>
-<a name="ln-62"></a>         <span class="n">jat</span> <span class="o">=</span> <span class="n">iat</span> <span class="o">+</span> <span class="n">offset</span>
+<a name="ln-62"></a><span class="k">         </span><span class="n">jat</span> <span class="o">=</span> <span class="n">iat</span> <span class="o">+</span> <span class="n">offset</span>
 <a name="ln-63"></a>         <span class="k">if</span> <span class="p">(</span><span class="n">mol</span><span class="p">%</span><span class="n">pdb</span><span class="p">(</span><span class="n">iat</span><span class="p">)%</span><span class="n">het</span><span class="p">)</span> <span class="k">then</span>
 <a name="ln-64"></a><span class="k">            </span><span class="n">w1</span> <span class="o">=</span> <span class="s2">&quot;HETATM&quot;</span>
 <a name="ln-65"></a>         <span class="k">else</span>
 <a name="ln-66"></a><span class="k">            </span><span class="n">w1</span> <span class="o">=</span> <span class="s2">&quot;ATOM  &quot;</span>
-<a name="ln-67"></a>         <span class="n">endif</span>
+<a name="ln-67"></a>         <span class="k">endif</span>
 <a name="ln-68"></a>
 <a name="ln-69"></a>
-<a name="ln-70"></a>         <span class="n">sym</span> <span class="o">=</span> <span class="nb">adjustr</span><span class="p">(</span><span class="n">mol</span><span class="p">%</span><span class="n">sym</span><span class="p">(</span><span class="n">mol</span><span class="p">%</span><span class="n">id</span><span class="p">(</span><span class="n">iat</span><span class="p">))(</span><span class="mi">1</span><span class="p">:</span><span class="mi">2</span><span class="p">))</span>
+<a name="ln-70"></a><span class="k">         </span><span class="n">sym</span> <span class="o">=</span> <span class="nb">adjustr</span><span class="p">(</span><span class="n">mol</span><span class="p">%</span><span class="n">sym</span><span class="p">(</span><span class="n">mol</span><span class="p">%</span><span class="n">id</span><span class="p">(</span><span class="n">iat</span><span class="p">))(</span><span class="mi">1</span><span class="p">:</span><span class="mi">2</span><span class="p">))</span>
 <a name="ln-71"></a>         <span class="n">xyz</span> <span class="o">=</span> <span class="n">mol</span><span class="p">%</span><span class="n">xyz</span><span class="p">(:,</span><span class="n">iat</span><span class="p">)</span> <span class="o">*</span> <span class="n">autoaa</span>
 <a name="ln-72"></a>         <span class="k">if</span> <span class="p">(</span><span class="n">mol</span><span class="p">%</span><span class="n">pdb</span><span class="p">(</span><span class="n">iat</span><span class="p">)%</span><span class="n">charge</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">)</span> <span class="k">then</span>
 <a name="ln-73"></a><span class="k">            write</span><span class="p">(</span><span class="n">a_charge</span><span class="p">,</span> <span class="s1">&#39;(i1,&quot;-&quot;)&#39;</span><span class="p">)</span> <span class="nb">abs</span><span class="p">(</span><span class="n">mol</span><span class="p">%</span><span class="n">pdb</span><span class="p">(</span><span class="n">iat</span><span class="p">)%</span><span class="n">charge</span><span class="p">)</span>
@@ -348,15 +348,15 @@
 <a name="ln-75"></a><span class="k">            write</span><span class="p">(</span><span class="n">a_charge</span><span class="p">,</span> <span class="s1">&#39;(i1,&quot;+&quot;)&#39;</span><span class="p">)</span> <span class="nb">abs</span><span class="p">(</span><span class="n">mol</span><span class="p">%</span><span class="n">pdb</span><span class="p">(</span><span class="n">iat</span><span class="p">)%</span><span class="n">charge</span><span class="p">)</span>
 <a name="ln-76"></a>         <span class="k">else</span>
 <a name="ln-77"></a><span class="k">            </span><span class="n">a_charge</span> <span class="o">=</span> <span class="s1">&#39;  &#39;</span>
-<a name="ln-78"></a>         <span class="n">endif</span>
+<a name="ln-78"></a>         <span class="k">endif</span>
 <a name="ln-79"></a>
-<a name="ln-80"></a>         <span class="k">write</span><span class="p">(</span><span class="n">unit</span><span class="p">,</span> <span class="n">pdb_format</span><span class="p">)</span> <span class="p">&amp;</span>
+<a name="ln-80"></a><span class="k">         write</span><span class="p">(</span><span class="n">unit</span><span class="p">,</span> <span class="n">pdb_format</span><span class="p">)</span> <span class="p">&amp;</span>
 <a name="ln-81"></a>            <span class="p">&amp;</span>  <span class="n">w1</span><span class="p">,</span> <span class="n">jat</span><span class="p">,</span> <span class="n">mol</span><span class="p">%</span><span class="n">pdb</span><span class="p">(</span><span class="n">iat</span><span class="p">)%</span><span class="n">name</span><span class="p">,</span> <span class="n">mol</span><span class="p">%</span><span class="n">pdb</span><span class="p">(</span><span class="n">iat</span><span class="p">)%</span><span class="nb">loc</span><span class="p">,</span> <span class="p">&amp;</span>
 <a name="ln-82"></a>            <span class="p">&amp;</span>  <span class="n">mol</span><span class="p">%</span><span class="n">pdb</span><span class="p">(</span><span class="n">iat</span><span class="p">)%</span><span class="n">residue</span><span class="p">,</span> <span class="n">mol</span><span class="p">%</span><span class="n">pdb</span><span class="p">(</span><span class="n">iat</span><span class="p">)%</span><span class="n">chains</span><span class="p">,</span> <span class="n">mol</span><span class="p">%</span><span class="n">pdb</span><span class="p">(</span><span class="n">iat</span><span class="p">)%</span><span class="n">residue_number</span><span class="p">,</span> <span class="p">&amp;</span>
 <a name="ln-83"></a>            <span class="p">&amp;</span>  <span class="n">mol</span><span class="p">%</span><span class="n">pdb</span><span class="p">(</span><span class="n">iat</span><span class="p">)%</span><span class="n">code</span><span class="p">,</span> <span class="n">xyz</span><span class="p">,</span> <span class="mf">1.0_wp</span><span class="p">,</span> <span class="mf">0.0_wp</span><span class="p">,</span> <span class="n">mol</span><span class="p">%</span><span class="n">pdb</span><span class="p">(</span><span class="n">iat</span><span class="p">)%</span><span class="n">segid</span><span class="p">,</span> <span class="p">&amp;</span>
 <a name="ln-84"></a>            <span class="p">&amp;</span>  <span class="n">sym</span><span class="p">,</span> <span class="n">a_charge</span>
-<a name="ln-85"></a>      <span class="n">enddo</span>
-<a name="ln-86"></a>   <span class="k">else</span>
+<a name="ln-85"></a>      <span class="k">enddo</span>
+<a name="ln-86"></a><span class="k">   else</span>
 <a name="ln-87"></a><span class="k">      do </span><span class="n">iat</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">mol</span><span class="p">%</span><span class="n">nat</span>
 <a name="ln-88"></a>         <span class="n">w1</span> <span class="o">=</span> <span class="s2">&quot;HETATM&quot;</span>
 <a name="ln-89"></a>         <span class="n">sym</span> <span class="o">=</span> <span class="nb">adjustr</span><span class="p">(</span><span class="n">mol</span><span class="p">%</span><span class="n">sym</span><span class="p">(</span><span class="n">mol</span><span class="p">%</span><span class="n">id</span><span class="p">(</span><span class="n">iat</span><span class="p">))(</span><span class="mi">1</span><span class="p">:</span><span class="mi">2</span><span class="p">))</span>
@@ -367,14 +367,14 @@
 <a name="ln-94"></a>            <span class="p">&amp;</span>  <span class="n">w1</span><span class="p">,</span> <span class="n">iat</span><span class="p">,</span> <span class="n">sym</span><span class="p">,</span> <span class="s2">&quot; &quot;</span><span class="p">,</span> <span class="p">&amp;</span>
 <a name="ln-95"></a>            <span class="p">&amp;</span>  <span class="s2">&quot;UNK&quot;</span><span class="p">,</span> <span class="s2">&quot;A&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="s2">&quot; &quot;</span><span class="p">,</span> <span class="n">xyz</span><span class="p">,</span> <span class="mf">1.0_wp</span><span class="p">,</span> <span class="mf">0.0_wp</span><span class="p">,</span> <span class="s2">&quot;    &quot;</span><span class="p">,</span> <span class="p">&amp;</span>
 <a name="ln-96"></a>            <span class="p">&amp;</span>  <span class="n">sym</span><span class="p">,</span> <span class="s2">&quot;  &quot;</span>
-<a name="ln-97"></a>      <span class="n">enddo</span>
-<a name="ln-98"></a>   <span class="k">end if</span>
+<a name="ln-97"></a>      <span class="k">enddo</span>
+<a name="ln-98"></a><span class="k">   end if</span>
 <a name="ln-99"></a>
 <a name="ln-100"></a><span class="k">   if</span> <span class="p">(</span><span class="nb">present</span><span class="p">(</span><span class="n">number</span><span class="p">))</span> <span class="k">then</span>
 <a name="ln-101"></a><span class="k">      write</span><span class="p">(</span><span class="n">unit</span><span class="p">,</span> <span class="s1">&#39;(&quot;ENDMDL&quot;)&#39;</span><span class="p">)</span>
 <a name="ln-102"></a>   <span class="k">else</span>
 <a name="ln-103"></a><span class="k">      write</span><span class="p">(</span><span class="n">unit</span><span class="p">,</span> <span class="s1">&#39;(&quot;END&quot;)&#39;</span><span class="p">)</span>
-<a name="ln-104"></a>   <span class="n">endif</span>
+<a name="ln-104"></a>   <span class="k">endif</span>
 <a name="ln-105"></a>
 <a name="ln-106"></a><span class="k">end subroutine </span><span class="n">write_pdb</span>
 <a name="ln-107"></a>
@@ -398,7 +398,7 @@
           <p class="text-right">
             Documentation generated by 
             <a href="https://github.com/cmacmackin/ford">FORD</a>
-             on 2021-02-11 12:51  
+             on 2021-02-28 14:09  
           </p>
         </div>
         <div class="col-xs-12 col-md-4 col-md-pull-4"><p class="text-center"> MCTC-library was developed by Grimme group, Bonn</p></div>

@@ -311,14 +311,14 @@
 <a name="ln-38"></a><span class="nb">   </span><span class="k">call </span><span class="nb">get_command_argument</span><span class="p">(</span><span class="n">idx</span><span class="p">,</span> <span class="n">length</span><span class="o">=</span><span class="n">length</span><span class="p">,</span> <span class="n">status</span><span class="o">=</span><span class="nb">stat</span><span class="p">)</span>
 <a name="ln-39"></a>   <span class="k">if</span> <span class="p">(</span><span class="nb">stat</span> <span class="o">/=</span> <span class="mi">0</span><span class="p">)</span> <span class="k">then</span>
 <a name="ln-40"></a><span class="k">      return</span>
-<a name="ln-41"></a><span class="k">   </span><span class="n">endif</span>
+<a name="ln-41"></a><span class="k">   endif</span>
 <a name="ln-42"></a>
-<a name="ln-43"></a>   <span class="k">allocate</span><span class="p">(</span><span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="n">length</span><span class="p">)</span> <span class="kd">::</span> <span class="n">arg</span><span class="p">,</span> <span class="nb">stat</span><span class="o">=</span><span class="nb">stat</span><span class="p">)</span>
+<a name="ln-43"></a><span class="k">   allocate</span><span class="p">(</span><span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="n">length</span><span class="p">)</span> <span class="kd">::</span> <span class="n">arg</span><span class="p">,</span> <span class="nb">stat</span><span class="o">=</span><span class="nb">stat</span><span class="p">)</span>
 <a name="ln-44"></a>   <span class="k">if</span> <span class="p">(</span><span class="nb">stat</span> <span class="o">/=</span> <span class="mi">0</span><span class="p">)</span> <span class="k">then</span>
 <a name="ln-45"></a><span class="k">      return</span>
-<a name="ln-46"></a><span class="k">   </span><span class="n">endif</span>
+<a name="ln-46"></a><span class="k">   endif</span>
 <a name="ln-47"></a>
-<a name="ln-48"></a>   <span class="k">if</span> <span class="p">(</span><span class="n">length</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span> <span class="k">then</span>
+<a name="ln-48"></a><span class="k">   if</span> <span class="p">(</span><span class="n">length</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span> <span class="k">then</span>
 <a name="ln-49"></a><span class="k">      call </span><span class="nb">get_command_argument</span><span class="p">(</span><span class="n">idx</span><span class="p">,</span> <span class="n">arg</span><span class="p">,</span> <span class="n">status</span><span class="o">=</span><span class="nb">stat</span><span class="p">)</span>
 <a name="ln-50"></a>      <span class="k">if</span> <span class="p">(</span><span class="nb">stat</span> <span class="o">/=</span> <span class="mi">0</span><span class="p">)</span> <span class="k">then</span>
 <a name="ln-51"></a><span class="k">         deallocate</span><span class="p">(</span><span class="n">arg</span><span class="p">)</span>
@@ -343,14 +343,14 @@
 <a name="ln-70"></a><span class="nb">   </span><span class="k">call </span><span class="nb">get_environment_variable</span><span class="p">(</span><span class="n">var</span><span class="p">,</span> <span class="n">length</span><span class="o">=</span><span class="n">length</span><span class="p">,</span> <span class="n">status</span><span class="o">=</span><span class="nb">stat</span><span class="p">)</span>
 <a name="ln-71"></a>   <span class="k">if</span> <span class="p">(</span><span class="nb">stat</span> <span class="o">/=</span> <span class="mi">0</span><span class="p">)</span> <span class="k">then</span>
 <a name="ln-72"></a><span class="k">      return</span>
-<a name="ln-73"></a><span class="k">   </span><span class="n">endif</span>
+<a name="ln-73"></a><span class="k">   endif</span>
 <a name="ln-74"></a>
-<a name="ln-75"></a>   <span class="k">allocate</span><span class="p">(</span><span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="n">length</span><span class="p">)</span> <span class="kd">::</span> <span class="n">val</span><span class="p">,</span> <span class="nb">stat</span><span class="o">=</span><span class="nb">stat</span><span class="p">)</span>
+<a name="ln-75"></a><span class="k">   allocate</span><span class="p">(</span><span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="n">length</span><span class="p">)</span> <span class="kd">::</span> <span class="n">val</span><span class="p">,</span> <span class="nb">stat</span><span class="o">=</span><span class="nb">stat</span><span class="p">)</span>
 <a name="ln-76"></a>   <span class="k">if</span> <span class="p">(</span><span class="nb">stat</span> <span class="o">/=</span> <span class="mi">0</span><span class="p">)</span> <span class="k">then</span>
 <a name="ln-77"></a><span class="k">      return</span>
-<a name="ln-78"></a><span class="k">   </span><span class="n">endif</span>
+<a name="ln-78"></a><span class="k">   endif</span>
 <a name="ln-79"></a>
-<a name="ln-80"></a>   <span class="k">if</span> <span class="p">(</span><span class="n">length</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span> <span class="k">then</span>
+<a name="ln-80"></a><span class="k">   if</span> <span class="p">(</span><span class="n">length</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span> <span class="k">then</span>
 <a name="ln-81"></a><span class="k">      call </span><span class="nb">get_environment_variable</span><span class="p">(</span><span class="n">var</span><span class="p">,</span> <span class="n">val</span><span class="p">,</span> <span class="n">status</span><span class="o">=</span><span class="nb">stat</span><span class="p">)</span>
 <a name="ln-82"></a>      <span class="k">if</span> <span class="p">(</span><span class="nb">stat</span> <span class="o">/=</span> <span class="mi">0</span><span class="p">)</span> <span class="k">then</span>
 <a name="ln-83"></a><span class="k">         deallocate</span><span class="p">(</span><span class="n">val</span><span class="p">)</span>
@@ -416,7 +416,7 @@
           <p class="text-right">
             Documentation generated by 
             <a href="https://github.com/cmacmackin/ford">FORD</a>
-             on 2021-02-11 12:51  
+             on 2021-02-28 14:09  
           </p>
         </div>
         <div class="col-xs-12 col-md-4 col-md-pull-4"><p class="text-center"> MCTC-library was developed by Grimme group, Bonn</p></div>
