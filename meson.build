@@ -34,12 +34,14 @@ srcs = []
 subdir('src')
 
 # MCTC library target
+rpath = get_option('prefix') + '/' + get_option('libdir')
 mctc_lib = library(
   meson.project_name(),
   sources: srcs,
   version: meson.project_version(),
   dependencies: lib_deps,
   install: install,
+  build_rpath: rpath,
 )
 
 # Export dependency for other projects and test suite
