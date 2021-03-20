@@ -86,4 +86,4 @@ if install
 endif
 
 # add the testsuite
-subdir('test')
+#subdir('test')
