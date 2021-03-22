@@ -20,18 +20,18 @@ module mctc_io_convert
    private
 
    !> Reducted Planck's constant
-   real(wp), parameter :: hbar = codata%h/(2.0_wp*pi) ! J·s = kg·m²·s⁻¹
+   real(wp), parameter :: hbar = codata%h/(2.0_wp*pi) ! J*s = kg*m^2*s^-1
 
    !> Bohr radius
    real(wp), parameter :: bohr = hbar/(codata%me*codata%c*codata%alpha) ! m
 
    !> Hartree energy
-   real(wp), parameter :: hartree = codata%me*codata%c**2*codata%alpha**2 ! J = kg·m²·s⁻²
+   real(wp), parameter :: hartree = codata%me*codata%c**2*codata%alpha**2 ! J = kg*m^2*s^-2
 
-   !> Conversion factor from bohr to Ångström
+   !> Conversion factor from bohr to Angstrom
    real(wp), public, parameter :: autoaa = bohr * 1e10_wp
 
-   !> Conversion factor from Ångström to bohr
+   !> Conversion factor from Angstrom to bohr
    real(wp), public, parameter :: aatoau = 1.0_wp/autoaa
 
    !> Conversion factor from hartree to electron volts

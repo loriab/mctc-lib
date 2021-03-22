@@ -28,7 +28,7 @@ module mctc_io_math
 contains
 
 
-!> Performs a direct calculation of the inverse of a 3×3 matrix.
+!> Performs a direct calculation of the inverse of a 3x3 matrix.
 !
 !  reference: http://fortranwiki.org/fortran/show/Matrix+inversion
 pure function matinv_3x3(a) result(b)
@@ -58,7 +58,7 @@ pure function matinv_3x3(a) result(b)
 end function matinv_3x3
 
 
-!> Determinat of 3×3 matrix
+!> Determinat of 3x3 matrix
 pure function matdet_3x3(a) result (det)
 
    !> Matrix

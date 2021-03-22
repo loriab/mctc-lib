@@ -29,16 +29,16 @@ module mctc_io_constants
    type :: enum_codata
 
       !> Planck's constant
-      real(wp) :: h = 6.6260715e-34_wp ! J·s = kg·m²·s⁻¹
+      real(wp) :: h = 6.6260715e-34_wp ! J*s = kg*m^2*s^-1
 
       !> Speed of light in vacuum
-      real(wp) :: c = 299792458.0_wp ! m·s⁻¹
+      real(wp) :: c = 299792458.0_wp ! m*s^-1
 
       !> Boltzmann's constant
-      real(wp) :: kb = 1.380649e-23_wp ! J·K⁻¹ = kg·m²·s⁻²·K⁻¹
+      real(wp) :: kb = 1.380649e-23_wp ! J*K^-1 = kg*m^2*s^-2*K^-1
 
       !> Avogadro's number
-      real(wp) :: NA = 6.02214076e23_wp ! mol⁻¹
+      real(wp) :: NA = 6.02214076e23_wp ! mol^-1
 
       !> Elementary charge
       real(wp) :: e = 1.602176634e-19_wp ! C
