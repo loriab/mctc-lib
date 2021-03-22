@@ -51,7 +51,7 @@ mctc_dep = declare_dependency(
 )
 
 # Add applications
-subdir('app')
+#subdir('app')
 
 # Package the license files
 mctc_lic = files(
